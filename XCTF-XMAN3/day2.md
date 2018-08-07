@@ -40,8 +40,11 @@
         for line in f.readlines():
             stegb64 = ''.join(line.split())
             rowb64 = ''.join(stegb64.decode('base64').encode('base64').split())
-            offset = abs(b64b64chars.index(stegb64.replace('=','')[-1])-b64b64chars.index(rowb64.replace('=','')[-1]))
+            offset = abs(b64chars.index(stegb64.replace('=','')[-1])-b64chars.index(rowb64.replace('=','')[-1]))
             equalum = stegb64.count('=')
+            if equalum:
+                bin_str += bin(offset)[2:].zfill(equalum * 2)
+            print(''.join([chr(int(bin_str[i:i+8], 2)) for i in xrange(0, len(bin_str), 8)]))
     ```
 4. 图形码，https://online-barcode-reader.inliteresearch.com/
 
