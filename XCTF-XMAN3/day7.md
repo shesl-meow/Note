@@ -205,7 +205,15 @@ print('Password md5: ',''.join(crackres[0:32]))
 
 2. 大小写绕过：应用简单的区分大小写的关键字匹配，比如php中的preg_match函数没有加/i参数
 
-3. 编码绕过：ASCII、16进制、unicode编码、URL编码（开发程序员不知道url会自动解码一次，自己再写了url解码函数，我们可以将URL编码两次）
+3. 编码绕过：
+
+   1. ASCII。比如：
+
+   ```mysql
+   select * from admin where username=(CHAR(97)+CHAR(100)+CHAR(109)+CHAR(105)+CHAR(110))
+   ```
+
+   2. 其他：16进制、unicode编码、URL编码（开发程序员不知道url会自动解码一次，自己再写了url解码函数，我们可以将URL编码两次）
 
 4. more trick：
 
@@ -217,11 +225,8 @@ print('Password md5: ',''.join(crackres[0:32]))
 
    - mysql对%00不会截断：`se%00lect`
 
-   - PS：SQL测试语法（测试字符 `'1'` 与字符 `a` 的大小）：
+   - PS：SQL测试语法（测试字符 `'1'` 与字符 `a` 的大小）：`select '1' > 'a'`
 
-     ```mysql
-     select '1' > 'a'
-     ```
 
 ### 其他注入方式
 
@@ -245,7 +250,11 @@ print('Password md5: ',''.join(crackres[0:32]))
 
 - 应用有时需要调用一些执行系统命令的函数，比如php中的system、exec、shell_exec、passthru、popen、proc_popen等。
 - 程序过滤不严谨，用户可以将代码注入并执行。高危函数：eval()、assert()
-- 文件包含注入：
+- preg_replace函数用于对字符串进行正则处理（当pattern中存在`/e`模式修饰时，$replace部分会被解释为PHP代码执行）：
+
+```php
+mixed preg_replace(mixed $pattern, mixed $replacement, mixed $subject[, int $limit=-1[, int &$count]])
+```
 
 ## 文件包含
 
