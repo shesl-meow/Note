@@ -246,8 +246,59 @@ driver.get(getrequest)
       eval("var_dump($a);");
   ?>
   ```
+  - `preg_replace()` 函数原型：`mixed preg_replace(mixed $pattern, mixed $replace, mixed $subject [, int $limit = -1 [, int &$count]])`。当 `$pattern` 中存在 `/e` 模式修饰符时，`$replacement` 会被看成PHP代码来执行。比如下面的程序会执行替换后的 `\\1` 的代码：
 
-- 文件包含注高危函数：include()、include_once()、require()、require_once()
+  ```php
+  preg_replace("/\[(.*)\]/e", "\\1", $_GET['str']);
+  ```
+
+- 文件包含注高危函数：include()、include_once()、require()、require_once()。以及各个伪协议：
+
+  1. `php://` 伪协议可以访问各个输入输出流。常见用法：`php://input` &rarr;
+
+     1. 解释：`php://input` 指向原始POST数据
+
+     2. 用法：比如以下Demo可以实现简单利用
+
+        ```php
+        // GET数据：localhost:8080/?payload=php://input
+        // POST数据：Simple Use
+        // 后端程序：index.php =>
+        <?php echo file_get_contents($_GET['payload']); ?>
+        ```
+
+     3. 如果php.ini里面的 `allow_url_include=On(PHP < 5.30)` 就可以造成任意代码执行，在这里可以理解成远程文件包含漏洞（RFI），即POST一句话就可以执行。当head头中有 `enctype="multipart/form-data"` 时，该伪协议无效。
+
+  2. `data://` 伪协议为数据封装器，将原本的include的文件流重定向到了用户可以控制的输入流中，就是说执行的文件包含方法包含了输入流。常见用法：`data://text/plain` &rarr; 
+
+     1. 解释：一种不需要向其他位置寻找数据的数据协议描述方式。
+
+     2. 用法：`data:[<mime type>][;charset=<charset>][;<encoding>],<encoded data>`
+
+        ```php
+        // payload: <?php phpinfo()
+        // payload_base64: PD9waHAgcGhwaW5mbygpOw==
+        // URI: localhost:8080/?payload=data://text/plain;base64,PD9waHAgcGhwaW5mbygpOw==
+        // 后端程序：index.php =>
+        <?php include($_GET['payload']);
+        ```
+
+     3. 注意：payload没有 `?>` 闭合。如果php.ini里面的 `allow_url_include=On` ，就可以造成任意代码执行。
+
+  3. `phar://` 伪协议亦为数据封装器，php解压缩包的函数，解压的压缩包与后缀无关。
+
+     1. 用法：`phar://压缩包/内部文件` 。比如：
+
+        ```php
+        // php.php =>
+        <?php phpinfo(); ?>
+        // php.php -> php.zip 放在网站根目录下
+        // URI：localhost:8080/?payload=phar://php.zip/php.php
+        // 后端程序：index.php =>
+        <?php include($_GET['payload']);
+        ```
+
+     2. 注意：php版本需要大于5.3，压缩包格式是zip，利用url的压缩包后缀可以是任意后缀。
 
 - 命令执行高危函数：system()、exec()、shell_exec()、passthru()、pctnl_exec()、popen()、proc_open()...
 
