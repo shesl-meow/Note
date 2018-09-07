@@ -1,0 +1,15 @@
+NTFS 骚操作
+NTFS隐写
+写入方式 （cmd下，Windows平台）：
+notepad 123.jpg:1.txt  //  ‘:’前面的载体可以不存在，推荐使用真实载体，这样迷惑性更强
+dir 			// 发现并没有1.txt文件，即使开启显示隐藏文件也没有
+del 123.jpg:1.txt  //即可删除隐藏文件
+
+原理：
+在NTFS文件系统中存在着NTFS交换数据流（Alternate Data Streams，简称ADS），这是NTFS磁盘格式的特性之一。每一个文件，都有着主文件流和非主文件流，主文件流能够直接看到；而非主文件流寄宿于主文件流中，无法直接读取，这个非主文件流就是NTFS交换数据流。非主文件流可以用于隐写
+
+提取、分析工具：
+Ntfs Streams Editor（扣扣群里面gml大佬发过）下载即可使用
+
+参考博客：
+https://www.cnblogs.com/Chesky/p/ALTERNATE_DATA_STREAMS.html

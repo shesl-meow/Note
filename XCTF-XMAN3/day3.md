@@ -1,10 +1,11 @@
 # 密码学Day1
 
-## Pre
+## 密码学简介
 
+- 一般来说，密码学的设计者根本目标是保障信息以及信息系统的以下几个方面的特性：
+  - 机密性（Confidentiality）、完整性（Integrity）、可用性（Availability）、认证性（Authentication）、不可否认性（Non-repudiation）
 - 加密方式
   - 哈希函数：将长度映射成固定长度的信息
-
 - 通用特点与常见破解方式
   - 通用特点：明文密文一一对应
   - 常见破解方式
