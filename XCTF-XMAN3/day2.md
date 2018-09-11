@@ -137,6 +137,7 @@ graph TB;
 - Python &rarr; 字符串处理、二进制数据处理、文件处理(Zip、Png、PCAP)、网络编程(socket, pwntools)
 
 - What is magic number? ([From Wikipedia](https://en.wikipedia.org/wiki/List_of_file_signatrues))
+
   - A constant numerical or text value used to identify a file format or protocol.
 
 - Tools
@@ -155,7 +156,15 @@ graph TB;
     # The Strings command basically prints the strings of printable characters in files.
     ```
 
-  - binwalk, foremost, 用于分析文件，自动切割文件
+  - binwalk, foremost, dd 用于分析文件，自动切割文件
+
+    ```bash
+    binwalk image.jpg # 使用 binwalk 分析文件
+    
+    dd if=in_image.jpg of=out_image.jpg skip=140147 bs=1
+    # 使用 dd 命令分离隐藏文件。if 指定输入文件，of 指定输出文件，skip 指定分离头位置，bs 设置每次读写块的大小为 1 个字节
+    foremost image.jpg # 使用 foremost 命令直接分离文件
+    ```
 
   - Winhex, 010Editor &rarr; 分析文件的十六进制
 
