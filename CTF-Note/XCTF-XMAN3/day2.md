@@ -41,7 +41,7 @@
 
 - What is base64? 
   - [From Wikipedia](https://en.wikipedia.org/wiki/Base64) &rarr; Base64 is a group of similar binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation.
-  - 自己总结 &rarr; BASE64是一种**将二进制串编码成可见字符**的一种编码方式。其区别于普通编码方式的最大不同之处是采用6位一组的编码方式 $2^{6}=64$ 。
+  - 自己总结 &rarr; BASE64是一种**将二进制串编码成可见字符**的一种编码方式。其区别于普通编码方式的最大不同之处是采用6位一组的编码方式 $$2^{6}=64$$ 。
 - Base64转码大致流程如下：
 
 ```mermaid

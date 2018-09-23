@@ -31,11 +31,11 @@ ps.executeQuery();
    - 适用场景：有回显，可以看到某些字段的回显结果。union语句可以用来填充查询结果，并且额外执行一次查询。用法实例，对于以下的php：
 
    ```php
-   $id = isset($_GET['id']) ? $_GET['id'] : 1;
-   $sql = "SELECT * FROM news WHERE tid='{$id}'";
-   $result = mysql_query($sql, $conn) or die(mysql_error());
-   $row = mysql_fetch_array($result, MYSQL_ASSOC);
-   echo "<h2>{$row['title']}</h2><p>{$row['content']}</p><br />";
+   $$id = isset($_GET['id']) ? $$_GET['id'] : 1;
+   $$sql = "SELECT * FROM news WHERE tid='{$$id}'";
+   $$result = mysql_query($sql, $$conn) or die(mysql_error());
+   $$row = mysql_fetch_array($$result, MYSQL_ASSOC);
+   echo "<h2>{$$row['title']}</h2><p>{$$row['content']}</p><br />";
    mysql_free_result($result);
    ```
 
@@ -238,10 +238,10 @@ print('Password md5: ',''.join(crackres[0:32]))
 
 ```php
 <?php
-    $input = addslashes("%1$' and 1=1#");
-	$b = sprintf("AND b='%s'", $input);
+    $$input = addslashes("%1$$' and 1=1#");
+	$$b = sprintf("AND b='%s'", $$input);
 	...
-    $sql = sprintf("SELECT * FROM t WHERE a='%s' $b", 'admin');
+    $$sql = sprintf("SELECT * FROM t WHERE a='%s' $$b", 'admin');
 	echo $sql;
 ?>
 ```
@@ -253,7 +253,7 @@ print('Password md5: ',''.join(crackres[0:32]))
 - preg_replace函数用于对字符串进行正则处理（当pattern中存在`/e`模式修饰时，$replace部分会被解释为PHP代码执行）：
 
 ```php
-mixed preg_replace(mixed $pattern, mixed $replacement, mixed $subject[, int $limit=-1[, int &$count]])
+mixed preg_replace(mixed $$pattern, mixed $replacement, mixed $subject[, int $limit=-1[, int &$$count]])
 ```
 
 ## 文件包含
@@ -299,9 +299,9 @@ http://www.test.com/index.php?page=php://filter/convert.base64-encode/resource=.
 
   ```php
   if(is_uploaded_file($_['myfile']['tmp_name'])){
-      $upload_file=$_FILES['myfile']['tmp_name'];
-      $file_true_name=$_FILES['myfile']['name'];
-      if(move_upload_file($upload_file, $file_true_name))
+      $$upload_file=$$_FILES['myfile']['tmp_name'];
+      $$file_true_name=$$_FILES['myfile']['name'];
+      if(move_upload_file($$upload_file, $$file_true_name))
           echo $_FILES['myfile']['name']."上传成功";
       else echo "上传失败";
   }else echo "上传失败";
@@ -318,21 +318,21 @@ http://www.test.com/index.php?page=php://filter/convert.base64-encode/resource=.
 
   ```php
   $finfo = finfo_open(FILEINFO_MINE);
-  $mimetype = finfo_file($finfo, $file_true_name);
+  $$mimetype = finfo_file($finfo, $$file_true_name);
   ```
 
 - 检查内容 &rarr; 黑名单（看上去很有效，但实际上只要是黑名单就可以被绕过） &rarr; 耗费资源
 
   ```php
-  $content = file_get_contents($file_true_name);
+  $$content = file_get_contents($$file_true_name);
   if(stripos($content, "<?php")){ die("php!!!"); }
   ```
 
 - 隐藏文件 &rarr; 移到一个不为人知的路径 &rarr; 受到业务需求的限制，文件必须被访问到
 
   ```php
-  $file_true_name=$secrect_path.$_FILES['myfile']['name'];
-  if(move_uploaded_file($uploaded_file, $file_true_name)
+  $$file_true_name=$secrect_path.$$_FILES['myfile']['name'];
+  if(move_uploaded_file($$uploaded_file, $$file_true_name)
      echo $_FILES['myfile']['name']."上传成功";
   else echo "上传失败";
   ```
@@ -340,7 +340,7 @@ http://www.test.com/index.php?page=php://filter/convert.base64-encode/resource=.
 - 随机文件名（局限性同上）：
 
   ```php
-  $file_true_name=md5(rand(1,1000)).$_FILES['myfile']['name'];
+  $$file_true_name=md5(rand(1,1000)).$$_FILES['myfile']['name'];
   ```
 
 - 检查文件扩展名

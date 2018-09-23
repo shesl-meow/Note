@@ -22,12 +22,12 @@
 
 #### 仿射密码
 
-- 仿射密码的加密函数是：$ E(x) = (ax+b) \mod m $。其中：
+- 仿射密码的加密函数是：$$ E(x) = (ax+b) \mod m $$。其中：
   - x 表示明文按照某种编码得到的数字 。
   - a与m互质。
   - m是编码系统中字母的数目。 
-- 仿射密码的解密函数是：$ D(x) = a^{-1}*(x-b) \mod m $。其中：
-  - $a^{-1}$ 是 a 在群 $\mathbb{Z}_{m}$ 的乘法逆元。
+- 仿射密码的解密函数是：$$ D(x) = a^{-1}*(x-b) \mod m $$。其中：
+  - $$a^{-1}$ 是 a 在群 $\mathbb{Z}_{m}$$ 的乘法逆元。
 
 ### 多表代换加密
 
@@ -35,7 +35,7 @@
 
 - Vigenere（维吉尼亚密码） &rarr; [维吉尼亚密码的破解](http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-vigenere-cipher/)
 - Hill（希尔密码） &rarr; 将给定的明文编码转化为n维向量，跟一个 n × n 的矩阵相乘，再将得出的结果对字符集大小N取模。
-  - *Notice*：用作加密的矩阵（密匙）在 $\mathbb{Z}_{26}^{n}$  必须是可逆的，也就是说矩阵的行列式与N互质。
+  - *Notice*：用作加密的矩阵（密匙）在 $$\mathbb{Z}_{26}^{n}$$  必须是可逆的，也就是说矩阵的行列式与N互质。
 - AutokeyCipher（自动密钥密码） &rarr; 与维吉尼亚密码类似，但使用不同的方法生成密钥。
 
 ### 其他古典加密
@@ -51,13 +51,13 @@
 
 - 关于此题的分析：
 
-  1. 考虑到在程序正常运行下，数组访问不会越界，我们在讨论时做以下约定：$ arr[index] \Leftrightarrow arr[index \% len(arr)] $
+  1. 考虑到在程序正常运行下，数组访问不会越界，我们在讨论时做以下约定：$$ arr[index] \Leftrightarrow arr[index \% len(arr)] $$
 
-  2. 关于python程序中定义的 `_l` 函数，发现以下等价关系：$ \_l(offset, arr)[index] \Leftrightarrow arr[index + offset] $
-  3. 关于python的main函数中三维矩阵t的定义，发现以下等价关系：$ t[a][b][c] \Leftrightarrow \_l(a+b, s)[c] $
-  4. 综合第2第3点的观察，有如下等价关系：$ t[a][b][c] \Leftrightarrow s[a+b+c] $
+  2. 关于python程序中定义的 `_l` 函数，发现以下等价关系：$$ \_l(offset, arr)[index] \Leftrightarrow arr[index + offset] $$
+  3. 关于python的main函数中三维矩阵t的定义，发现以下等价关系：$$ t[a][b][c] \Leftrightarrow \_l(a+b, s)[c] $$
+  4. 综合第2第3点的观察，有如下等价关系：$$ t[a][b][c] \Leftrightarrow s[a+b+c] $$
   5. 我们将s视为一种编码格式，即：编码过程s.find(x)，解码过程s[x]。并直接使用其编码结果的数字替代其所代指的字符串，那么加密过程可以用以下公式表示：
-     - $ e = f +  k1 +k2 $
+     - $$ e = f +  k1 +k2 $$
      - 其中，e是密文，f是明文，k1与k2是通过复制方法得到、与f长度一样的密钥，**加法是向量加**。
 
 - 所以我们只需要通过计算 `k1+k2` ，模拟密钥，即可解密。关于此题的解密python脚本：
@@ -103,7 +103,7 @@
 
 ### 线性同余发生器
 
-**线性同余发生器**（linear congruential generator, LCG）是一种通过不连续线性函数生成伪随机数列的算法。生成器通过以下迭代关系定义：$ X_{n+1} = (aX_n+c) \mod m $，其中：
+**线性同余发生器**（linear congruential generator, LCG）是一种通过不连续线性函数生成伪随机数列的算法。生成器通过以下迭代关系定义：$$ X_{n+1} = (aX_n+c) \mod m $$，其中：
 
 - m > 0, the "modulus"
 - 0 < a < m, the "multiplier"
@@ -116,31 +116,31 @@
 
 ### 反馈移位寄存器
 
-一般情况下，其生成关系可以用以下公式表示：$ a_{i+n} = F(a_i, a_{i+1}, ..., a_{i+n-1}) $，其中：
+一般情况下，其生成关系可以用以下公式表示：$$ a_{i+n} = F(a_i, a_{i+1}, ..., a_{i+n-1}) $$，其中：
 
-- $ a_0, a_1, ..., a_{n-1} $ 为初态
+- $$ a_0, a_1, ..., a_{n-1} $$ 为初态
 - F 称为反馈函数或反馈逻辑。如果 F 为线性函数，那么我们称其为线性反馈移位寄存器（linear-feedback shift register, **LFSR**）。
 
 #### 线性反馈移位寄存器 LFSR
 
-反馈函数一般如下：$ a_{i+n} = \sum\limits_{j=1}^{n}c_j a_{i+n-j} $，其中 $c_j$ 均在某个有限域 $F_q$ 中。
+反馈函数一般如下：$$ a_{i+n} = \sum\limits_{j=1}^{n}c_j a_{i+n-j} $，其中 $c_j$ 均在某个有限域 $F_q$$ 中。
 
-该线性变化对应的矩阵为：$ \left[ \begin{matrix} 0 & 0 & \cdots & 0 & c_n \\ 1 & 0 & \cdots & 0 & c_{n-1}  \\ 0   & 1 & \cdots & 0 & c_{n-2} \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \cdots & 1 & c_1 \\ \end{matrix} \right] $
+该线性变化对应的矩阵为：$$ \left[ \begin{matrix} 0 & 0 & \cdots & 0 & c_n \\ 1 & 0 & \cdots & 0 & c_{n-1}  \\ 0   & 1 & \cdots & 0 & c_{n-2} \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \cdots & 1 & c_1 \\ \end{matrix} \right] $$
 
-即：$ \left[ \begin{matrix} a_{i+1} & a_{i+2} & a_{i+3} & \cdots & a_{i+n} \end{matrix}\right] = \left[ \begin{matrix} a_{i} & a_{i+1} & a_{i+2} & \cdots & a_{i+n-1} \end{matrix}\right] \left[ \begin{matrix} 0 & 0 & \cdots & 0 & c_n \\ 1 & 0 & \cdots & 0 & c_{n-1}  \\ 0   & 1 & \cdots & 0 & c_{n-2} \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \cdots & 1 & c_1 \\ \end{matrix} \right] $
+即：$$ \left[ \begin{matrix} a_{i+1} & a_{i+2} & a_{i+3} & \cdots & a_{i+n} \end{matrix}\right] = \left[ \begin{matrix} a_{i} & a_{i+1} & a_{i+2} & \cdots & a_{i+n-1} \end{matrix}\right] \left[ \begin{matrix} 0 & 0 & \cdots & 0 & c_n \\ 1 & 0 & \cdots & 0 & c_{n-1}  \\ 0   & 1 & \cdots & 0 & c_{n-2} \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \cdots & 1 & c_1 \\ \end{matrix} \right] $$
 
-我们可以求得其特征多项式：（我们一般讨论 $ \mathbb{Z}_2 $ 上的多项式）$ f(x)=x^n-\sum\limits_{i=1}^{n}c_ix^{n-i} $
+我们可以求得其特征多项式：（我们一般讨论 $$ \mathbb{Z}_2 $ 上的多项式）$ f(x)=x^n-\sum\limits_{i=1}^{n}c_ix^{n-i} $$
 
-同时我们定义其互反多项式：$ \overline f(x) = x^n f(\frac{1}{x}) = 1-\sum\limits_{i=1}^{n} c_i x^i $，也称为LFSR的联结多项式。
+同时我们定义其互反多项式：$$ \overline f(x) = x^n f(\frac{1}{x}) = 1-\sum\limits_{i=1}^{n} c_i x^i $$，也称为LFSR的联结多项式。
 
-- 该序列对应的生成函数为：$ A(x) = \frac{p(x)}{\overline f(x)} $，其中：$ p(x) = \sum\limits_{i=1}^{n} (c_{n-i} x^{n-i} \sum\limits_{j=1}^{i} a_j x^{j-1}) $
-- 该序列对应的周期或阶为：使 $ A(x) | (x^T - 1) $ 的最小 T
+- 该序列对应的生成函数为：$$ A(x) = \frac{p(x)}{\overline f(x)} $，其中：$ p(x) = \sum\limits_{i=1}^{n} (c_{n-i} x^{n-i} \sum\limits_{j=1}^{i} a_j x^{j-1}) $$
+- 该序列对应的周期或阶为：使 $$ A(x) | (x^T - 1) $$ 的最小 T
 
-n 次本原多项式：阶为 $ 2^n - 1 $ 的 n 次不可约多项式。
+n 次本原多项式：阶为 $$ 2^n - 1 $$ 的 n 次不可约多项式。
 
 m 序列：达到最长周期的序列。
 
-- 序列是 m 序列 $ \Leftrightarrow $ 序列的极小多项式是 n 次本原多项式。
+- 序列是 m 序列 $$ \Leftrightarrow $$ 序列的极小多项式是 n 次本原多项式。
 
 #### 非线性反馈移位寄存器 NLFSR
 
@@ -174,15 +174,15 @@ Shannon 提出的两大设计分组密码的策略：混淆与扩散。
 
 每一轮的加密过程大致如下：
 
-- $ L_{i+1} = R_i $
+- $$ L_{i+1} = R_i $$
 
-- $ R_{i+1} = L_i \oplus F(R_i, K_i) $
+- $$ R_{i+1} = L_i \oplus F(R_i, K_i) $$
 
 因此每一轮的解密过程亦可推出：
 
-- $ L_i = R_{i+i} \oplus F(L_{i+1}, K_i) $
+- $$ L_i = R_{i+i} \oplus F(L_{i+1}, K_i) $$
 
-- $ R_i = L_{i+1} $
+- $$ R_i = L_{i+1} $$
 
 ### IDEA - International Data Encryption Algorithm
 

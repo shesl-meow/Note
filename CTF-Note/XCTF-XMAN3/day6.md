@@ -79,7 +79,7 @@
       while(1){
           if(substr(md5($i),0,6) === '966150')
               break;
-          $i = $i +1;
+          $$i = $$i +1;
       }
       echo $i;
   ?>

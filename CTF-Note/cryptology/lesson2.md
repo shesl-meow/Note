@@ -24,8 +24,8 @@ LP-->LWE
 
 **Representing Lattices**:
 
-- $L(B) = \{z: z = Bx\ for\ x\ in\ Z^n\}$
+- $$L(B) = \{z: z = Bx\ for\ x\ in\ Z^n\}$$
 
-- $L^{\perp}(A) = \{z\ in\ Z^m:Az = 0 \mod q\}$
+- $$L^{\perp}(A) = \{z\ in\ Z^m:Az = 0 \mod q\}$$
 
  
