@@ -3,4 +3,4 @@
 
 - github：https://github.com/shesl-meow/Note
 - gitbook：https://shesl-meow.gitbook.io
-- Custmize Domain for gitbook：https://notes.shesl.top
+- Customized Domain for gitbook：https://notes.shesl.top
