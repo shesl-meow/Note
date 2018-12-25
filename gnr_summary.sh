@@ -33,3 +33,6 @@ do
 	echo -e "* [${MainName}](${dd}/README.md)\n" >> SUMMARY.md
 	findDir $dd "\t*"
 done
+
+iconv -t UTF-8 ./SUMMARY.md > ./tmp
+mv ./tmp ./SUMMARY.md
