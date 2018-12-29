@@ -111,6 +111,14 @@
 
 		* [README.md](./安全技术/Cryptology/README.md)
 
+	* [kali](./安全技术/kali/README.md)
+
+		* [MYSQL爆破.md](./安全技术/kali/MYSQL爆破.md)
+
+		* [信息收集.md](./安全技术/kali/信息收集.md)
+
+		* [漏洞评估.md](./安全技术/kali/漏洞评估.md)
+
 	* [PwnTools](./安全技术/PwnTools/README.md)
 
 		* [#Processes.md](./安全技术/PwnTools/#Processes.md)
@@ -123,15 +131,17 @@
 
 		* [1.find_vuln.md](./安全技术/RrverseEngine/1.find_vuln.md)
 
+	* [WEB](./安全技术/WEB/README.md)
+
+		* [clickjacking.md](./安全技术/WEB/clickjacking.md)
+
+		* [heartbleed.md](./安全技术/WEB/heartbleed.md)
+
 	* [WikiPWN](./安全技术/WikiPWN/README.md)
 
 		* [Canary.md](./安全技术/WikiPWN/Canary.md)
 
 		* [StackOverflow.md](./安全技术/WikiPWN/StackOverflow.md)
-
-		* [leak_canary](./安全技术/WikiPWN/leak_canary/README.md)
-
-		* [test_canary](./安全技术/WikiPWN/test_canary/README.md)
 
 	* [WikiReverse](./安全技术/WikiReverse/README.md)
 
@@ -211,13 +221,17 @@
 
 	* [Linux](./软件技术/Linux/README.md)
 
-		* [AWK.md](./软件技术/Linux/AWK.md)
-
-		* [COMMAND.md](./软件技术/Linux/COMMAND.md)
+		* [awk.md](./软件技术/Linux/awk.md)
 
 		* [CRON.md](./软件技术/Linux/CRON.md)
 
+		* [fold.md](./软件技术/Linux/fold.md)
+
+		* [netstat.md](./软件技术/Linux/netstat.md)
+
 		* [README.md](./软件技术/Linux/README.md)
+
+		* [wc.md](./软件技术/Linux/wc.md)
 
 		* [内核概念.md](./软件技术/Linux/内核概念.md)
 
