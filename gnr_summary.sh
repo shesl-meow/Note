@@ -8,7 +8,7 @@ gnrContent(){
 	fi
 	find $1 -maxdepth 1 -type f -name "*.md" | while read f;
 	do
-		name=`awk -F '/' "{print \\$(NF)}" <<< $f`;
+		name=`awk -F '/' "{print \\$(NF)}" <<< "$f"`;
 		echo -e "$2 [${name}](${f})\n" >> SUMMARY.md
 	done
 }
@@ -20,10 +20,10 @@ findDir(){
 	dbase=`basename $1`
 	find $1 -maxdepth 1 -type d ! -name "$dbase" | while read d;
 	do
-		name=`awk -F '/' "{print \\$(NF)}" <<< $d`;
+		name=`awk -F '/' "{print \\$(NF)}" <<< "$d"`;
 		echo -e "$2 [${name}](${d}/README.md)\n" >> SUMMARY.md
-		gnrContent $d "\t${2}"
-		findDir $d "\t${2}"
+		gnrContent "$d" "\t${2}"
+		findDir "$d" "\t${2}"
 	done
 }
 
