@@ -154,3 +154,4 @@ LRESULT SendMessage( // RETURN：如果消息投递成功，则返回 TRUE
 
 ### `WM_COMMAND` 消息
 
+当用户从菜单或按钮中选择一条命令或一个控件发送给它的父窗口

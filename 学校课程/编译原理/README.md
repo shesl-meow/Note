@@ -7,3 +7,7 @@
 > 老师办公地点：计控楼409。
 >
 > 邮箱：mwgzwp@nbjl.nankai.edu.cn; lizhongwei@nbjl.nankai.edu.cn
+
+
+
+编译原理课程的重点是 `词法分析` 和 `语法分析`。

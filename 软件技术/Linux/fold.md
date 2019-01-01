@@ -1,6 +1,4 @@
-> 学习路径：
-
-# Command
+# `Fold`
 
 `fold`:
 
