@@ -7,15 +7,11 @@
 
 		* [day1.md](./学校课程/中国法律思想史/day1.md)
 
-		* [README.md](./学校课程/中国法律思想史/README.md)
-
 	* [数字逻辑](./学校课程/数字逻辑/README.md)
 
 		* [2.md](./学校课程/数字逻辑/2.md)
 
 		* [3.md](./学校课程/数字逻辑/3.md)
-
-		* [README.md](./学校课程/数字逻辑/README.md)
 
 		* [卡诺图.md](./学校课程/数字逻辑/卡诺图.md)
 
@@ -28,8 +24,6 @@
 		* [B-Tree.md](./学校课程/数据结构/B-Tree.md)
 
 		* [BinTree.md](./学校课程/数据结构/BinTree.md)
-
-		* [README.md](./学校课程/数据结构/README.md)
 
 	* [概率论](./学校课程/概率论/README.md)
 
@@ -47,8 +41,6 @@
 
 		* [day2.md](./学校课程/物权法/day2.md)
 
-		* [README.md](./学校课程/物权法/README.md)
-
 	* [知识产权法](./学校课程/知识产权法/README.md)
 
 		* [day2.md](./学校课程/知识产权法/day2.md)
@@ -58,8 +50,6 @@
 		* [经济法期末复习.md](./学校课程/经济法/经济法期末复习.md)
 
 	* [编译原理](./学校课程/编译原理/README.md)
-
-		* [README.md](./学校课程/编译原理/README.md)
 
 		* [编译器的工作.md](./学校课程/编译原理/编译器的工作.md)
 
@@ -82,8 +72,6 @@
 		* [9.TCP重传.md](./学校课程/网络基本功/9.TCP重传.md)
 
 	* [计算机网络](./学校课程/计算机网络/README.md)
-
-		* [README.md](./学校课程/计算机网络/README.md)
 
 		* [3.网络层](./学校课程/计算机网络/3.网络层/README.md)
 
@@ -115,11 +103,7 @@
 
 		* [lesson2.md](./安全技术/Cryptology/lesson2.md)
 
-		* [README.md](./安全技术/Cryptology/README.md)
-
 	* [CVE](./安全技术/CVE/README.md)
-
-		* [README.md](./安全技术/CVE/README.md)
 
 	* [kali](./安全技术/kali/README.md)
 
@@ -157,8 +141,6 @@
 
 		* [Overview.md](./安全技术/WikiReverse/Overview.md)
 
-		* [README.md](./安全技术/WikiReverse/README.md)
-
 	* [XCTF-XMAN3](./安全技术/XCTF-XMAN3/README.md)
 
 		* [day12.md](./安全技术/XCTF-XMAN3/day12.md)
@@ -183,15 +165,11 @@
 
 		* [day9.md](./安全技术/XCTF-XMAN3/day9.md)
 
-		* [README.md](./安全技术/XCTF-XMAN3/README.md)
-
 		* [day2](./安全技术/XCTF-XMAN3/day2/README.md)
 
 		* [day3](./安全技术/XCTF-XMAN3/day3/README.md)
 
 	* [加密与解密](./安全技术/加密与解密/README.md)
-
-		* [README.md](./安全技术/加密与解密/README.md)
 
 		* [1.基础篇](./安全技术/加密与解密/1.基础篇/README.md)
 
@@ -206,8 +184,6 @@
 		* [learning-authentication-system.md](./软件技术/Django/learning-authentication-system.md)
 
 		* [learning-form-system.md](./软件技术/Django/learning-form-system.md)
-
-		* [README.md](./软件技术/Django/README.md)
 
 		* [Tutorial01.md](./软件技术/Django/Tutorial01.md)
 
@@ -225,8 +201,6 @@
 
 		* [Orientation.md](./软件技术/Docker/Orientation.md)
 
-		* [README.md](./软件技术/Docker/README.md)
-
 		* [Services.md](./软件技术/Docker/Services.md)
 
 	* [Linux](./软件技术/Linux/README.md)
@@ -238,8 +212,6 @@
 		* [fold.md](./软件技术/Linux/fold.md)
 
 		* [netstat.md](./软件技术/Linux/netstat.md)
-
-		* [README.md](./软件技术/Linux/README.md)
 
 		* [wc.md](./软件技术/Linux/wc.md)
 
@@ -258,8 +230,6 @@
 		* [1.vimtutor.md](./软件技术/Vim/1.vimtutor.md)
 
 	* [Vue](./软件技术/Vue/README.md)
-
-		* [README.md](./软件技术/Vue/README.md)
 
 		* [基础.md](./软件技术/Vue/基础.md)
 
