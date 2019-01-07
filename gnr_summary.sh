@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo -e "# SUMMARY\n\n" > SUMMARY.md
 
