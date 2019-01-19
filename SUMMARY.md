@@ -29,7 +29,7 @@
 
 		* [Dictionary.md](./学校课程/数据结构/Dictionary.md)
 
-		* [Heap.md](./学校课程/数据结构/Heap.md)
+		* [PriorityQueue.md](./学校课程/数据结构/PriorityQueue.md)
 
 		* [REVIEW.md](./学校课程/数据结构/REVIEW.md)
 
@@ -262,6 +262,16 @@
 		* [网络实践.md](./软件技术/Linux/网络实践.md)
 
 		* [防火墙.md](./软件技术/Linux/防火墙.md)
+
+	* [MiniProgram](./软件技术/MiniProgram/README.md)
+
+		* [BASIC](./软件技术/MiniProgram/BASIC/README.md)
+
+			* [1.GetStart.md](./软件技术/MiniProgram/BASIC/1.GetStart.md)
+
+			* [2.CodeStructrue.md](./软件技术/MiniProgram/BASIC/2.CodeStructrue.md)
+
+			* [3.Capabilities.md](./软件技术/MiniProgram/BASIC/3.Capabilities.md)
 
 	* [SVN](./软件技术/SVN/README.md)
 
