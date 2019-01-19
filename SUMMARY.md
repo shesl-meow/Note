@@ -27,6 +27,14 @@
 
 		* [BinTree.md](./学校课程/数据结构/BinTree.md)
 
+		* [Dictionary.md](./学校课程/数据结构/Dictionary.md)
+
+		* [Heap.md](./学校课程/数据结构/Heap.md)
+
+		* [REVIEW.md](./学校课程/数据结构/REVIEW.md)
+
+		* [SearchTree.md](./学校课程/数据结构/SearchTree.md)
+
 	* [概率论](./学校课程/概率论/README.md)
 
 		* [假设检验.md](./学校课程/概率论/假设检验.md)
@@ -237,11 +245,15 @@
 
 		* [awk.md](./软件技术/Linux/awk.md)
 
-		* [CRON.md](./软件技术/Linux/CRON.md)
+		* [command.md](./软件技术/Linux/command.md)
+
+		* [cron.md](./软件技术/Linux/cron.md)
 
 		* [fold.md](./软件技术/Linux/fold.md)
 
 		* [netstat.md](./软件技术/Linux/netstat.md)
+
+		* [ntp.md](./软件技术/Linux/ntp.md)
 
 		* [wc.md](./软件技术/Linux/wc.md)
 
