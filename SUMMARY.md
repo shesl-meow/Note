@@ -215,6 +215,34 @@
 
 			* [文本符号.md](./安全技术/加密与解密/1.基础篇/文本符号.md)
 
+* [机器学习](./机器学习/README.md)
+
+	* [快速入门教程](./机器学习/快速入门教程/README.md)
+
+		* [1.Framing.md](./机器学习/快速入门教程/1.Framing.md)
+
+		* [10.Regularization.md](./机器学习/快速入门教程/10.Regularization.md)
+
+		* [11.LogisticRegression.md](./机器学习/快速入门教程/11.LogisticRegression.md)
+
+		* [12.Classification.md](./机器学习/快速入门教程/12.Classification.md)
+
+		* [2.Descending.md](./机器学习/快速入门教程/2.Descending.md)
+
+		* [3.ReduceLoss.md](./机器学习/快速入门教程/3.ReduceLoss.md)
+
+		* [4.TensorFlowAPI.md](./机器学习/快速入门教程/4.TensorFlowAPI.md)
+
+		* [5.Generalization.md](./机器学习/快速入门教程/5.Generalization.md)
+
+		* [6.TrainingAndTest.md](./机器学习/快速入门教程/6.TrainingAndTest.md)
+
+		* [7.Validation.md](./机器学习/快速入门教程/7.Validation.md)
+
+		* [8.Representation.md](./机器学习/快速入门教程/8.Representation.md)
+
+		* [9.FeatureCrosses.md](./机器学习/快速入门教程/9.FeatureCrosses.md)
+
 * [软件技术](./软件技术/README.md)
 
 	* [Django](./软件技术/Django/README.md)
@@ -251,6 +279,8 @@
 
 		* [fold.md](./软件技术/Linux/fold.md)
 
+		* [grep.md](./软件技术/Linux/grep.md)
+
 		* [netstat.md](./软件技术/Linux/netstat.md)
 
 		* [ntp.md](./软件技术/Linux/ntp.md)
@@ -272,6 +302,34 @@
 			* [2.CodeStructrue.md](./软件技术/MiniProgram/BASIC/2.CodeStructrue.md)
 
 			* [3.Capabilities.md](./软件技术/MiniProgram/BASIC/3.Capabilities.md)
+
+		* [FRAMEWORK](./软件技术/MiniProgram/FRAMEWORK/README.md)
+
+			* [1.DirectoryStructrue.md](./软件技术/MiniProgram/FRAMEWORK/1.DirectoryStructrue.md)
+
+			* [2.Settings.md](./软件技术/MiniProgram/FRAMEWORK/2.Settings.md)
+
+			* [3.LogicLayer](./软件技术/MiniProgram/FRAMEWORK/3.LogicLayer/README.md)
+
+				* [1.RegisterProcess.md](./软件技术/MiniProgram/FRAMEWORK/3.LogicLayer/1.RegisterProcess.md)
+
+				* [2.SceneValues.md](./软件技术/MiniProgram/FRAMEWORK/3.LogicLayer/2.SceneValues.md)
+
+				* [3.RegistrationPage.md](./软件技术/MiniProgram/FRAMEWORK/3.LogicLayer/3.RegistrationPage.md)
+
+				* [4.Route.md](./软件技术/MiniProgram/FRAMEWORK/3.LogicLayer/4.Route.md)
+
+				* [5.Modular.md](./软件技术/MiniProgram/FRAMEWORK/3.LogicLayer/5.Modular.md)
+
+				* [6.API.md](./软件技术/MiniProgram/FRAMEWORK/3.LogicLayer/6.API.md)
+
+			* [4.ViewLayer](./软件技术/MiniProgram/FRAMEWORK/4.ViewLayer/README.md)
+
+				* [1.WXML.md](./软件技术/MiniProgram/FRAMEWORK/4.ViewLayer/1.WXML.md)
+
+				* [2.WXSS.md](./软件技术/MiniProgram/FRAMEWORK/4.ViewLayer/2.WXSS.md)
+
+				* [3.Component.md](./软件技术/MiniProgram/FRAMEWORK/4.ViewLayer/3.Component.md)
 
 	* [SVN](./软件技术/SVN/README.md)
 
