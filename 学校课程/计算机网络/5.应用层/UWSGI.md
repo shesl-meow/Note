@@ -47,3 +47,12 @@ def run(addr, port, wsgi_handler, ipv6=False, threading=False):
 下面表示 `WSGI server` 服务器处理流程中关键的类和方法：
 
 ![Server](WSGI-Django_Server.png)
+
+## UWSGI 的 python 相关命令
+
+强制停止后台的所有 `uwsgi` 进程：
+
+```bash
+$ sudo pkill-f uwsgi -9
+```
+
