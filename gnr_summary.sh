@@ -1,40 +1,32 @@
 #!/bin/bash
 
-echo -e "# SUMMARY\n\n" > SUMMARY.md
-
-gnrContent(){
-	if [ $# -lt 2 ]; then
-		return
+gnr_summary () {
+	# Parameter:
+	#	p1: indicate title level.(eg: `\t\t*`)
+	#	p2: indicate folder/file name.
+	name=`basename $2`
+	if [ -f $2 ]; then
+		name="${name%.*}"
+		echo -e "$1 [${name}]($2)\n" >> SUMMARY.md
+	elif [ -d $2 ]; then
+		echo "Find in directory: $2"
+		echo -e "$1 [${name}]($2/README.md)\n" >> SUMMARY.md
+		# Ignore all foldername begin with `.` or folder-self.
+		# And query all files end with `.md` except `README.md`
+		find $2 -maxdepth 1 -type d -not -name ".*" -and -type d -not -name "`basename $2`" \
+		 	-or -type f -name "*.md" -and -type f -not -name "*README.md" | sort -n | while read recur;
+		do
+			gnr_summary "\t$1" $recur;
+		done
+	else
+		echo "Illegal Parameter."
+		exit 1
 	fi
-	find $1 -maxdepth 1 -type f -name "*.md" | while read f;
-	do
-		name=`awk -F '/' "{print \\$(NF)}" <<< "$f"`;
-		if [ $name = "README.md" ]; then continue; fi;
-		echo -e "$2 [${name}](${f})\n" >> SUMMARY.md
-	done
 }
 
-findDir(){
-	if [ $# -lt 2 ]; then
-		return
-	fi
-	dbase=`basename $1`
-	find $1 -maxdepth 1 -type d ! -name "$dbase" | while read d;
-	do
-		name=`awk -F '/' "{print \\$(NF)}" <<< "$d"`;
-		echo "Find in directory $name"
-		echo -e "$2 [${name}](${d}/README.md)\n" >> SUMMARY.md
-		gnrContent "$d" "\t${2}"
-		findDir "$d" "\t${2}"
-	done
-}
-
-for dd in `find . -maxdepth 1 -type d ! -name "." -and ! -name ".git"`;
+echo "" > SUMMARY.md
+find ./ -maxdepth 1 -type d -not -name ".*" \
+ 	-or -type f -name "*.md" | sort -n | while read recur;
 do
-	MainName=`awk -F '/' "{print \\$(NF)}" <<< $dd`
-	echo -e "* [${MainName}](${dd}/README.md)\n" >> SUMMARY.md
-	findDir $dd "\t*"
+	gnr_summary "*" $recur;
 done
-
-iconv -t UTF-8 ./SUMMARY.md > ./tmp
-mv ./tmp ./SUMMARY.md
