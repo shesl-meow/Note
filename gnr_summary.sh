@@ -25,7 +25,7 @@ gnr_summary () {
 }
 
 echo "" > SUMMARY.md
-find ./ -maxdepth 1 -type d -not -name ".*" \
+find . -maxdepth 1 -type d -not -name ".*" \
  	-or -type f -name "*.md" | sort -n | while read recur;
 do
 	gnr_summary "*" $recur;
