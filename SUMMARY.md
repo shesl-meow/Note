@@ -1,8 +1,4 @@
 
-* [README](./README.md)
-
-* [SUMMARY](./SUMMARY.md)
-
 * [学校课程](./学校课程/README.md)
 
 	* [中国法律思想史](./学校课程/中国法律思想史/README.md)
@@ -139,17 +135,7 @@
 
 	* [CVE](./安全技术/CVE/README.md)
 
-	* [KALI](./安全技术/KALI/README.md)
-
-		* [MYSQL爆破](./安全技术/KALI/MYSQL爆破.md)
-
-		* [信息收集](./安全技术/KALI/信息收集.md)
-
-		* [漏洞评估](./安全技术/KALI/漏洞评估.md)
-
 	* [PwnTools](./安全技术/PwnTools/README.md)
-
-		* [#Processes](./安全技术/PwnTools/#Processes.md)
 
 		* [1.GettingStarted](./安全技术/PwnTools/1.GettingStarted.md)
 
@@ -202,6 +188,14 @@
 		* [day8](./安全技术/XCTF-XMAN3/day8.md)
 
 		* [day9](./安全技术/XCTF-XMAN3/day9.md)
+
+	* [kali](./安全技术/kali/README.md)
+
+		* [MYSQL爆破](./安全技术/kali/MYSQL爆破.md)
+
+		* [信息收集](./安全技术/kali/信息收集.md)
+
+		* [漏洞评估](./安全技术/kali/漏洞评估.md)
 
 	* [加密与解密](./安全技术/加密与解密/README.md)
 
@@ -287,17 +281,13 @@
 
 		* [Services](./软件技术/Docker/Services.md)
 
-	* [Hexo](./软件技术/Hexo/README.md)
-
-		* [GettingStarted](./软件技术/Hexo/GettingStarted.md)
-
 	* [Linux](./软件技术/Linux/README.md)
 
-		* [awk](./软件技术/Linux/awk.md)
+		* [AWK](./软件技术/Linux/AWK.md)
+
+		* [CRON](./软件技术/Linux/CRON.md)
 
 		* [command](./软件技术/Linux/command.md)
-
-		* [cron](./软件技术/Linux/cron.md)
 
 		* [fold](./软件技术/Linux/fold.md)
 
