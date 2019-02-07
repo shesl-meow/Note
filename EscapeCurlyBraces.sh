@@ -22,7 +22,10 @@ escape_file () {
 if [ -f $1 ]; then
 	escape_file $1;
 elif [ -d $1 ]; then
-	find "$1" -type f -not -name "*EscapeCurlyBraces.sh" | while read f;
+	find "$1" -type f -not -name "*EscapeCurlyBraces.sh" \
+		-and -not -path "*/.git*" \
+		-and -not -path "*/node_modules*" \
+		-and -not -path "*/_book*" | while read f;
 	do
 		escape_file $f;
 	done
