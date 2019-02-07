@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ $1 = '--help' ] || [ $1 = '-h' ]; then
-	echo "This is a bash script used to escape\n  double curly braces for gitbook using:\n" \
+if [[ $1 = '--help' ]] || [[ $1 = '-h' ]]; then
+	echo -e "This is a bash script used to escape\n  double curly braces for gitbook using:\n" \
 		"  - Example1: '{{' ==> '{% raw %}{{{% endraw %}'\n" \
 		"  - Example2: '{%' ==> '{% raw %}{%{% endraw %}'\n"
-	echo "Parameter:\n" \
+	echo -e "Parameter:\n" \
 		"  p1: filename or foldername.\n"
 	exit 0
 fi
@@ -22,7 +22,7 @@ escape_file () {
 if [ -f $1 ]; then
 	escape_file $1;
 elif [ -d $1 ]; then
-	find $1 -type f -name -not "*EscapeCurlyBraces.sh" | while read f;
+	find "$1" -type f -not -name "*EscapeCurlyBraces.sh" | while read f;
 	do
 		escape_file $f;
 	done
