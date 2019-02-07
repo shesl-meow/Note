@@ -11,10 +11,11 @@ fi
 check_readme () {
 	# Parameter
 	# 	p1: folder name.
-	find $1 -type d -not -name ".*" -and -not -name "_book" \
-		-and -not "node_modules" | while read f;
+	find $1 -type d -not -path "*/.git*" \
+		-and -not -path "*/_book*" \
+		-and -not -path "*/node_modules*" | while read f;
 	do
-		if [[ -e "$f/README.md" ]]; then
+		if [[ ! -e "$f/README.md" ]]; then
 			echo "Folder[$f] doesn't have README.md file. Create it."
 			echo "# `basename $f`" > "$f/README.md"
 		fi
