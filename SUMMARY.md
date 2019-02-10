@@ -173,6 +173,10 @@
 
 	* [理论](./安全技术/理论/README.md)
 
+		* [Android软件安全与逆向分析](./安全技术/理论/Android软件安全与逆向分析/README.md)
+
+			* [1.分析环境搭建](./安全技术/理论/Android软件安全与逆向分析/1.分析环境搭建.md)
+
 		* [CTFWiki](./安全技术/理论/CTFWiki/README.md)
 
 			* [PWN](./安全技术/理论/CTFWiki/PWN/README.md)
@@ -197,11 +201,7 @@
 
 			* [day15](./安全技术/理论/XMAN3夏令营/day15.md)
 
-			* [day2](./安全技术/理论/XMAN3夏令营/day2/README.md)
-
 			* [day2](./安全技术/理论/XMAN3夏令营/day2.md)
-
-			* [day3](./安全技术/理论/XMAN3夏令营/day3/README.md)
 
 			* [day3](./安全技术/理论/XMAN3夏令营/day3.md)
 
@@ -286,6 +286,16 @@
 		* [Orientation](./软件技术/Docker/Orientation.md)
 
 		* [Services](./软件技术/Docker/Services.md)
+
+	* [JAVA](./软件技术/JAVA/README.md)
+
+		* [1.Introduction](./软件技术/JAVA/1.Introduction.md)
+
+		* [2.ConditionalAndControlFlow](./软件技术/JAVA/2.ConditionalAndControlFlow.md)
+
+		* [3.ObjectOriented](./软件技术/JAVA/3.ObjectOriented.md)
+
+		* [4.DataStructures](./软件技术/JAVA/4.DataStructures.md)
 
 	* [Linux](./软件技术/Linux/README.md)
 

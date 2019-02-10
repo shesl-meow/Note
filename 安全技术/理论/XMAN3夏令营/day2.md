@@ -121,7 +121,7 @@ graph TB;
 
 2. 二维码：（1）CTF：二维码的修复 &rarr; 黑白取反；（2）二维码结构示意图：
 
-    ![QRCodeStructrue](day2/QR_Code_Structure.svg)
+    ![QRCodeStructrue](./QR_Code_Structure.svg)
 
 ### 攻击实践
 
