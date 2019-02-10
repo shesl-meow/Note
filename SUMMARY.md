@@ -239,12 +239,6 @@
 
 		* [1.Framing](./机器学习/快速入门教程/1.Framing.md)
 
-		* [10.Regularization](./机器学习/快速入门教程/10.Regularization.md)
-
-		* [11.LogisticRegression](./机器学习/快速入门教程/11.LogisticRegression.md)
-
-		* [12.Classification](./机器学习/快速入门教程/12.Classification.md)
-
 		* [2.Descending](./机器学习/快速入门教程/2.Descending.md)
 
 		* [3.ReduceLoss](./机器学习/快速入门教程/3.ReduceLoss.md)
@@ -260,6 +254,12 @@
 		* [8.Representation](./机器学习/快速入门教程/8.Representation.md)
 
 		* [9.FeatureCrosses](./机器学习/快速入门教程/9.FeatureCrosses.md)
+
+		* [10.Regularization](./机器学习/快速入门教程/10.Regularization.md)
+
+		* [11.LogisticRegression](./机器学习/快速入门教程/11.LogisticRegression.md)
+
+		* [12.Classification](./机器学习/快速入门教程/12.Classification.md)
 
 * [软件技术](./软件技术/README.md)
 
@@ -289,13 +289,31 @@
 
 	* [JAVA](./软件技术/JAVA/README.md)
 
-		* [1.Introduction](./软件技术/JAVA/1.Introduction.md)
+		* [codeacademy](./软件技术/JAVA/codeacademy/README.md)
 
-		* [2.ConditionalAndControlFlow](./软件技术/JAVA/2.ConditionalAndControlFlow.md)
+			* [1.Introduction](./软件技术/JAVA/codeacademy/1.Introduction.md)
 
-		* [3.ObjectOriented](./软件技术/JAVA/3.ObjectOriented.md)
+			* [2.ConditionalAndControlFlow](./软件技术/JAVA/codeacademy/2.ConditionalAndControlFlow.md)
 
-		* [4.DataStructures](./软件技术/JAVA/4.DataStructures.md)
+			* [3.ObjectOriented](./软件技术/JAVA/codeacademy/3.ObjectOriented.md)
+
+			* [4.DataStructures](./软件技术/JAVA/codeacademy/4.DataStructures.md)
+
+		* [菜鸟基础教程](./软件技术/JAVA/菜鸟基础教程/README.md)
+
+			* [1.基础语法](./软件技术/JAVA/菜鸟基础教程/1.基础语法.md)
+
+			* [2.对象和类](./软件技术/JAVA/菜鸟基础教程/2.对象和类.md)
+
+			* [3.基本数据类型](./软件技术/JAVA/菜鸟基础教程/3.基本数据类型.md)
+
+			* [4.变量类型](./软件技术/JAVA/菜鸟基础教程/4.变量类型.md)
+
+			* [5.修饰符](./软件技术/JAVA/菜鸟基础教程/5.修饰符.md)
+
+			* [6.运算符](./软件技术/JAVA/菜鸟基础教程/6.运算符.md)
+
+			* [7.循环结构](./软件技术/JAVA/菜鸟基础教程/7.循环结构.md)
 
 	* [Linux](./软件技术/Linux/README.md)
 

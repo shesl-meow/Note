@@ -13,10 +13,13 @@ gnr_summary () {
 		echo -e "$1 [${name}]($2/README.md)\n" >> SUMMARY.md
 		# Ignore all foldername begin with `.` or folder-self.
 		# And query all files end with `.md` except `README.md`
-		find $2 -maxdepth 1 -type d -not -name ".*" -and -type d -not -name "`basename $2`" \
-		 	-or -type f -name "*.md" -and -type f -not -name "*README.md" | sort -n | while read recur;
+		find $2 -maxdepth 1 -type d -not -name ".*" \
+			-and -type d -not -name "`basename $2`" \
+		 	-or -type f -name "*.md" \
+		 	-and -type f -not -name "*README.md" \
+		 	| xargs -n1 basename | sort -n | while read recur;
 		do
-			gnr_summary "\t$1" $recur;
+			gnr_summary "\t$1" $2/$recur;
 		done
 	else
 		echo "Illegal Parameter."
