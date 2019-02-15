@@ -263,6 +263,12 @@
 
 * [软件技术](./软件技术/README.md)
 
+	* [Android](./软件技术/Android/README.md)
+
+		* [1.Introduction](./软件技术/Android/1.Introduction.md)
+
+		* [2.BuildFirstApp](./软件技术/Android/2.BuildFirstApp.md)
+
 	* [Django](./软件技术/Django/README.md)
 
 		* [Tutorial01](./软件技术/Django/Tutorial01.md)
