@@ -5,6 +5,10 @@
 
 		* [day1](./学校课程/中国法律思想史/day1.md)
 
+	* [信息安全数学基础](./学校课程/信息安全数学基础/README.md)
+
+		* [1.week_one](./学校课程/信息安全数学基础/1.week_one.md)
+
 	* [数字逻辑](./学校课程/数字逻辑/README.md)
 
 		* [卡诺图](./学校课程/数字逻辑/卡诺图.md)
@@ -18,6 +22,8 @@
 		* [数制与编码](./学校课程/数字逻辑/数制与编码.md)
 
 		* [触发器](./学校课程/数字逻辑/触发器.md)
+
+	* [数据库系统](./学校课程/数据库系统/README.md)
 
 	* [数据结构](./学校课程/数据结构/README.md)
 
@@ -141,6 +147,14 @@
 
 	* [工具](./安全技术/工具/README.md)
 
+		* [android](./安全技术/工具/android/README.md)
+
+			* [adb](./安全技术/工具/android/adb.md)
+
+			* [apksigner](./安全技术/工具/android/apksigner.md)
+
+			* [apktool](./安全技术/工具/android/apktool.md)
+
 		* [kali](./安全技术/工具/kali/README.md)
 
 			* [MYSQL爆破](./安全技术/工具/kali/MYSQL爆破.md)
@@ -182,6 +196,8 @@
 		* [Android软件安全与逆向分析](./安全技术/理论/Android软件安全与逆向分析/README.md)
 
 			* [1.分析环境搭建](./安全技术/理论/Android软件安全与逆向分析/1.分析环境搭建.md)
+
+			* [2.如何分析安卓程序](./安全技术/理论/Android软件安全与逆向分析/2.如何分析安卓程序.md)
 
 		* [CTFWiki](./安全技术/理论/CTFWiki/README.md)
 
