@@ -34,7 +34,7 @@ for l in raw:
 		f.close()
 		fnum += 1
 		fname=l[2:].strip().replace(' ', '') + '.md'
-		if not fname.startswith('1'):
+		if not fname.startswith(tuple([str(i) for i in range(10)])):
 			fname=str(fnum) + '.' + fname
 		f=open('$dn/$fn/' + fname, 'w')
 		print('Wirte into ' + f.name)
