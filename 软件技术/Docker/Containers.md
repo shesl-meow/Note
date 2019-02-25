@@ -1,0 +1,212 @@
+# Part 2: Containers
+
+We start at the bottom of the hierarchy of such an app, which is a container, which we cover on this page. 
+
+## 新的开发环境 `Container`
+
+In the past, if you were to start writing a Python app, your first order of business was to install a Python runtime onto your machine. But, that creates a situation where the environment on your machine needs to be perfect for your app to run as expected, and also needs to match your production environment.
+
+With Docker, you can just grab a portable Python runtime as an image, no installation necessary. Then, your build can include the base Python image right alongside your app code, ensuring that your app, its dependencies, and the runtime, all travel together.
+
+These portable images are defined by something called a `Dockerfile`.
+
+## 用 `Dockerfile` 定义 `Container`
+
+文件 `Dockerfile` 定义了文件进入 `container` 的规则。令 `container` 像向网络接口请求数据一样向  `host` 机器请求数据，它与 `host` 其他环境完全分离，所以你需要定义一个端口映射到 `host` 的外界并且定义可以进入环境的文件。这些内容都可以写在 `Dockerfile` 这个文件中。
+
+### `Dockerfile`
+
+一个基本的 `Dockerfile` 示例如下：
+
+```dockerfile
+# Use an official Python runtime as a parent image
+FROM python:2.7-slim
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+```
+
+该 `Dockerfile` 中指明了 `app.py` 和 `requirement.txt` 两个文件未创建。
+
+这两个文件只需要创建在与 `Dockerfile` 同级目录下，上面的 `COPY` 命令会将它们复制到镜像中，而其中的 `EXPOSE` 则使我们的 `app.py` 可以通过 `HTTP` 协议访问到。
+
+接下来我们创建它们。
+
+### `app.py`
+
+```python
+from flask import Flask
+from redis import Redis, RedisError
+import os
+import socket
+
+# Connect to Redis
+redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    try:
+        visits = redis.incr("counter")
+    except RedisError:
+        visits = "<i>cannot connect to Redis, counter disabled</i>"
+
+    html = "<h3>Hello {name}!</h3>" \
+           "<b>Hostname:</b> {hostname}<br/>" \
+           "<b>Visits:</b> {visits}"
+    return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80)
+```
+
+### `requirement.txt`
+
+```text
+Flask
+Redis
+```
+
+运行以下命令测试环境是否正确：
+
+```bash
+$ pip install -r requirement.txt
+...
+
+$ python app.py
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+```
+
+浏览器中访问 `localhost`，便可以看到 `soket.gethostname()` 的结果。
+
+## 搭建 `app`
+
+在项目根目录下运行以下命令 `build` 这个项目（其中 `-t` 选项是为了给镜像起名字，注意最后的 `.` 指明是当前文件夹）：
+
+```bash
+$ docker build -t test_image .
+```
+
+可以通过以下的命令查看注册在 `Docker` 后台的镜像：
+
+```bash
+$ docker image ls
+```
+
+### Troubleshooting for Linux users
+
+1. 代理服务器可能会禁止你的 `web` 应用连接。如果你使用了代理服务器，添加以下内容到 `Dockerfile` 中，其中 `ENV` 后指明代理服务器的主机名和端口号：
+
+   ```dockerfile
+   # Set proxy server, replace host:port with values for your servers
+   ENV http_proxy host:port
+   ENV https_proxy host:port
+   ```
+
+2. `DNS` 配置错误会导致 `pip` 安装命令失败。你可能需要更改 `Docker` 守护进程的 `DNS` 设置。使用 `dns key` 编辑（或创建）文件 `/etc/docker/daemon.json` ：
+
+   ```bash
+   {
+     "dns": ["your_dns_address", "8.8.8.8"]
+   }
+   ```
+
+   保存之后重启 `docker` 服务即可：
+
+   ```bash
+   $ sudo service docker restart
+   ```
+
+## 启动 `app`
+
+通过以下命令启动服务（其中，`4000:80` 意为将机器的 `4000` 端口映射到容器内部的 `80` 端口）：
+
+```bash
+$ docker run -p 4000:80 test_image
+```
+
+在浏览器中访问 `localhost:4000` 可以看到 `docker` 的运行结果。`curl` 命令也是同样的效果。
+
+`CTRL+C` 停止运行程序，在 windows 系统上或者 Linux 后台运行时可以使用以下命令先获取 `CONTAINER ID` 后停止运行程序：
+
+```bash
+$ docker container ls
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                  NAMES
+6ff52e6cfdbc        test_image          "python app.py"     10 seconds ago      Up 8 seconds        0.0.0.0:4000->80/tcp   confident_hopper
+
+$ docker container stop 6ff52e6cfdbc
+```
+
+通过 `detached mode`，可以令 `app` 在后台运行，比如使用以下的命令：
+
+```bash
+$ docker run -d -p 4000:80 test_image
+```
+
+## 镜像的可移植性
+
+首先，当你想要将容器部署到生产环境时，你需要知道如何将容器推送到注册表 (registry)。
+
+A registry is a collection of repositories, and a repository is a collection of images—sort of like a GitHub repository, except the code is already built. An account on a registry can create many repositories. The `docker` CLI uses Docker’s public registry by default.
+
+### Log in with your Docker ID
+
+在 `Docker` 官网  https://hub.docker.com 上注册账户，并用以下的命令在本地机器上登陆账户：
+
+```bash
+$ docker login
+```
+
+### Tag the image
+
+将本地的一个镜像与注册表上的仓库关联起来的方式是 `username/repository:tag`。`tag` 是可选的，但是推荐使用，因为它是注册表给每个镜像一个版本名称的机制。
+
+Now, put it all together to tag the image. Run `docker tag image` with your username, repository, and tag names so that the image uploads to your desired destination. The syntax of the command is:
+
+```bash
+$ docker tag <image> <username>/<repository>:<tag>
+```
+
+Run `docker image ls` to see your newly tagged image.
+
+### Publish the image
+
+以下的命令可以用于上传仓库：
+
+```bash
+$ docker push <username>/<repository>:<tag>
+```
+
+Once complete, the results of this upload are publicly available. If you log in to [Docker Hub](https://hub.docker.com/), you see the new image there, with its pull command.
+
+### Pull and run the image from the remote repository
+
+现在，你可以通过以下的命令在任何一个机器上运行你的 `app`：
+
+```bash
+$ docker run -p 4000:80  <username>/<repository>:<tag>
+```
+
+如果 `image` 在本机并不可用，`Docker` 会自动从远端拉取镜像。
+

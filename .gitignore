@@ -1,0 +1,6 @@
+
+*.ppt
+*.pptx
+
+node_modules/
+_book/

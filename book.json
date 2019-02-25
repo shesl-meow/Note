@@ -1,0 +1,13 @@
+{
+    "gitbook": "3.2.3",
+    "plugins": [
+    	"collapsible-menu", 
+    	"mathjax"
+    ],
+    "links": {
+        "sidebar": {
+            "Contact us / Support": "https://www.gitbook.com/contact"
+        }
+    },
+    "pluginsConfig": {}
+}
