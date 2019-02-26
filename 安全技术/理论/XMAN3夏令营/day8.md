@@ -23,11 +23,11 @@
   ```php
   <?php
       if(isset($_POST['url'])){
-          $ $content = file_get_contents($ $_POST['url']);
+          $$content = file_get_contents($$_POST['url']);
           $filename = './images/'.rand().';img1.jpg';
-          file_put_contents($ $filename, $ $content);
+          file_put_contents($$filename, $$content);
           echo $_POST['url'];
-          $ $img = "<img src=\"".$ $filename."\"/>";
+          $$img = "<img src=\"".$$filename."\"/>";
       }
   	echo $img;
   ?>
@@ -37,17 +37,17 @@
 
   ```php
   <?php
-  function GetFile($ $host, $port, $ $link){
-      $ $fp = fsockopen($host, intval($host), $errno, $ $errstr, 30);
-      if(!$ $fp) echo "$errstr (erro number $ $errno) \n";
+  function GetFile($$host, $port, $$link){
+      $$fp = fsockopen($host, intval($host), $errno, $$errstr, 30);
+      if(!$$fp) echo "$errstr (erro number $$errno) \n";
       else{
-          $ $out = "GET $ $link HTTP/1.1\r\n";
-          $ $out .= "HOST: $ $host\r\n";
+          $$out = "GET $$link HTTP/1.1\r\n";
+          $$out .= "HOST: $$host\r\n";
           $out .= "Connection: Close\r\n\r\n";
           $out .= "\r\n";
-          fwrite($ $fp, $ $out);
+          fwrite($$fp, $$out);
           $contents='';
-          while(!feof($ $fp)) $content .= fgets($ $fp, 1024);
+          while(!feof($$fp)) $content .= fgets($$fp, 1024);
           fclose($fp);
           return $contents;
       }
@@ -60,16 +60,16 @@
   ```php
   <?php
       if(isset($_POST['url'])){
-          $ $link = $ $_POST['url'];
+          $$link = $$_POST['url'];
           $curlobj = curl_init();
           curl_setopt($curlobj, CURLOPT_POST, 0);
-          curl_setopt($ $curlobj, CURLOPT_URL, $ $link);
+          curl_setopt($$curlobj, CURLOPT_URL, $$link);
           curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);
-          $ $result = curl_exec($ $curlobj);
+          $$result = curl_exec($$curlobj);
           curl_close($curlobj);
           
           $filename = './curled/'.rand().'.txt';
-          file_put_contents($ $filename, $ $result);
+          file_put_contents($$filename, $$result);
           echo $result;
       }
   ?>
@@ -128,10 +128,10 @@ with open(sys.argv[1]) as f:
 $serverList = array(
     "127.0.0.1"
 );
-$ $ip = $ $_SERVER['REMOTE_ADDR'];
-foreach ($ $serverList as $ $host) {
-    if ($ $ip === $ $host) {
-        if ((!empty($ $_POST['admin'])) and $ $_POST['admin'] === 'h1admin') {
+$$ip = $$_SERVER['REMOTE_ADDR'];
+foreach ($$serverList as $$host) {
+    if ($$ip === $$host) {
+        if ((!empty($$_POST['admin'])) and $$_POST['admin'] === 'h1admin') {
             @eval($_POST['hacker']);
         } else die("You aren't admin!");
     } else die('This is webshell');
@@ -242,11 +242,11 @@ driver.get(getrequest)
       error_reporting(0);
   	show_source(__FILE__);
       
-      $ $a = @$ $_REQUEST['hello'];
+      $$a = @$$_REQUEST['hello'];
       eval("var_dump($a);");
   ?>
   ```
-  - `preg_replace()` 函数原型：`mixed preg_replace(mixed $ $pattern, mixed $replace, mixed $subject [, int $limit = -1 [, int &$count]])`。当 `$pattern` 中存在 `/e` 模式修饰符时，`$ $replacement` 会被看成PHP代码来执行。比如下面的程序会执行替换后的 `\\1` 的代码：
+  - `preg_replace()` 函数原型：`mixed preg_replace(mixed $$pattern, mixed $replace, mixed $subject [, int $limit = -1 [, int &$count]])`。当 `$pattern` 中存在 `/e` 模式修饰符时，`$$replacement` 会被看成PHP代码来执行。比如下面的程序会执行替换后的 `\\1` 的代码：
 
   ```php
   preg_replace("/\[(.*)\]/e", "\\1", $_GET['str']);
@@ -307,15 +307,15 @@ driver.get(getrequest)
 ### 变量覆盖
 
 - 指的是我们可以用自定义的参数值来替换程序原有的变量值。
-- 主要原因大多由函数使用不当造成的。主要有以下几个函数：extract()、Parse_str()、import_request_variables()；还有部分应用$ $$ $方式进行变量注册也容易导致变量覆盖。
+- 主要原因大多由函数使用不当造成的。主要有以下几个函数：extract()、Parse_str()、import_request_variables()；还有部分应用$$$$方式进行变量注册也容易导致变量覆盖。
 
 ```php
 <?php
 $chr = '';
-if($ $_POST && $ $charset != 'utf-8'){
-    $ $chs = new Chinese('UTF-8', $ $charset);
-    foreach($ $_POST as $key => $ $value)
-        $ $$key = $chs->Convert($ $value);
+if($$_POST && $$charset != 'utf-8'){
+    $$chs = new Chinese('UTF-8', $$charset);
+    foreach($$_POST as $key => $$value)
+        $$$key = $chs->Convert($$value);
     unset($chs);
 }
 ?>
@@ -326,10 +326,10 @@ if($ $_POST && $ $charset != 'utf-8'){
 ```php
 <?php
     include "flag.php";
-	$ $a = @$ $_REQUEST['hello'];
-	if(!preg_match('/^\w*$ $/',$ $a))
+	$$a = @$$_REQUEST['hello'];
+	if(!preg_match('/^\w*$$/',$$a))
         die('ERROR');
-	eval("val_dump($ $$ $a);");
+	eval("val_dump($$$$a);");
 	show_source(__FILE__);
 ?>
 ```
