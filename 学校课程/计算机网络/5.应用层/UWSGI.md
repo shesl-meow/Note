@@ -48,11 +48,53 @@ def run(addr, port, wsgi_handler, ipv6=False, threading=False):
 
 ![Server](WSGI-Django_Server.png)
 
-## UWSGI 的 python 相关命令
+## UWSGI
+
+### `uwsgi` 命令行
 
 强制停止后台的所有 `uwsgi` 进程：
 
 ```bash
 $ sudo pkill-f uwsgi -9
 ```
+
+### `uwsgi` 配置
+
+> 见：https://uwsgi-docs.readthedocs.io/en/latest/Configuration.html
+
+uWSGI configuration files can include “magic” variables, prefixed with a percent sign. Currently the following magic variables (you can access them in Python via [`uwsgi.magic_table`](https://uwsgi-docs.readthedocs.io/en/latest/PythonModule.html#uwsgi.magic_table)) are defined:
+
+| %v     | the vassals directory (pwd)                                  |
+| ------ | ------------------------------------------------------------ |
+| %V     | the uWSGI version                                            |
+| %h     | the hostname                                                 |
+| %o     | the original config filename, as specified on the command line |
+| %O     | same as %o but refer to the first non-template config file (version 1.9.18) |
+| %p     | the absolute path of the configuration file                  |
+| %P     | same as %p but refer to the first non-template config file (version 1.9.18) |
+| %s     | the filename of the configuration file                       |
+| %S     | same as %s but refer to the first non-template config file (version 1.9.18) |
+| %d     | the absolute path of the directory containing the configuration file |
+| %D     | same as %d but refer to the first non-template config file (version 1.9.18) |
+| %e     | the extension of the configuration file                      |
+| %E     | same as %e but refer to the first non-template config file (version 1.9.18) |
+| %n     | the filename without extension                               |
+| %N     | same as %n but refer to the first non-template config file (version 1.9.18) |
+| %c     | the name of the directory containing the config file (version 1.3+) |
+| %C     | same as %c but refer to the first non-template config file (version 1.9.18) |
+| %t     | unix time (in seconds, gathered at instance startup) (version 1.9.20-dev+) |
+| %T     | unix time (in microseconds, gathered at instance startup) (version 1.9.20-dev+) |
+| %x     | the current section identifier, eg. config.ini:section (version 1.9-dev+) |
+| %X     | same as %x but refer to the first non-template config file (version 1.9.18) |
+| %i     | inode number of the file (version 2.0.1)                     |
+| %I     | same as %i but refer to the first non-template config file   |
+| %0..%9 | a specific component of the full path of the directory containing the config file (version 1.3+) |
+| %[     | ANSI escape “\033” (useful for printing colors)              |
+| %k     | detected cpu cores (version 1.9.20-dev+)                     |
+| %u     | uid of the user running the process (version 2.0)            |
+| %U     | username (if available, otherwise fallback to uid) of the user running the process (version 2.0) |
+| %g     | gid of the user running the process (version 2.0)            |
+| %G     | group name (if available, otherwise fallback to gid) of the user running the process (version 2.0) |
+| %j     | HEX representation of the djb33x hash of the full config path |
+| %J     | same as %j but refer to the first non-template config file   |
 
