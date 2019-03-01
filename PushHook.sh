@@ -8,6 +8,7 @@ git checkout HEAD .
 git pull
 
 chmod +x *.sh
+./GnrSummary.sh
 ./CheckReadme.sh .
 ./EscapeCurlyBraces.sh .
 
