@@ -299,6 +299,10 @@
 
 				* [3.Component](./软件技术/MiniProgram/FRAMEWORK/4.ViewLayer/3.Component.md)
 
+	* [Python](./软件技术/Python/README.md)
+
+		* [virutalenv](./软件技术/Python/virutalenv.md)
+
 	* [SVN](./软件技术/SVN/README.md)
 
 		* [Tutorial](./软件技术/SVN/Tutorial.md)
@@ -449,11 +453,17 @@
 
 	* [恶意代码分析](./学校课程/恶意代码分析/README.md)
 
+		* [1.BasicAnalysis](./学校课程/恶意代码分析/1.BasicAnalysis.md)
+
 	* [物权法](./学校课程/物权法/README.md)
 
 		* [day2](./学校课程/物权法/day2.md)
 
 	* [信息安全数学基础](./学校课程/信息安全数学基础/README.md)
+
+		* [HOMEWORK](./学校课程/信息安全数学基础/HOMEWORK/README.md)
+
+			* [2.1](./学校课程/信息安全数学基础/HOMEWORK/2.1.md)
 
 		* [1.week_one](./学校课程/信息安全数学基础/1.week_one.md)
 
