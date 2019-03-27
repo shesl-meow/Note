@@ -347,4 +347,3 @@ class User(AbstractUser):
    $ python manage.py migrate
    ```
 
-

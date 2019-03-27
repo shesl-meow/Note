@@ -94,7 +94,7 @@ $ pip --version
    ```bash
    $ pip install virualenvwrapper
    
-   $ export WORKON_HOME=~/.Envs
+   $ export WORKON_HOME=~/.python_envs
    
    $ source /usr/local/bin/virtualenvwrapper.sh
    ```
