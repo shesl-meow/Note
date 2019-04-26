@@ -175,7 +175,7 @@ call	[KERNEL32.dll!CopyFileA]
 
 结合全局数据段中的 `Lab01-01.dll` 这个字符串。这一段代码将同文件夹下的 `Lab01-01.dll` 这个静态链接库复制到了 `C:/Windows/System32/kerne132.dll` 这个文件。
 
-### `pefile`
+### `pefile` & `capstone`
 
 也可以用 `pefile` 首先读取所有段的名称和其相对偏移地址：
 
@@ -210,9 +210,43 @@ for d in data: print(d)
 
 我们同样找到了这个字符串，其相对偏移地址为 `0x4c`，又因为 `.data` 段的虚拟地址为 `0x3000`，所有这个字符串的虚拟地址为 `0x304c`。
 
+然后我们通过 capstone 这个库反汇编 `.text` 段的内容，并查找字符串 `304c` 所在的指令位置：
+
+```python
+#!/usr/bin/env python
+import capstone
+import pefile
+
+pe = pefile.PE("/tmp/BinaryCollection/Chapter_1L/Lab01-01.exe")
+cs = capstone.Cs(capstone.CS_ARCH_X86, capstone.CS_MODE_32)
+disas = cs.disasm(pe.sections[0].get_data(), pe.sections[0].VirtualAddress)
+call_poss, instructions = [], []
+for index, ins in enumerate(disas):
+    instructions.append(ins)
+    if "304c" in ins.op_str:
+        call_poss.append(index)
+for ind, pos in enumerate(call_poss):
+    print(f"\nCALLED POS {ind} ==> {pos}")
+    for ins in instructions[(pos-3 if (pos > 3) else 0):
+        (len(instructions) if (pos > len(instructions)-3) else pos+10)]:
+        print(f"{hex(ins.address)}:\t{ins.mnemonic}\t{ins.op_str}")
+```
+
+```assembly
+CALLED POS 0 ==> 749
+0x17e5: push    edx
+0x17e6: call    esi
+0x17e8: push    0
+0x17ea: push    0x40304c
+0x17ef: push    0x40307c
+0x17f4: call    dword ptr [0x402024]
+```
+
+通过之前对链接库的分析，我们知道这个字符串作为 `0x402024` 这个函数（即 `CopyFileA`）的参数进行了调用。
+
 ### 结论
 
-因此我们还可以通过 `C:/Windows/System32` 这个文件夹下是否存在 `kerne132.dll` 这个文件来判断主机是否被感染。
+综上，我们还可以通过 `C:/Windows/System32` 这个文件夹下是否存在 `kerne132.dll` 这个文件来判断主机是否被感染。
 
 ## QUESTION 6
 
