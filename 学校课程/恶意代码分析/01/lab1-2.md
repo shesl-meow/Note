@@ -103,3 +103,17 @@ WININET.dll
 
 > What host- or network-based indicators could be used to identify this malware on infected machines?
 
+我们分析脱壳之后的文件，发现其 `.data` 段中有 `http://www.malwareanalysis.com` 这个字符串：
+
+![02.exe.PEexplorer.data](./02.exe.PEexplorer.data.png)
+
+再用 `ida pro` 查找调用这个字符串的位置，我们找到以下的伪代码：
+
+```c
+  for ( i = InternetOpenA(szAgent, 1u, 0, 0, 0); ; InternetOpenUrlA(i, szUrl, 0, 0, 0x80000000, 0) );
+```
+
+这其中 `szAgent` 这个字符串变量指的就是 `Internet Explorer 8.0`，而后的 `szUrl` 指的就是 `http://www.malwareanalysisbook.com`，这是一个不会停止的循环，意味着这个病毒会不断得使用 `IE` 浏览器打开后面的网址。
+
+因此我们可以通过 `wireshark` 抓取所有访问这个网址的流量即可。
+
