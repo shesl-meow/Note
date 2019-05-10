@@ -23,3 +23,8 @@ Lab03-02.dll: PE32 executable (DLL) (GUI) Intel 80386, for MS Windows
 $ rundll32.exe Lab03-02.dll, installA
 ```
 
+## QUESTION 2
+
+打开 `procmon` 与 `procexp`。我们知道在 `Windows` 内核中，用于管理系统服务和动态链接库的是进程 `svchost.exe`，所以我们在 `procmon` 中过滤观察 `svchost.exe` 的运行状态。
+
+然后通过打开 `msconfig` 查看安装的所有进程服务。
