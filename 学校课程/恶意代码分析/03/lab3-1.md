@@ -80,7 +80,7 @@ Nmap done: 256 IP addresses (2 hosts up) scanned in 12.31 seconds
 
 > Are there any useful network-based signatures for this malware? If so, what are they?
 
-### 分析
+### ApateDNS
 
 为了分析这个病毒的网络请求，使用 `ApateDNS` 这个工具，可以用于劫持本地的所有 DNS 请求，[下载以及介绍地址](<https://www.aldeid.com/wiki/Mandiant-ApateDNS>)。
 
@@ -133,6 +133,8 @@ Address:  127.0.0.1
 运行病毒，我们再 `Windows 7` 上发现，这个病毒尝试解析 `www.practicalmalwareanalysis.com` 这个域名：
 
 ![01.exe.DNSresolve](./01.exe.DNSresolve.png)
+
+### Python HTTP&HTTPS
 
 接着我们在 `Kali Linux` 搭建一个简单的 WEB 服务器：
 
@@ -189,6 +191,22 @@ $ python3 httpsserver.py
 ![01.kali.wireshark.refuse](./01.kali.wireshark.refuse.png)
 
 这说明病毒访问的根本不是真正的 `HTTPS` 服务，但是 `HTTP` 同样也无法处理这个请求。
+
+### INetSim
+
+我们也可以用 `INetSim` 这个工具在 `Kali Linux` 中部署一个 WEB 服务（这个工具在 Kali 是默认安装的）。因为这个工具默认开启在本地端口，因此需要更改 `/etc/inetsim/inetsim.conf` 这个配置文件，加入下面的配置：
+
+```conf
+service_bind_address = 0.0.0.0
+```
+
+然后运行以下命令：
+
+```bash
+$ inetsim
+```
+
+在日志文件 `/usr/share/inetsim/log/service.log` 中可以查看访问的所有访问的日志记录。
 
 ### 结论
 

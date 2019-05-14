@@ -19,6 +19,10 @@
 
 			* [MYSQL爆破](./安全技术/工具/kali/MYSQL爆破.md)
 
+		* [nmap](./安全技术/工具/nmap/README.md)
+
+			* [frag](./安全技术/工具/nmap/frag.md)
+
 		* [openssl](./安全技术/工具/openssl/README.md)
 
 			* [1.AboutCSR](./安全技术/工具/openssl/1.AboutCSR.md)
@@ -38,6 +42,10 @@
 			* [1.GettingStarted](./安全技术/工具/pwntools/1.GettingStarted.md)
 
 			* [2.PackingIntegers](./安全技术/工具/pwntools/2.PackingIntegers.md)
+
+		* [vmware](./安全技术/工具/vmware/README.md)
+
+			* [networkconfig](./安全技术/工具/vmware/networkconfig.md)
 
 	* [理论](./安全技术/理论/README.md)
 
@@ -278,6 +286,8 @@
 		* [内核概念](./软件技术/Linux/内核概念.md)
 
 		* [网络实践](./软件技术/Linux/网络实践.md)
+
+		* [用户权限](./软件技术/Linux/用户权限.md)
 
 		* [CommandSet](./软件技术/Linux/CommandSet/README.md)
 
@@ -527,6 +537,16 @@
 
 			* [lab1-2](./学校课程/恶意代码分析/01/lab1-2.md)
 
+			* [lab1-3](./学校课程/恶意代码分析/01/lab1-3.md)
+
+			* [lab1-4](./学校课程/恶意代码分析/01/lab1-4.md)
+
+		* [03](./学校课程/恶意代码分析/03/README.md)
+
+			* [lab3-1](./学校课程/恶意代码分析/03/lab3-1.md)
+
+			* [lab3-2](./学校课程/恶意代码分析/03/lab3-2.md)
+
 	* [物权法](./学校课程/物权法/README.md)
 
 		* [day2](./学校课程/物权法/day2.md)
@@ -542,6 +562,8 @@
 			* [3.1](./学校课程/信息安全数学基础/HOMEWORK/3.1.md)
 
 			* [3.2](./学校课程/信息安全数学基础/HOMEWORK/3.2.md)
+
+			* [4.1](./学校课程/信息安全数学基础/HOMEWORK/4.1.md)
 
 		* [1.week_one](./学校课程/信息安全数学基础/1.week_one.md)
 
@@ -560,6 +582,14 @@
 		* [8.数论应用](./学校课程/信息安全数学基础/8.数论应用.md)
 
 		* [9.群](./学校课程/信息安全数学基础/9.群.md)
+
+		* [10.子群](./学校课程/信息安全数学基础/10.子群.md)
+
+		* [11.循环群](./学校课程/信息安全数学基础/11.循环群.md)
+
+		* [12.置换群](./学校课程/信息安全数学基础/12.置换群.md)
+
+		* [13.陪集与商群](./学校课程/信息安全数学基础/13.陪集与商群.md)
 
 	* [知识产权法](./学校课程/知识产权法/README.md)
 
