@@ -2,6 +2,34 @@
 
 关于各种工具的用途总结：
 
+## WEB 工具
+
+[shodan](./<https://cli.shodan.io/>)：
+
+```bash
+# 安装
+$ pip install shodan
+
+# 初始化
+$ shodan init <API KEY>
+
+# 详细见：https://cli.shodan.io/
+```
+
+[sqlmap](./<https://github.com/sqlmapproject/sqlmap>)：
+
+```bash
+# 安装
+$ pip install sqlmap
+
+# 使用
+$ sqlmap -u <target website>
+```
+
+## 密码学工具
+
+`z3`，`pycrypto`，`sagemath`
+
 ## PE Portable Executable
 
 1. [VirusTotal](http://www.virustotal.com/)：一个分析病毒文件的在线网站。
