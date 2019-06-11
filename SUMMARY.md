@@ -117,14 +117,6 @@
 
 			* [day9](./安全技术/理论/XMAN3夏令营/day9.md)
 
-	* [漏洞](./安全技术/漏洞/README.md)
-
-		* [WEB](./安全技术/漏洞/WEB/README.md)
-
-			* [clickjacking](./安全技术/漏洞/WEB/clickjacking.md)
-
-			* [heartbleed](./安全技术/漏洞/WEB/heartbleed.md)
-
 * [机器学习](./机器学习/README.md)
 
 	* [快速入门教程](./机器学习/快速入门教程/README.md)
@@ -521,15 +513,17 @@
 
 	* [算法和协议中的安全机制](./学校课程/算法和协议中的安全机制/README.md)
 
+		* [加密方法汇总](./学校课程/算法和协议中的安全机制/加密方法汇总.md)
+
 		* [1.Introduction](./学校课程/算法和协议中的安全机制/1.Introduction.md)
 
-		* [2.PSG](./学校课程/算法和协议中的安全机制/2.PSG.md)
-
-		* [3.NonlinearGenerator](./学校课程/算法和协议中的安全机制/3.NonlinearGenerator.md)
+		* [2.PRSG](./学校课程/算法和协议中的安全机制/2.PRSG.md)
 
 		* [3.StreamCiphers](./学校课程/算法和协议中的安全机制/3.StreamCiphers.md)
 
 		* [4.Block_Hash_MAC](./学校课程/算法和协议中的安全机制/4.Block_Hash_MAC.md)
+
+		* [4.1.BlockCiphers](./学校课程/算法和协议中的安全机制/4.1.BlockCiphers.md)
 
 		* [5.SecurityInfrastructure](./学校课程/算法和协议中的安全机制/5.SecurityInfrastructure.md)
 
@@ -599,7 +593,13 @@
 
 			* [lab7-2](./学校课程/恶意代码分析/07/lab7-2.md)
 
+			* [lab7-3](./学校课程/恶意代码分析/07/lab7-3.md)
+
 	* [信息安全数学基础](./学校课程/信息安全数学基础/README.md)
+
+		* [COLLECTION](./学校课程/信息安全数学基础/COLLECTION/README.md)
+
+			* [ElGamal](./学校课程/信息安全数学基础/COLLECTION/ElGamal.md)
 
 		* [HOMEWORK](./学校课程/信息安全数学基础/HOMEWORK/README.md)
 
@@ -646,4 +646,6 @@
 		* [15.交换环和域](./学校课程/信息安全数学基础/15.交换环和域.md)
 
 		* [16.一元多项式环](./学校课程/信息安全数学基础/16.一元多项式环.md)
+
+		* [17.理想和商环](./学校课程/信息安全数学基础/17.理想和商环.md)
 
