@@ -513,19 +513,27 @@
 
 	* [算法和协议中的安全机制](./学校课程/算法和协议中的安全机制/README.md)
 
-		* [加密方法汇总](./学校课程/算法和协议中的安全机制/加密方法汇总.md)
-
 		* [1.Introduction](./学校课程/算法和协议中的安全机制/1.Introduction.md)
 
 		* [2.PRSG](./学校课程/算法和协议中的安全机制/2.PRSG.md)
 
 		* [3.StreamCiphers](./学校课程/算法和协议中的安全机制/3.StreamCiphers.md)
 
+		* [4.Block-Hash-MAC](./学校课程/算法和协议中的安全机制/4.Block-Hash-MAC/README.md)
+
+			* [4.1.BlockCiphers](./学校课程/算法和协议中的安全机制/4.Block-Hash-MAC/4.1.BlockCiphers.md)
+
+			* [4.2.HashFunctions](./学校课程/算法和协议中的安全机制/4.Block-Hash-MAC/4.2.HashFunctions.md)
+
+			* [4.3.MAC](./学校课程/算法和协议中的安全机制/4.Block-Hash-MAC/4.3.MAC.md)
+
 		* [4.Block_Hash_MAC](./学校课程/算法和协议中的安全机制/4.Block_Hash_MAC.md)
 
-		* [4.1.BlockCiphers](./学校课程/算法和协议中的安全机制/4.1.BlockCiphers.md)
+		* [5.PublicKey](./学校课程/算法和协议中的安全机制/5.PublicKey.md)
 
-		* [5.SecurityInfrastructure](./学校课程/算法和协议中的安全机制/5.SecurityInfrastructure.md)
+		* [6.SecurityInfrastructure](./学校课程/算法和协议中的安全机制/6.SecurityInfrastructure.md)
+
+		* [7.EstablishCommunication](./学校课程/算法和协议中的安全机制/7.EstablishCommunication.md)
 
 	* [网络基本功](./学校课程/网络基本功/README.md)
 
@@ -648,4 +656,6 @@
 		* [16.一元多项式环](./学校课程/信息安全数学基础/16.一元多项式环.md)
 
 		* [17.理想和商环](./学校课程/信息安全数学基础/17.理想和商环.md)
+
+		* [18.椭圆曲线](./学校课程/信息安全数学基础/18.椭圆曲线.md)
 
