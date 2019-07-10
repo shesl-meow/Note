@@ -88,13 +88,50 @@ int __cdecl sub_402510(int a1)
 
 分析以上的伪代码，发现如果传入的字符串为 `chr(97) + chr(97 + 1) + chr(99 * 1) + chr(97 + 3)` = `abcd` 时返回真，否则返回 0。
 
-| 命令行参数 |                          执行的分支                          |
-| :--------: | :----------------------------------------------------------: |
-| `./程序名` | 可能调用 `sub_402410()`，<br />一定调用 `sub_402360()`<br />（这两个函数可能是报错与删除自己的函数，后面直接用报错/删除代替） |
-| `./程序名` |                                                              |
-
-
+再进一步分析主函数的逻辑，得知运行的命令行命令为 `./Lab09-01.exe -in abcd`
 
 ## QUESTION 2
 
 > What are the command-line options for this program? What is the password requirement?
+
+根据对前面分析出的伪代码进行进一步分析，我们总结了命令行参数的表格：
+
+| 命令行参数        | 执行的功能 |
+| ----------------- | ---------- |
+| `./.exe -in abcd` | 安装自身   |
+| `./.exe -re abcd` | 删除自身   |
+| `./.exe -c abcd`  | 更新配置   |
+| `./.exe -cc abcd` | 打印配置   |
+
+## QUESTION 3
+
+> How can you use OllyDbg to permanently patch this malware, so that it doesn’t require the special command-line password?
+
+将判断的逻辑改为反即可。比如将 `if` 语句中的跳转 `jz` 改成 `jnz`。
+
+## QUESTION 4
+
+> What are the host-based indicators of this malware?
+
+恶意代码创建了一个注册表项 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft \XPS\Configuration`，同时它创建了一个服务，默认名称为恶意代码文件名，也可通过命令行参数指定。
+
+## QUESTION 5
+
+> What are the different actions this malware can be instructed to take via the network?
+
+通过读 `Ida Pro` 分析出来的伪代码，我们可以得到这个程序执行的网络命令内容：
+
+| 命令格式               | 命令效果                               |
+| ---------------------- | -------------------------------------- |
+| `SLEEP integer`        | 应用程序睡眠 `integer`s 钟             |
+| `UPLOAD port filename` | 读取本地文件并向远程的指定主机端口发送 |
+| `CMD port`             | 执行命令并且通过指定端口发送执行结果   |
+
+## QUESTION 6
+
+> Are there any useful network-based signatures for this malware?
+
+默认情况下，恶意代码向 http://www.practicalmalwareanalysis.com 发送 `HTTP1.0GET` 请求，格式为
+`****/****.***` 其中 `*` 是随机的数字或字母字符。
+可以通过 `-c` 命令配置目标主机、端口号等。
+
