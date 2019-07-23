@@ -16,17 +16,29 @@
    $ objdump -d <program>
    ```
 
-3. 列出程序中的所有函数名（`gdb`）：
+3. 列出程序中的所有变量名（`gdb`）：
+
+   ```gdb
+   (gdb) info variables
+   ```
+
+4. 列出程序中的所有函数名（`gdb`）：
 
    ```gdb
    (gdb) info functions
    ```
 
-4. 列出一个函数的汇编代码（`gdb`）：
+5. 列出一个函数的汇编代码（`gdb`）：
 
    ```bash
    (gdb) disas main
    ```
 
-5. 
+6. 查看指定地址内的字符串（`gdb`）：
+
+   ```gdb
+   (gdb) x /s <memory_address>
+   ```
+
+7. 
 
