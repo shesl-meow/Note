@@ -1,1 +1,1 @@
-# WikiPWN
+# Pwn
