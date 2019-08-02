@@ -210,6 +210,66 @@ Key to Flags:
 3. `.rodata`：已被初始化的数据，只可读不可写。
 4. `.bss`：未初始化数据，可读可写。
 
+其中类型为 `REL` 的节区包含重定位表项：
+
+1. `.rel.dyn` 节是用于变量重定位，`.rel.plt` 节是用于函数重定位。
+
+   可以使用 `readelf` 命令的 `--relocs` 参数查看这两个节区的内容：
+
+   ```bash
+   $ readelf -r ./ret2dlresolve
+   
+   重定位节 '.rel.dyn' at offset 0x3a4 contains 10 entries:
+    偏移量     信息    类型              符号值      符号名称
+   00001ec4  00000008 R_386_RELATIVE   
+   00001ec8  00000008 R_386_RELATIVE   
+   00001ff8  00000008 R_386_RELATIVE   
+   00002004  00000008 R_386_RELATIVE   
+   00001fe4  00000306 R_386_GLOB_DAT    00000000   _ITM_deregisterTMClone
+   00001fe8  00000406 R_386_GLOB_DAT    00000000   __cxa_finalize@GLIBC_2.1.3
+   00001fec  00000506 R_386_GLOB_DAT    00000000   __gmon_start__
+   00001ff0  00000906 R_386_GLOB_DAT    00000000   stdin@GLIBC_2.0
+   00001ff4  00000a06 R_386_GLOB_DAT    00000000   stdout@GLIBC_2.0
+   00001ffc  00000b06 R_386_GLOB_DAT    00000000   _ITM_registerTMCloneTa
+   
+   重定位节 '.rel.plt' at offset 0x3f4 contains 5 entries:
+    偏移量     信息    类型              符号值      符号名称
+   00001fd0  00000107 R_386_JUMP_SLOT   00000000   setbuf@GLIBC_2.0
+   00001fd4  00000207 R_386_JUMP_SLOT   00000000   read@GLIBC_2.0
+   00001fd8  00000607 R_386_JUMP_SLOT   00000000   strlen@GLIBC_2.0
+   00001fdc  00000707 R_386_JUMP_SLOT   00000000   __libc_start_main@GLIBC_2.0
+   00001fe0  00000807 R_386_JUMP_SLOT   00000000   write@GLIBC_2.0
+   ```
+
+2. `.got` 节保存全局变量偏移表，`.got.plt` 节保存全局函数偏移表。
+
+3. `.dynsym` 节包含了动态链接符号表。可以用 `readelf` 命令的 `--symbols` 参数查看：
+
+   ```bash
+   $ readelf --symbols ./ret2dlresolve
+   
+   Symbol table '.dynsym' contains 13 entries:
+      Num:    Value  Size Type    Bind   Vis      Ndx Name
+        0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+        1: 00000000     0 FUNC    GLOBAL DEFAULT  UND setbuf@GLIBC_2.0 (2)
+        2: 00000000     0 FUNC    GLOBAL DEFAULT  UND read@GLIBC_2.0 (2)
+        3: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_deregisterTMCloneTab
+        4: 00000000     0 FUNC    WEAK   DEFAULT  UND __cxa_finalize@GLIBC_2.1.3 (3)
+        5: 00000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
+        6: 00000000     0 FUNC    GLOBAL DEFAULT  UND strlen@GLIBC_2.0 (2)
+        7: 00000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@GLIBC_2.0 (2)
+        8: 00000000     0 FUNC    GLOBAL DEFAULT  UND write@GLIBC_2.0 (2)
+        9: 00000000     0 OBJECT  GLOBAL DEFAULT  UND stdin@GLIBC_2.0 (2)
+       10: 00000000     0 OBJECT  GLOBAL DEFAULT  UND stdout@GLIBC_2.0 (2)
+       11: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_registerTMCloneTable
+       12: 0000075c     4 OBJECT  GLOBAL DEFAULT   16 _IO_stdin_used
+   ....
+   ```
+
+4. `.dynstr` 节包含了动态链接的字符串。这个节以 `\x00` 作为开始和结尾，中间每个字符串也以 `\x00` 间隔。
+
+5. `.plt` 节是过程链接表。过程链接表把位置独立的函数调用重定向到绝对位置。
+
 ## Tools for binary analysis
 
 ### `elfutils`
