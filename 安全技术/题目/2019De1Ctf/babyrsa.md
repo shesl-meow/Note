@@ -109,7 +109,7 @@ from sage.all import *
 from CrackSmallE import CrackSmallE
 
 
-class CrackEPhiNotMutual:
+class CrackEPhiNotRP:
     def __init__(self, c, e, p, q):
         assert is_prime(p) and is_prime(q)
         self.c, self.e, self.p, self.q = c, e, p, q
@@ -144,7 +144,7 @@ from binascii import a2b_hex
 
 from CrackNearPQ import CrackNearPQ
 from CrackSmallE import CrackSmallE
-from CrackEPhiNotMutual import CrackEPhiNotMutual
+from CrackEPhiNotMutual import CrackEPhiNotRP
 from const import *
 
 if __name__ == "__main__":
@@ -165,8 +165,7 @@ if __name__ == "__main__":
     q1,_ = CNPQ.crack()
     print "q1: %d" % q1
 
-    CEPM = CrackEPhiNotMutual(Cf1, e1, p, q1)
+    CEPM = CrackEPhiNotRP(Cf1, e1, p, q1)
     flag = CEPM.crack_by_q()
     print "flag: %s" % a2b_hex(flag.hex())
-
 ```
