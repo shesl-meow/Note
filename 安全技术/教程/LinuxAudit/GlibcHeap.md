@@ -132,8 +132,15 @@ struct malloc_chunk {
 <img src="./allocated_chunk.jpg" width=70% >
 
 1. 前两个字段与空闲的内存块大致相同；
+
 2. 用户可用的数据是第三个字段开始一直到下一个 `chunk` 的第一个字段。这是因为：
+   
    - `prev_size` 只有当前一个字段是空闲的时候才有意义，如果前一个字段已经分配，堆管理器不关心；
+   
+   这也就是说，在 32 位程序中，如果用户申请了 16 个字节的空间，其对应的 `chunk` 数据结构的 `data` 段只会有 12 个字节，用户加上下一个 `chunk` 的 `prev_size` 空间，一共可以使用 16 个字节。
+   
+   但是 `size` 记录的是 `prev_size` 起始到下一个 `prev_size` 起始之间的大小。
+   
 3. 在 32 位平台下，`chunk` 的大小一定是 8 字节的整数倍（所以 `size` 的最低三个比特位是无用的）。`malloc` 返回地址指针为 `data` 的起始位置。
 
 ### `fastbins`
@@ -279,3 +286,83 @@ typedef struct malloc_chunk *mfastbinptr;
    2. 合并两个 `chunk`，并且放入 `unsorted bin`；
 5. 前后两个 `chunk` 都不是空闲的，直接放入 `unsorted bin`；
 
+### `unlink()`
+
+`unlink` 函数用来将双向链表中的一个元素取出来，它源码如下：
+
+```c
+/* Take a chunk off a bin list */
+// unlink p
+#define unlink(AV, P, BK, FD) {                                            \
+    // 由于 P 已经在双向链表中，所以有两个地方记录其大小，所以检查一下其大小是否一致。
+    if (__builtin_expect (chunksize(P) != prev_size (next_chunk(P)), 0))      \
+      malloc_printerr ("corrupted size vs. prev_size");               \
+    FD = P->fd;                                                                      \
+    BK = P->bk;                                                                      \
+    // 防止攻击者简单篡改空闲的 chunk 的 fd 与 bk 来实现任意写的效果。
+    if (__builtin_expect (FD->bk != P || BK->fd != P, 0))                      \
+      malloc_printerr (check_action, "corrupted double-linked list", P, AV);  \
+    else {                                                                      \
+        FD->bk = BK;                                                              \
+        BK->fd = FD;                                                              \
+        // 下面主要考虑 P 对应的 nextsize 双向链表的修改
+        if (!in_smallbin_range (chunksize_nomask (P))                              \
+            // 如果P->fd_nextsize为 NULL，表明 P 未插入到 nextsize 链表中。
+            // 那么其实也就没有必要对 nextsize 字段进行修改了。
+            // 这里没有去判断 bk_nextsize 字段，可能会出问题。
+            && __builtin_expect (P->fd_nextsize != NULL, 0)) {                      \
+            // 类似于小的 chunk 的检查思路
+            if (__builtin_expect (P->fd_nextsize->bk_nextsize != P, 0)              \
+                || __builtin_expect (P->bk_nextsize->fd_nextsize != P, 0))    \
+              malloc_printerr (check_action,                                      \
+                               "corrupted double-linked list (not small)",    \
+                               P, AV);                                              \
+            // 这里说明 P 已经在 nextsize 链表中了。
+            // 如果 FD 没有在 nextsize 链表中
+            if (FD->fd_nextsize == NULL) {                                      \
+                // 如果 nextsize 串起来的双链表只有 P 本身，那就直接拿走 P
+                // 令 FD 为 nextsize 串起来的
+                if (P->fd_nextsize == P)                                      \
+                  FD->fd_nextsize = FD->bk_nextsize = FD;                      \
+                else {                                                              \
+                // 否则我们需要将 FD 插入到 nextsize 形成的双链表中
+                    FD->fd_nextsize = P->fd_nextsize;                              \
+                    FD->bk_nextsize = P->bk_nextsize;                              \
+                    P->fd_nextsize->bk_nextsize = FD;                              \
+                    P->bk_nextsize->fd_nextsize = FD;                              \
+                  }                                                              \
+              } else {                                                              \
+                // 如果在的话，直接拿走即可
+                P->fd_nextsize->bk_nextsize = P->bk_nextsize;                      \
+                P->bk_nextsize->fd_nextsize = P->fd_nextsize;                      \
+              }                                                                      \
+          }                                                                      \
+      }                                                                              \
+}
+```
+
+它可能在以下函数中被调用：
+
+- `malloc`：
+
+  - 从恰好大小合适的 large bin 中获取 chunk。
+
+    - **这里需要注意的是 `fastbin` 与 `small bin` 就没有使用 `unlink`**
+
+    - 依次遍历处理 unsorted bin 时也没有使用 unlink 的。
+
+  - 从比请求的 chunk 所在的 bin 大的 bin 中取 chunk。
+
+- `free`：
+
+  - 后向合并，合并物理相邻低地址空闲 chunk。
+  - 前向合并，合并物理相邻高地址空闲 chunk（除了 top chunk）。
+
+- `malloc_consolidate`：
+
+  - 后向合并，合并物理相邻低地址空闲 chunk。
+  - 前向合并，合并物理相邻高地址空闲 chunk（除了 top chunk）。
+
+- `realloc`：
+
+  - 前向扩展，合并物理相邻高地址空闲 chunk（除了 top chunk）。
