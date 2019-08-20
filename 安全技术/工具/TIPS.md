@@ -62,7 +62,15 @@
    (gdb-peda) vmmap
    ```
 
-6. 
+6. 查看堆的信息以及按结构解析堆：
+
+   ```
+   (gdb-peda) heapinfo
+   
+   (gdb-peda) parseheap
+   ```
+
+7. 
 
 ## Crypto
 
