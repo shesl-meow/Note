@@ -16,80 +16,15 @@
 
 ## 脚本
 
-### 分解大小相近的素数积
+最后的分析使用了三个攻击技巧（实现方式详见 <https://github.com/shesl-meow/shesl-crypto>）：
 
-```python
-#!/usr/bin/env python2
-from sage.all import *
-from gmpy2 import iroot
+1. 分解大小相近的素数积
 
-class CrackNearPQ:
-    def __init__(self, n):
-        self.n, self.p, self.q = n, 0, 0
+2. 小指数得到明文
 
-    def crack_delta(self):
-        k = -1
-        while True:
-            k += 1
-            delta = k ** 2 + 4 * self.n
-            res, check = iroot(delta, 2)
-            if check: break
-        self.p, self.q = (res - k) / 2, (res + k) / 2
-        assert is_prime(self.p) and is_prime(self.q)
+3. 指数与欧拉函数不互素求解。
 
-    def crack(self):
-        self.crack_delta()
-        return self.p, self.q
-
-if __name__ == "__main__":
-    n = 15
-    cnpq = CrackNearPQ(n)
-    print(cnpq.crack())
-```
-
-### 小指数得到明文
-
-下面用 [信安数基](../../../学校课程/信息安全数学基础/7.二次剩余.md) 中的定理检测了是否为高次剩余：
-
-```python
-#!/usr/bin/env python2
-from sage.all import *
-
-
-class CrackSmallE:
-    def __init__(self, c, e, n, phi=None):
-        self.c, self.e, self.n, self.phi = c, e, n, phi
-
-    def check_remainder(self):
-        if self.phi is None: return
-        d = gcd(self.e, self.phi)
-        assert power_mod(self.c, (self.phi / d), self.n) == 1
-
-    def crack_times(self):
-        k = -1
-        while True:
-            k += 1
-            try:
-                real_val = Integer(k * self.n + self.c)
-                res = real_val.nth_root(self.e)
-                break
-            except ValueError: pass
-        self.m = res
-
-    def crack(self):
-        self.check_remainder()
-        self.crack_times()
-        return self.m
-
-if __name__ == "__main__":
-    c, e, n = 13, 3, 15
-    cse = CrackSmallE(c, e, n)
-    print(cse.crack())
-```
-
-### 指数与欧拉函数不互素求解
-
-因为在最后一步需要解下面的方程（其中只有 `flag` 一个未知数）：
+关于其中的第三点。因为在最后一步需要解下面的方程（其中只有 `flag` 一个未知数）：
 
 - $$flag^{e_1} \equiv C_{f1} \pmod{p * q_1}$$
 
@@ -103,38 +38,6 @@ if __name__ == "__main__":
   - $$flag^g \equiv (C_{f1})^{d_g} \pmod{q_1}$$
 - 因为这个时候的 g，已经非常小了可以直接按小指数得到明文
 
-```python
-#!/usr/bin/env python2
-from sage.all import *
-from CrackSmallE import CrackSmallE
-
-
-class CrackEPhiNotRP:
-    def __init__(self, c, e, p, q):
-        assert is_prime(p) and is_prime(q)
-        self.c, self.e, self.p, self.q = c, e, p, q
-
-    def crack_by_p(self):
-        g = gcd(self.p - 1, self.e)
-        d = inverse_mod(Integer(self.e / g), self.p - 1)
-        mg = power_mod(self.c % self.p, d, self.p)
-        CRSE = CrackSmallE(mg, g, self.p, self.p-1)
-        return mg if g==1 else CRSE.crack()
-    
-    def crack_by_q(self):
-        g = gcd(self.q - 1, self.e)
-        d = inverse_mod(Integer(self.e / g), self.q - 1)
-        mg = power_mod(self.c % self.q, d, self.q)
-        CRSE = CrackSmallE(mg, g, self.q, self.q - 1)
-        return mg if g == 1 else CRSE.crack()
-
-    def crack_by_pq(self):
-        mp, mq = self.crack_by_p(), self.crack_by_q()
-        return crt([mp, mq], self.p, self.q)
-```
-
-## 破解
-
 完整的脚本如下：
 
 ```python
@@ -142,9 +45,7 @@ class CrackEPhiNotRP:
 from sage.all import *
 from binascii import a2b_hex
 
-from CrackNearPQ import CrackNearPQ
-from CrackSmallE import CrackSmallE
-from CrackEPhiNotMutual import CrackEPhiNotRP
+from sheslcrypto.RSA import CrackNearPQ, CrackSmallE, CrackEPhiNotRP
 from const import *
 
 if __name__ == "__main__":

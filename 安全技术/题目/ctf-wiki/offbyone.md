@@ -119,7 +119,7 @@ __int64 __fastcall main(__int64 a1, char **a2, char **a3)
 
 ### `read_str`
 
-在 `read_auther_name()`、`create()`、`edit` 这些函数中，都调用了一个自己实现的读取字符串的函数 `read_str()`。它传入的第一个参数是一个字符型指针，第二个参数都是指针分配的内存大小 `- 1`。
+在 `read_auther_name()`、`create()`、`edit` 这些函数中，都调用了一个自己实现的读取字符串的函数 `read_str()`。它传入的第一个参数是一个字符型指针，第二个参数都是 `指针分配的内存大小 - 1`。
 
 它的伪代码如下：
 
