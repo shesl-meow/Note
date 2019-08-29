@@ -83,10 +83,6 @@
 
 	* [题目](./安全技术/题目/README.md)
 
-		* [adworld](./安全技术/题目/adworld/README.md)
-
-			* [interesting2](./安全技术/题目/adworld/interesting2.md)
-
 		* [ctf-wiki](./安全技术/题目/ctf-wiki/README.md)
 
 			* [offbyone](./安全技术/题目/ctf-wiki/offbyone.md)
@@ -110,8 +106,6 @@
 			* [babylfsr](./安全技术/题目/2019de1ctf/babylfsr.md)
 
 			* [babyrsa](./安全技术/题目/2019de1ctf/babyrsa.md)
-
-			* [xorz](./安全技术/题目/2019de1ctf/xorz.md)
 
 		* [2019OGeek](./安全技术/题目/2019OGeek/README.md)
 
@@ -146,6 +140,8 @@
 	* [LinuxAudit](./安全技术/LinuxAudit/README.md)
 
 		* [ElfFormat](./安全技术/LinuxAudit/ElfFormat.md)
+
+		* [ElfSections](./安全技术/LinuxAudit/ElfSections.md)
 
 		* [GlibcHeap](./安全技术/LinuxAudit/GlibcHeap.md)
 
