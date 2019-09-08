@@ -1,24 +1,33 @@
-# Elliptic Curve Digital Signature Algorithm
+# Elliptic Curve DSA
 
-## 算法流程
+## Elliptic Curve
+
+### 系统参数
+
+如何确定一个 ECC：
+
+1. 选择一个素数 p 和一个整数 n。从有限域 $$\mathbb{F}_p$$ 中选择一个次数为 n 不可约多项式 f(x)，并且用这个不可约多项式得到一个有限域 $$\mathbb{F}_{p^n}$$，设 f(x) 在该有限域下的根为 $$\alpha$$；
+
+2. 在有限域 $$\mathbb{F}_{p^n}$$ 中生成一个非超奇异（non-supersingular）曲线 E；
+
+3. 在 E 上选择一个阶为素数的点 $$P=(x,y)$$，设其阶为 q；
+
+4. 定义一个转化函数 $$c(x): \mathbb{F}_{p^n} \rightarrow \Z_{p^n}$$。具体的定义为：
+
+   $$\displaystyle c(x) = \sum_{i=0}^{n-1} c_i p^i \in \Z_{p^n}, \text{for } x= \sum_{i=0}^{n-1}c_i \alpha^i \in \mathbb{F}_{p^n}, 0 \le c_i < p$$
+
+### 域上的运算
+
+
+
+## DSA 签名算法
 
 ### 系统参数
 
 系统需要初始化以下信息供所有系统的使用者共享：
 
 1. 选择一个椭圆曲线 EC：
-   1. 选择一个素数 p 和一个整数 n。从有限域 $$\mathbb{F}_p$$ 中选择一个次数为 n 不可约多项式 f(x)，并且用这个不可约多项式得到一个有限域 $$\mathbb{F}_{p^n}$$，设 f(x) 在该有限域下的根为 $$\alpha$$；
-
-   2. 在有限域 $$\mathbb{F}_{p^n}$$ 中生成一个非超奇异（non-supersingular）曲线 E；
-
-   3. 在 E 上选择一个阶为素数的点 $$P=(x,y)$$，设其阶为 q；
-
-   4. 定义一个转化函数 $$c(x): \mathbb{F}_{p^n} \rightarrow \Z_{p^n}$$。具体的定义为：
-
-      $$\displaystyle c(x) = \sum_{i=0}^{n-1} c_i p^i \in \Z_{p^n}, \text{for } x= \sum_{i=0}^{n-1}c_i \alpha^i \in \mathbb{F}_{p^n}, 0 \le c_i < p$$
-
 2. 选择一个安全的哈希函数 h(x)；
-
 
 ### 密钥生成
 

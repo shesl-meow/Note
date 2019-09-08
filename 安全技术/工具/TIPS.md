@@ -72,6 +72,16 @@
 
 7. 
 
+### `python`
+
+1. 查看一个类的结构：
+
+   ```python
+   print vars(cls)
+   ```
+
+2. 
+
 ## Crypto
 
 ### `sage`
