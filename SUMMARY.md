@@ -645,12 +645,6 @@
 
 		* [HOMEWORK](./软件技术/Objective-C/HOMEWORK/README.md)
 
-			* [问题-2019.9.11](./软件技术/Objective-C/HOMEWORK/问题-2019.9.11.md)
-
-			* [问题-2019.9.12](./软件技术/Objective-C/HOMEWORK/问题-2019.9.12.md)
-
-			* [问题-2019.9.13](./软件技术/Objective-C/HOMEWORK/问题-2019.9.13.md)
-
 			* [1.SortFile](./软件技术/Objective-C/HOMEWORK/1.SortFile.md)
 
 		* [1.基本语法](./软件技术/Objective-C/1.基本语法.md)
@@ -664,6 +658,8 @@
 		* [5.通信方式](./软件技术/Objective-C/5.通信方式.md)
 
 		* [6.多线程](./软件技术/Objective-C/6.多线程.md)
+
+		* [7.UI与UIKit](./软件技术/Objective-C/7.UI与UIKit.md)
 
 	* [PHP](./软件技术/PHP/README.md)
 
