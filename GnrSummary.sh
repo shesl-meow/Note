@@ -7,10 +7,10 @@ gnr_summary () {
 	name=`basename $2`
 	if [ -f $2 ]; then
 		name="${name%.*}"
-		echo -e "$1 [${name}]($2)\n" >> SUMMARY.md
+		echo -e "$1 [${name}]($2)" >> SUMMARY.md
 	elif [ -d $2 ]; then
 		echo "Find in directory: $2"
-		echo -e "$1 [${name}]($2/README.md)\n" >> SUMMARY.md
+		echo -e "$1 [${name}]($2/README.md)" >> SUMMARY.md
 		# Ignore all foldername begin with `.` or folder-self.
 		# And query all files end with `.md` except `README.md`
 		find $2 -maxdepth 1 -type d -not -name ".*" \
@@ -27,7 +27,7 @@ gnr_summary () {
 	fi
 }
 
-echo "" > SUMMARY.md
+rm SUMMARY.md && touch SUMMARY.md
 find . -maxdepth 1 -type d -not -name "." \
 	-and -not -name ".git" \
 	-and -not -name "node_modules" \
