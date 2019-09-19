@@ -3,4 +3,8 @@
 
 - github：https://github.com/shesl-meow/Note
 - Customized Domain for gitbook：https://notes.shesl.top
-- Personal Blog: https://blog.shesl.top:8088
+
+关于我：
+
+- 一个辣鸡
+- 邮件联系：shesl-meow@qq.com
