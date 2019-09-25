@@ -95,14 +95,20 @@ class Crack:
         self.Mb = crackbk.crack_by_matrix()
         self.ck = []
     
+    def calculate_nexta(self):
+        vector_a = vector(self.ak[-self.Ma.rank():])
+        next_a = vector_a * self.Ma
+        self.ak.append( GF(2)(next_a[-1]) )
+
+    def calculate_nextb(self):
+        vector_b = vector(self.bk[-self.Mb.rank():])
+        next_b = vector_b * self.Mb
+        self.bk.append( GF(2)(next_b[-1]) )
+
     def JK_calculate_nextc(self):
         index = len(self.ck)
-        if index == len(self.ak):
-            next_a = vector(self.ak[-self.Ma.rank():]) * self.Ma
-            self.ak.append( GF(2)(next_a[-1]) )
-        if index == len(self.bk):
-            next_b = vector(self.bk[-self.Mb.rank():]) * self.Mb
-            self.bk.append( GF(2)(next_b[-1]) )
+        if index == len(self.ak): self.calculate_nexta()
+        if index == len(self.bk): self.calculate_nextb()
         a,b = self.ak[index], self.bk[index]
         self.ck.append(
             a if (index == 0) else ( GF(2)((a + b + 1) * self.ck[index - 1] + a) )
@@ -110,19 +116,16 @@ class Crack:
     
     def reach_period(self):
         l = len(self.ck)
-        return False if (l & 1 == 1) else (self.ck[:l/2] == self.ck[l/2:])
+        return self.ck[:l/2] == self.ck[l/2:]
     
     def crack_JK_c(self):
         for _ in range( max(self.Ma.rank(), self.Mb.rank()) ):
             self.JK_calculate_nextc()
 
-        from sage.matrix.berlekamp_massey import berlekamp_massey
         while True:
             self.JK_calculate_nextc()
             if self.reach_period():
                 break
-            if len(self.ck) % 2 == 0:
-                bm = berlekamp_massey(self.ck)
         return self.ck, len(self.ck)/2
         
         
@@ -139,3 +142,58 @@ $ python crack-8.py
 ```
 
 周期是 105，虽然和公式结果一样，但是我们并不能使用公式。
+
+## 例 2-8
+
+> 定理 2-7: GF(2) 上的 n 长 m-sequence {ai}  应该满足下面的三个条件：
+>
+> 1. 在一个周期内，0、1 出现的次数分别是 $$2^{n-1} - 1$$ 和 $$2^{n - 1}$$；
+> 2. 在一个周期内，总游程数为 $$2^{n-1}$$；对长为 $$i (1 \le i \le n-1)$$ 的游程有 $$2^{n-1-i}$$ 个，0、1 各半；
+> 3. $$\{a_i\}$$ 的自相关函数为 $$\displaystyle R(\tau) = \begin{cases} 1, & \tau = 0 \\\displaystyle -\frac{1}{2^n - 1}, & 0 < \tau \le 2^n - 2 \end{cases}$$
+
+对于例 2-8，其等价于 $$f_1 = 1 + x +x^3, f_2 = 1 + x^2 + x^3$$ 这样两个多项式，构成一个钟控序列生成器，现在我们通过上面的定理 2-7 证明它是不是一个 m 序列。他们的转移矩阵是很显然的。
+
+话不多说，直接上代码：
+
+```python
+#!/usr/bin/env python2
+from sage.all import *
+
+class ClockSequence:
+    Ta = Matrix(GF(2),[ [0, 0, 1], 
+                        [1, 0, 1], 
+                        [0, 1, 0]])
+    Tb = Matrix(GF(2),[ [0, 0, 1],
+                        [1, 0, 0],
+                        [0, 1, 1]])
+
+    def __init__(self):
+        self.a = vector(GF(2), [1, 1, 1])
+        self.b = vector(GF(2), [1, 1, 1])
+
+    def __iter__(self):
+        return self
+    
+    def next(self):
+        c = self.b[0]
+        if self.a[0] == 1:
+            self.b = self.b * self.Tb
+        self.a = self.a * self.Ta
+        return c
+
+
+if __name__ == "__main__":
+    cs = ClockSequence()
+    cs_iter = iter(cs)
+    lst = [next(cs_iter) for _ in range(49)]
+    print(lst.count(1), lst.count(0))
+```
+
+运行它就可以发现：
+
+```bash
+(sage-sh) $ python test-2-8.py 
+(28, 21)
+```
+
+他们的 0、1 数量差了很多。
