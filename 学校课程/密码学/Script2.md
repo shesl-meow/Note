@@ -39,6 +39,21 @@ if __name__ == "__main__":
     s.solve2()
 ```
 
+运行结果：
+
+```bash
+$ python solve-1.py
+	183 = x^7 + x^5 + x^4 + x^2 + x + 1
+*	63 = x^5 + x^4 + x^3 + x^2 + x + 1
+=	115 = x^6 + x^5 + x^4 + x + 1
+mod	x^8 + x^4 + x^3 + x + 1
+
+	17 = x^4 + 1
+*	255 = x^7 + x^6 + x^5 + x^4 + x^3 + x^2 + x + 1
+=	150 = x^7 + x^4 + x^2 + x
+mod	x^8 + x^4 + x^3 + x + 1
+```
+
 ## 第二题
 
 > 设 $$a(x) = 0x1B*x^3 + 0x03*x^2 + 0xDD*x + 0xA1$$，与 $$b(x) = 0xAC * x^3 + 0xF0 * x + 0x2D$$，为系数在 $$GF(2^8)$$ 上的两个多项式，计算 $$a(x) \otimes b(x) \pmod{x^4 + 1}$$
@@ -76,5 +91,15 @@ class Solve:
 if __name__ == "__main__":
     s = Solve()
     s.solve()
+```
+
+运行结果：
+
+```bash
+$ python solve-2.py
+	27*x^3 + 3*x^2 + 221*x + 161
+\odot	172*x^3 + 240*x + 45
+=	253*x^3 + 157*x^2 + 73*x + 103
+mod	x^4 + 1
 ```
 
