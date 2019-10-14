@@ -35,17 +35,43 @@ seta20.2:
 > 如何初始化GDT表
 
 ```assembly
-lgdt gdtdesc
-    movl %cr0, %eax
-    orl $CR0_PE_ON, %eax
-    movl %eax, %cr0
+#define SEG_NULLASM                                             \
+    .word 0, 0;                                                 \
+    .byte 0, 0, 0, 0
+
+#define SEG_ASM(type,base,lim)                                  \
+    .word (((lim) >> 12) & 0xffff), ((base) & 0xffff);          \
+    .byte (((base) >> 16) & 0xff), (0x90 | (type)),             \
+        (0xC0 | (((lim) >> 28) & 0xf)), (((base) >> 24) & 0xff)
+ 
+ 
+ gdt:
+    SEG_NULLASM                                     # null seg
+    SEG_ASM(STA_X|STA_R, 0x0, 0xffffffff)           # code seg for bootloader and kernel
+    SEG_ASM(STA_W, 0x0, 0xffffffff)                 # data seg for bootloader and kernel
+#初始化空段，代码段和数据段
+gdtdesc:
+    .word 0x17                                      # sizeof(gdt) - 1
+    .long gdt                                       # address gdt
+#gdt大小和地址
 ```
+
+
 
 在该文件的第十行定义了  CR0_PE_ON 变量等于 1 ,加载全局描述符寄存器gdtr，通过lgdt指令将全局描述符入口地址装入gdtr寄存器中。然后将控制寄存器cr0的值装载入eax中，将eax的值设置为1，然后将eax的值装载入cr0中，cr0为1时代表进入保护模式。
 
 > 如何使能和进入保护模式
 
 ~~翻译下面代码注释得到以下结论~~
+
+```assembly
+lgdt gdtdesc
+    movl %cr0, %eax
+    orl $CR0_PE_ON, %eax
+    movl %eax, %cr0
+```
+
+
 
 先将A20开启进入32位寻址模式，然后初始化GDT表，然后设置cr0控制寄存器为1，表示进入保护模式，然后跳转到32位模式中的下一条指令将处理器切换为32位工作模式，设置数据段寄存器，设置栈指针，并且调用bootmain函数。
 

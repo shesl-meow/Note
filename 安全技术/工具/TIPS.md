@@ -70,7 +70,6 @@
    (gdb-peda) parseheap
    ```
 
-7. 
 
 ### `python`
 
@@ -80,7 +79,6 @@
    print vars(cls)
    ```
 
-2. 
 
 ## Crypto
 
@@ -100,4 +98,23 @@
    Integer(15).binary()
    ```
 
-3. 
+3. 在 sage 中，通过多项式建立一个有限域：
+
+   ```python
+   sage: FF = GF(2**8, name='x', modulus=x^8 + x^4 + x^3 + x + 1)
+   ```
+
+   在这个有限域中，整数与多项式相互转化：
+
+   ```python
+   # 整数转化为多项式
+   sage: FF.fetch_int(5)
+   x^2 + 1
+   
+   # 多项式转化为整数
+   sage: FF(x^2 + 1).integer_representation()
+   5
+   ```
+
+4. 
+
