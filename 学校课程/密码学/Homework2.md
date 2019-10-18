@@ -37,8 +37,20 @@
 给出两个假设
 
 - 设系数定义在整数模环上的多项式为 Z，
-- 定义在有限域 $$GF(2^8)$$ 的多项式为 P，设 $$GF(2^8)$$ 上的元素用 c 表示。由于题目中未指定多项式，我们使用 [Conway Polynomial](https://en.wikipedia.org/wiki/Conway_polynomial_(finite_fields))：$$x^8 + x^4 + x^3 + x^2 + 1$$
+- 定义在有限域 $$GF(2^8)$$ 的多项式为 P，设 $$GF(2^8)$$ 上的元素用 c 表示。由于题目中未指定模多项式，我们认为它是使用的 Rijndael 的多项式：$$x^8 + x^4 + x^3 + x + 1$$
 
 我们认为题设中的两个多项式是定义在 Z 上，我们先把它们转化为 P 上：
 
-- 
+- $$a(x) = \begin{bmatrix} 1b &* x^{3}\\3 &* x^{2}\\dd &* x^{1}\\a1 &* x^{0} \end{bmatrix} = \begin{bmatrix} (c^4 + c^3 + c + 1) &* x^{3}\\(c + 1) &* x^{2}\\(c^7 + c^6 + c^4 + c^3 + c^2 + 1) &* x^{1}\\(c^7 + c^5 + 1) &* x^{0} \end{bmatrix}$$
+- $$b(x) = \begin{bmatrix} ac &* x^{3}\\0 &* x^{2}\\f0 &* x^{1}\\2d &* x^{0} \end{bmatrix} = 	\begin{bmatrix} (c^7 + c^5 + c^3 + c^2) &* x^{3}\\(0) &* x^{2}\\(c^7 + c^6 + c^5 + c^4) &* x^{1}\\(c^5 + c^3 + c^2 + 1) &* x^{0} \end{bmatrix}$$
+
+我们注意到 a(x) 与 b(x) 的乘法有限域，定义在模 $$x^4 + 1$$ 上，这意味着 $$x^j \equiv x^{j \pmod{4}}\pmod{x^4 + 1}$$。
+
+如果我们设 $$c(x) = c_3* x^3 + c_2 * x^2 + c_1 x^1 + c_0\equiv a(x) \otimes b(x) \pmod{x^4 + 1}$$，则对于 c(x)，我们知道：
+
+- $$\begin{bmatrix} c_{0}\\c_{1}\\c_{2}\\c_{3} \end{bmatrix} = \begin{bmatrix} a_{0} & a_{3} & a_{2} & a_{1}\\a_{1} & a_{0} & a_{3} & a_{2}\\a_{2} & a_{1} & a_{0} & a_{3}\\a_{3} & a_{2} & a_{1} & a_{0} \end{bmatrix} * \begin{bmatrix} b_{0}\\b_{1}\\b_{2}\\b_{3} \end{bmatrix}$$
+
+于是我们经过一些计算可以得到 c(x)：
+
+- $$c(x) = \begin{bmatrix} (c^6 + c^5 + c^4 + c) &* x^{3}\\(c^4 + c) &* x^{2}\\(c^6 + c^4 + c^3 + c) &* x^{1}\\(c^4 + c^3) &* x^{0} \end{bmatrix} = \begin{bmatrix} 72 &* x^{3}\\12 &* x^{2}\\5a &* x^{1}\\18 &* x^{0} \end{bmatrix}$$
+

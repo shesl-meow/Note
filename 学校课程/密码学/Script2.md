@@ -64,8 +64,9 @@ from sage.all import *
 
 class Solve:
     def __init__(self):
+        c = PolynomialRing(GF(2), names='c').gen()
         self.xPR = PolynomialRing(ZZ, names='x')
-        self.cFF = GF(2**8, names="c")
+        self.cFF = GF(2**8, names="c", modulus=c**8 + c**4 + c**3 + c + 1)
         self.yPR = PolynomialRing(self.cFF, names='y')
         x, y = self.xPR.gen(), self.yPR.gen()
         
@@ -78,15 +79,28 @@ class Solve:
 
     def y2x(self, y_poly):
         return self.xPR([c.integer_representation() for c in y_poly.list()])
+
+    def display_x(self, x):
+        Fstring = "\\begin{bmatrix} %s \end{bmatrix}"
+        fstring = "%x &* x^{%d}"
+        return Fstring % '\\\\'.join([
+            fstring % (coff, ind) for ind,coff in enumerate(x.list())
+        ][::-1])
+
+    def display_y(self, y):
+        Fstring = "\\begin{bmatrix} %s \end{bmatrix}"
+        fstring = "(%s) &* x^{%d}"
+        return Fstring % '\\\\'.join([
+            fstring % (coff, ind) for ind, coff in enumerate(y.list())
+        ][::-1])
         
     def solve(self):
         res_y = self.f1_y * self.f2_y % self.base_poly
         res_x = self.y2x(res_y)
-        print "\t%s" % self.f1_x
-        print "\odot\t%s" % self.f2_x
-        print "=\t%s" % res_x
+        print "\t%s\n\t%s\n" %( self.display_x(self.f1_x), self.display_y(self.f1_y) )
+        print "\odot\t%s\n\t%s\n" % ( self.display_x(self.f2_x), self.display_y(self.f2_y) )
+        print "=\t%s\n\t%s\n" % ( self.display_x(res_x), self.display_y(res_y) )
         print "mod\t%s" % self.y2x(self.base_poly)
-
 
 if __name__ == "__main__":
     s = Solve()
@@ -97,9 +111,15 @@ if __name__ == "__main__":
 
 ```bash
 $ python solve-2.py
-	27*x^3 + 3*x^2 + 221*x + 161
-\odot	172*x^3 + 240*x + 45
-=	253*x^3 + 157*x^2 + 73*x + 103
+	\begin{bmatrix} 1b &* x^{3}\\3 &* x^{2}\\dd &* x^{1}\\a1 &* x^{0} \end{bmatrix}
+	\begin{bmatrix} (c^4 + c^3 + c + 1) &* x^{3}\\(c + 1) &* x^{2}\\(c^7 + c^6 + c^4 + c^3 + c^2 + 1) &* x^{1}\\(c^7 + c^5 + 1) &* x^{0} \end{bmatrix}
+
+\odot	\begin{bmatrix} ac &* x^{3}\\0 &* x^{2}\\f0 &* x^{1}\\2d &* x^{0} \end{bmatrix}
+	\begin{bmatrix} (c^7 + c^5 + c^3 + c^2) &* x^{3}\\(0) &* x^{2}\\(c^7 + c^6 + c^5 + c^4) &* x^{1}\\(c^5 + c^3 + c^2 + 1) &* x^{0} \end{bmatrix}
+
+=	\begin{bmatrix} 72 &* x^{3}\\12 &* x^{2}\\5a &* x^{1}\\18 &* x^{0} \end{bmatrix}
+	\begin{bmatrix} (c^6 + c^5 + c^4 + c) &* x^{3}\\(c^4 + c) &* x^{2}\\(c^6 + c^4 + c^3 + c) &* x^{1}\\(c^4 + c^3) &* x^{0} \end{bmatrix}
+
 mod	x^4 + 1
 ```
 
