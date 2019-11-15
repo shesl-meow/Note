@@ -9,12 +9,17 @@ if [ $# -le 1 ]; then
 	exit 1;
 fi
 
+case "$OSTYPE" in
+	darwin*) SED="gsed" ;;
+	*) SED="sed" ;;
+esac
+
 execute () {
 	if [[ "$1" = "i" ]]; then
-		sed "s/^\([#]\+ \)/#\1/g" $2 > tmp && mv tmp $2
+		$SED "s/^\([#]\+ \)/#\1/g" $2 > tmp && mv tmp $2
 		echo "FILE[$2] => Increase all header by one."
 	elif [[ "$1" = "d" ]]; then
-		sed "s/^#\([#]\+ \)/\1/g" $2 > tmp && mv tmp $2
+		$SED "s/^#\([#]\+ \)/\1/g" $2 > tmp && mv tmp $2
 		echo "FILE[$2] => Decrease all header by one except the max-one(#)."
 	else
 		echo "Illegal parameter 1."

@@ -5,9 +5,14 @@ if [ $# -le 1 ]; then
 	exit 1
 fi
 
+case "$OSTYPE" in
+	darwin*) SED="gsed" ;;
+	*) SED="sed" ;;
+esac
+
 delete_all_url () {
 	echo "delete all in file: $1"
-	sed 's/\[\([^]]*\)\]([^)]*)/\1/g' "$1" > tmp
+	$SED 's/\[\([^]]*\)\]([^)]*)/\1/g' "$1" > tmp
 	mv tmp "$1"
 }
 
