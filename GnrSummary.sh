@@ -16,6 +16,7 @@ gnr_summary () {
 		find $2 -maxdepth 1 -type d -not -name ".*" \
 			-and -type d -not -name "`basename $2`" \
 		 	-or -type f -name "*.md" \
+			-or -type f -name "*.pdf" \
 		 	-and -type f -not -name "*README.md" \
 		 	| xargs -n1 basename | sort -n | while read recur;
 		do
