@@ -17,6 +17,10 @@ int main(int argc __attribute__((unused)), char **argv)
 }
 ```
 
+*PostScript*：
+
+- 与之相反，我们也会有一个 `used` 的属性标记。
+
 ## `format`
 
 像 `printf` 与 `scanf` 这样的函数，需要格式化字符串与动态参数，我们有时需要确定参数的合法性。
