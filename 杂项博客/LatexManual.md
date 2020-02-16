@@ -26,3 +26,5 @@ $ kpsewhich --help
 $ sudo mktexlsr
 ```
 
+## Command on mac OS X
+
