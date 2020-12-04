@@ -1,5 +1,9 @@
 # README
 
+> 菜鸟教程：
+>
+> - https://www.runoob.com/swift/swift-tutorial.html
+
 xcode 提供了 playground 功能学习 swift 的基础语法。
 
 若要创建 OS X 的 playground，需要使用引入 Cocoa：
