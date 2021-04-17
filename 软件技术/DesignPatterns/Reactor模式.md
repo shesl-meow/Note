@@ -10,7 +10,7 @@
 2. `read` 方法从 socket inputstream 读取数据，会阻塞线程直到完成数据读取；
 3. `write` 方法会写入输入到 socket outstream，会阻塞线程直到数据写完；
 
-使用一个中心的 Reactor 来处理所有会引起阻塞的方法，就是 Reactor 模式：
+上面列举的三种方法的特点是：都是引起 IO 的阻塞方法，这种原始的应用模式会导致大量线程空转。使用一个中心的 Reactor 来处理所有会引起阻塞的方法，就是 Reactor 模式：
 
 ![multi_connect_single_thread_reactor](./multi_connect_single_thread_reactor.png)
 
