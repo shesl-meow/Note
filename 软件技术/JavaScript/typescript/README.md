@@ -1,3 +1,7 @@
+> 官方：
+>
+> - https://www.tslang.cn/docs/handbook/typescript-in-5-minutes.html
+
 # TypeScript
 
 TypeScript 是 JavaScript 的一个超集，支持 ECMAScript 6 标准。
