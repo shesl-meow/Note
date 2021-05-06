@@ -13,3 +13,14 @@ REST: Representational state transfer.
 3. Self-Descriptive Message 自描述信息：每条请求都能没有上下文地无状态地，唯一执行一个动作；
 4. Hypermedia as the Engine of Application State (HATEOAS)：用高级的请求体来表示状态；
 
+## Thrift-RPC
+
+> 官方：https://thrift.apache.org/、
+>
+> IDL 文档：https://thrift.apache.org/docs/idl.html
+
+Thrift 是什么，Apache 提供的一个 API 序列化框架：
+
+- Apache Thrift 是一个跨语音的可扩展服务器开发框架，可以在语言间无缝高效地迁移。
+
+
