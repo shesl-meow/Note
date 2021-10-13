@@ -1,4 +1,4 @@
-> 学习途径：
+> s学习途径：
 >
 > - 官网教程：https://ibotpeaches.github.io/Apktool/
 
