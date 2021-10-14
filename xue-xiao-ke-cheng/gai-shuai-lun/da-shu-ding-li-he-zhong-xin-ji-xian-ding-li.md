@@ -1,0 +1,75 @@
+# 大数定理和中心极限定理
+
+## 大数定理
+
+### 依概率收敛
+
+#### 定义
+
+如果对于任何 $$\epsilon > 0$$，都有：
+
+$${\displaystyle \lim_{n \to \infin} P(|\xi_n - \xi| \geq \epsilon) = 0}$$
+
+那么我们称随机变量序列 $${\displaystyle\{ \xi_n, n \in \mathbb{N}\}}$$ 依概率收敛到随机变量 $$\xi$$，记作 $${\displaystyle \xi_n \xrightarrow{p} \xi}$$
+
+#### 性质
+
+设 $$X_n \xrightarrow{P} a, Y_n \xrightarrow{P} b$$，且函数 $$g(x,y)$$ 在点 $$(a, b)$$ 连续，则称：$$g(X_n, Y_n) \xrightarrow{P} g(a,b)$$
+
+依概率收敛比高等数学中的普通意义下的收敛弱些，它具有某种不确定性：
+
+* 当 n 充分大时，事件 $$|X_n - a| \lt \epsilon$$ 的概率非常大，接近于 1，但是并不排除 $$|X_n - a| \ge \epsilon$$ 发生的可能性。
+
+### 一、切比雪夫 Chebyshev 大数定理
+
+设 $$X_1, X_2, ..., X_n, ...$$ 相互独立，且具有相同的数学期望和方差：$$E(X_k) = \mu, D(X_k) = \sigma^2, k = 1,2...$$
+
+则：对前 n 个随机变量的算术平均有 $${\displaystyle \overline{X} = \frac{1}{n} \Sigma^{n}_{k=1} X_k \xrightarrow{p} \mu }$$
+
+含义：算术平均值依概率收敛意义下逼近某一常数
+
+### 二、伯努利 Bernoulli 大数定理
+
+设 $$n_A$$ 是 n 次独立重复试验中事件 A 发生的次数，$$p$$ 是事件 A 在每次试验中发生的概率，
+
+则 $$\displaystyle \forall \epsilon> 0, \lim_{n \rightarrow \infty} P\Big(\mid \frac{n_A}{n} - p \mid \lt \epsilon\Big) = 1$$
+
+重要意义：
+
+* 从理论上证明了频率具有稳定性
+* 提供了通过试验来确定事件概率的方法：$$\displaystyle \frac{n_A}{n} \approx p = P(A)$$
+* 实际中概率很小的随机事件在个别试验中是不可能发生的。
+
+### 三、辛钦 Wiener-khinchin 大数定理
+
+设随机变量 $$X_1, X_2, ..., X_n, ...$$ 独立同分布，具有相同的数学期望 $$E(X_i) = \mu, i = 1,2,...$$，
+
+则：$$\displaystyle \forall \epsilon > 0, \lim_{n \rightarrow \infty} P(|\frac{1}{n}\sum_{i=1}^nX_i -\mu| < \epsilon) = 1$$
+
+## 中心极限定理
+
+### 一、独立同分布下的中心极限定理
+
+设随机变量 $$X_1, X_2, ..., X_n, ...$$ 相互独立，服从同一分布，且具有相同的数学期望和方差：$$E(X_k) = \mu, D(X_k) = \sigma_k^2, k \in \{1,2,...\}$$，
+
+则随机变量之和 $$\displaystyle \sum_{k=1}^{n} X_k$$ 的标准化变量 $$\displaystyle Y_n = \frac{\displaystyle \sum_{k=1}^{n} X_k - E(\sum_{k=1}^n X_k)}{\displaystyle \sqrt{D(\sum_{k=1}^n X_k)}} = \frac{\displaystyle \sum_{k=1}^n X_k - n \mu}{\displaystyle \sqrt{n}\sigma}$$ 的分布函数 $$F_n(x)$$ 对于任意 x 满足：$$\displaystyle \lim_{n \rightarrow \infty} F_n(x) = \phi(x)$$
+
+定理表明：
+
+* 独立同分布随机变量之和 $$\displaystyle \sum_{k=1}^{n} X_k$$，当 n 充分大时，有 $$\displaystyle \sum_{k=1}^{n} X_k \overset{similarly}{\sim} N(n \mu, n \sigma^2)$$ 
+* 一般情况下，我们很难求出 $$\displaystyle \sum_{k=1}^{n} X_k$$ 分布的确切形式，但当 n 很大时，可以求出近似分布。
+* 无论随机变量序列服从何种分布，只要期望和方差有限，总和标准化后，以标准正态分布为极限。
+
+### 二、李雅普诺夫 Lyapunov 定理
+
+设随机变量 $$X_1, X_2, ..., X_n, ...$$ 相互独立，他们具有相同的数学期望和方差：$$E(X_k) = \mu, D(X_k) = \sigma_k^2, k \in \{1,2,...\}$$，记 $$\displaystyle B_n^2 = \sum_{k=1}^n \sigma_k^2$$
+
+### 三、棣莫佛－拉普拉斯 De Moivre-Laplace 定理
+
+设随机变量 $$\eta_n$$ 服从参数为 $$n, p (0 < p < 1)$$ 的二项分布，则对于任意的 x，有：
+
+$$\displaystyle \lim_{n \rightarrow \infty} P(\frac{\eta_n - np}{\sqrt{np(1-p)}} \le x) = \phi(x)$$
+
+定理表明：
+
+* 当 n 很大时，变量 $$\eta_n$$ 的分布，近似正态分布 $$N(np,np(1-p))$$

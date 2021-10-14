@@ -1,0 +1,92 @@
+# 题目精解
+
+## 判断题
+
+### 1
+
+> 设有分布律 $${\displaystyle P(X = (-1)^{n+1} \frac{2^n}{n}) = \frac{1}{2^n}}$$，则 X 的数学期望存在。
+>
+> 错误。
+
+**数学期望定义**：
+
+*   设离散型随机变量 X 的分布律为：$$P(X = x_k) = p_k$$
+
+    若级数 $${\displaystyle \sum_{k=1}^{\infin} x_k p_k}$$ 绝对收敛，则称 $${\displaystyle \sum_{k=1}^{\infin} x_k p_k}$$ 的和为随机变量 X 的数学期望，记为 $$E(X)$$
+
+    即有：$$E(X) = {\displaystyle \sum_{k=1}^{\infin} x_k p_k}$$
+*   设连续型随机变量 X 的概率密度为 f(x)
+
+    若积分 $${\displaystyle \int_{-\infty}^{\infty} x f(x) dx}$$ 绝对收敛，则称积分 $${\displaystyle \int_{-\infty}^{\infty} x f(x) dx}$$ 的值为随机变量 X 的数学期望，记为 $$E(X)$$
+
+    即 $$E(X) ={\displaystyle \int_{-\infty}^{\infty} x f(x) dx}$$
+
+注意到，数学期望**要求绝对收敛**，原因：[https://math.stackexchange.com/questions/239949/why-do-we-require-absolute-convergence-in-the-definition-of-expectation](https://math.stackexchange.com/questions/239949/why-do-we-require-absolute-convergence-in-the-definition-of-expectation)
+
+### 2
+
+> 在假设检验中，显著性水平 $$\alpha$$ 是指：$$P(拒绝 H_0 \mid H_0 为假) = 1 - \alpha$$
+>
+> 错误。
+
+概念：
+
+* $$H_0$$ 原假设或零假设
+* $$H_1$$ 备选假设或对立假设
+* $$\alpha$$ 是犯弃真错误的概率
+* $$\beta$$ 是犯取伪错误的概率
+
+即如下表格：
+
+|            | $$H_0$$ 成立               | $$H_1$$ 成立               |
+| ---------- | ------------------------ | ------------------------ |
+| 接收 $$H_0$$ | 不犯错                      | 第 II 类错误（取伪错误 $$\beta$$） |
+| 拒绝 $$H_0$$ | 第 I 类错误（弃真错误 $$\alpha$$） | 不犯错                      |
+
+## 选择题
+
+### 1
+
+> 设二维随机变量 $$(X,Y) \sim N(0, 0.5; 0, 0.5; 0)$$，$$Z = X - Y$$，则方差 $$D(|Z|)$$ 等于：
+>
+> A. 0 B. 1 C. $$1 + {\displaystyle \frac{2}{\pi}}$$ D. $$1 - {\displaystyle \frac{2}{\pi}}$$
+>
+> D
+
+$$\rho = 0 \Rightarrow Cov(X, Y) = 0 \Rightarrow E(XY) - E(X)E(Y) = 0 \Rightarrow$$ X，Y 相互独立
+
+$$E(Z) = E(X) - E(Y) = 0, D(Z) = D(X) - D(Y) = 1 \Rightarrow Z \sim N(0,1)$$
+
+因此可以求出：
+
+$${\displaystyle E(|Z|) = \int_{-\infty}^{+\infty}|z|\cdot \frac{1}{\sqrt{2 \pi}}e^{-\frac{z^2}{2}} dz}$$
+
+   $${\displaystyle = \frac{2}{\sqrt{2 \pi}} \cdot \int_0^{+\infty} z \cdot e^{-\frac{z^2}{2}} dz}​$$
+
+   $${\displaystyle = \frac{2}{\sqrt{2 \pi}} \cdot (-e)^{-\frac{z^2}{2}} \Big|_0^{+\infty} = \sqrt{\frac{2}{\pi}} }$$
+
+$${\displaystyle E({|Z|}^2) = \int_{-\infty}^{+\infty}z^2 \cdot \frac{1}{\sqrt{2 \pi}}e^{-\frac{z^2}{2}} dz }$$
+
+   $${\displaystyle= - \frac{z}{\sqrt{2 \pi}} \cdot e^{-\frac{z^2}{2}} \Big|_{-\infty}^{+\infty} + \int_{-\infty}^{+\infty} \frac{1}{\sqrt{2 \pi}}e^{-\frac{z^2}{2}} dz}$$
+
+   $${\displaystyle = 0 + 1 = 1 }$$
+
+$${\displaystyle D(|Z|) = E(|Z|^2) - (E(|Z|))^2 = 1 - \frac{2}{\pi} }$$
+
+### 2
+
+> 设总体 $$X \sim N(\mu, \sigma^2)$$，$$\mu$$ 为未知参数，样本 $$X_1, X_2, ..., X_n$$ 的方差为 $$S^2$$，对于假设检验 $$H_0: \sigma \ge 2, H_1: \sigma \lt 2$$，显著性水平 $$\alpha$$ 的拒绝域为：
+>
+> $$(A). {\displaystyle \chi^2 = \chi_{1 - \frac{\alpha}{2}}^2(n-1)}$$
+>
+> $$(B). {\displaystyle \chi^2 = \chi_{1 - \alpha}^2(n-1)}$$
+>
+> $$(C). {\displaystyle \chi^2 = \chi_{1 - \frac{\alpha}{2}}^2(n)}$$
+>
+> $$(D). {\displaystyle \chi^2 = \chi_{1 - \alpha}^2(n)}$$
+>
+> B
+
+因为 $$\mu$$ 未知，所以检验所用的统计量以及其服从的分布是：
+
+$${\displaystyle \chi^2 = \frac{(n-1)S^2}{\sigma_0^2} \sim \chi^2(n-1)}$$

