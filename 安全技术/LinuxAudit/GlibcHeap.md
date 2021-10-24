@@ -13,10 +13,14 @@
 
 - `dlmalloc`：通用分配器；
 - **`ptmalloc2`：`glibc` 函数，基于 `dlmalloc`，支持多线程**；
-- `jemalloc`：`FreeBSD`、`FireFox`、`Android`；
-- `tcmalloc`：`Google Chrome`；
+- `jemalloc`：`FreeBSD`、`FireFox`、`Android`；内存占用更高，但是在多核多线程下的表现也最为优异。
+- `tcmalloc`：`Google Chrome`、`Golang`；针对多核情况有所优化，性能有所提高，但是内存占用稍高，大内存分配容易出现 CPU 飙升。
 - `libumem`：`Solaris`；
 - `Windows 10`：`segment heap`。
+
+> 相关资料：
+>
+> - https://www.cyningsun.com/07-07-2018/memory-allocator-contrasts.html#%E7%B3%BB%E7%BB%9F%E5%90%91%E7%9C%8Bptmalloc%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86
 
 # glibc heap
 
