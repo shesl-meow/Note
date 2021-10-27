@@ -2,10 +2,10 @@
 
 这里是 shesl 的笔记网站：
 
-* github：[https://github.com/shesl-meow/Note](https://github.com/shesl-meow/Note)
-* Customized Domain for gitbook：[https://notes.shesl.top](https://notes.shesl.top)
+* git-repo for note resources: [Note](https://github.com/shesl-meow/Note)
+* git-repo for front pages: [GitPages Repo](https://github.com/shesl-meow/shesl-meow.github.io)
+* front site: [GitPages](shesl-meow.github.io)
 
 关于我：
 
-* 一个辣鸡
-* 邮件联系：shesl-meow@qq.com
+* 邮件：shesl-meow@qq.com
