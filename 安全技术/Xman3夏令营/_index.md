@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-title: "xman3"
+title: "Xman3夏令营"
 ---
 
 # README

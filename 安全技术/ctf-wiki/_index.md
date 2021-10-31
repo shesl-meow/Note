@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-title: "ctf-wiki"
+title: "CTF-Wiki"
 ---
 
 # CTFWiki

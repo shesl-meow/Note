@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-title: "题目"
+title: "CTF-WriteUp"
 ---
 
 # 题目
