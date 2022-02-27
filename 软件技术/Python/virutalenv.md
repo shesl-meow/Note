@@ -92,7 +92,7 @@ $ pip --version
 1. To install (make sure **virtualenv** is already installed):
 
    ```bash
-   $ pip install virualenvwrapper
+   $ pip install virtualenvwrapper
    
    $ export WORKON_HOME=~/.python_envs
    
