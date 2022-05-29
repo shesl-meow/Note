@@ -1,10 +1,10 @@
 ---
-bookFlatSection: true
+bookCollapseSection: true
 weight: 1
-title: "Android-CmdTools"
+title: "Android"
 ---
 
-# Android-CmdTools
+# Android
 
-Android 环境下的脚本工具
+处理 Android 相关的脚本工具
 

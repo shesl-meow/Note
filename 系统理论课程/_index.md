@@ -1,6 +1,6 @@
 ---
 bookFlatSection: true
-weight: 1
+weight: 5
 title: "系统理论课程"
 ---
 

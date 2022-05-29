@@ -1,3 +1,11 @@
+---
+menu:
+  before:
+    name: Introduction
+    weight: 5
+title: Introduction
+---
+
 # Introduction
 
 这里是 shesl 的笔记网站：
