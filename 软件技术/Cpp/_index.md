@@ -1,9 +1,0 @@
----
-bookCollapseSection: true
-title: "Cplusplus"
----
-
-# C++
-
-佘崧林在写博客之前已经对 C++ 比较了解，这里主要记录一些 C++ 的新特性。
-
