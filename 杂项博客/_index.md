@@ -1,6 +1,6 @@
 ---
 bookFlatSection: true
-weight: 0
+weight: 40
 title: "杂项博客"
 ---
 

@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-title: "算法竞赛入门经典"
+title: "算法竞赛进阶指南"
 ---
 
 # README

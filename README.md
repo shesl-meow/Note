@@ -1,9 +1,6 @@
 ---
-menu:
-  before:
-    name: Introduction
-    weight: 5
-title: Introduction
+weight: 1
+title: "Introduction"
 ---
 
 # Introduction
