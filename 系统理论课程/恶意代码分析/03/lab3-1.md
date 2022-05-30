@@ -84,7 +84,7 @@ Nmap done: 256 IP addresses (2 hosts up) scanned in 12.31 seconds
 
 为了分析这个病毒的网络请求，使用 `ApateDNS` 这个工具，可以用于劫持本地的所有 DNS 请求，[下载以及介绍地址](<https://www.aldeid.com/wiki/Mandiant-ApateDNS>)。
 
-但是这个工具似乎并不可以在 Windows XP 虚拟机上运行（年代久远的系统还有很多网络不兼容的问题），于是我在南开大学[正版软件]([http://ca.nankai.edu.cn](http://ca.nankai.edu.cn/))上下载了 `Windows 7` 的镜像。然后在虚拟机上运行 `ApateDNS` 劫持本地的所有 DNS 请求，打开浏览器测试：
+但是这个工具似乎并不可以在 Windows XP 虚拟机上运行（年代久远的系统还有很多网络不兼容的问题），于是我在南开大学[正版软件](http://ca.nankai.edu.cn/)上下载了 `Windows 7` 的镜像。然后在虚拟机上运行 `ApateDNS` 劫持本地的所有 DNS 请求，打开浏览器测试：
 
 ![01.ApateDNS.test](./01.ApateDNS.test.png)
 

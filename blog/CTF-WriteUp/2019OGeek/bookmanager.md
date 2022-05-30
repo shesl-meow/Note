@@ -49,7 +49,8 @@ $ make && make install
 
 但是，使用高版本的 `gcc`、`g++` 交叉编译低版本的 `glibc` 会出现很多 `bug`：
 
-1. 源码层面的出现很多 `bug` 在网上找到了一个[解决方案]([https://blog.wh98.me/2019/03/20/%E7%BC%96%E8%AF%91glibc%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/](https://blog.wh98.me/2019/03/20/编译glibc遇到的问题/))；
+1. 源码层面的出现很多 `bug` 在网上找到了一个[解决方案](https://blog.wh98.me/2019/03/20/编译glibc遇到的问题/)；
+
 2. `cc1` 会将 `warning` 当作 `error`，需要在运行 `configure` 命令时加入 `--disable-werror`。
 
 # book manager
