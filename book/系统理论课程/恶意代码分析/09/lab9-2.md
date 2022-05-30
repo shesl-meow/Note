@@ -6,7 +6,7 @@
 
 首先使用 `PEexplorer` 中的反汇编功能查看其中的 `.rdata` 段：
 
-![02.exe.PEexplorer.String.png](./02.exe.PEexplorer.String.png)
+![02.exe.PEexplorer.String.png](../02.exe.PEexplorer.String.png)
 
 ## QUESTION 2
 

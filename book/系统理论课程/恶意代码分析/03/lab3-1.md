@@ -6,7 +6,7 @@
 
 通过 `PEiD` 这个软件分析这个病毒：
 
-![01.exe.PEiD](./01.exe.PEiD.png)
+![01.exe.PEiD](../01.exe.PEiD.png)
 
 发现这个病毒使用了 `PEncrypt 3.1` 加壳了。所以我们并不知道它实际的导入函数。
 
@@ -49,7 +49,7 @@ V%X_
 
 下面将通过动态技术分析这个病毒的网络状态，因此我们需要将虚拟机的网络设置为主机模式：
 
-![01.vmware.host-only](./01.vmware.host-only.png)
+![01.vmware.host-only](../01.vmware.host-only.png)
 
 在主机中扫描局域网，可以看到虚拟机的网络号：
 
@@ -66,11 +66,11 @@ Nmap done: 256 IP addresses (2 hosts up) scanned in 12.31 seconds
 
 先使用 `Process Explorer` 这个工具分析这个病毒。分析这个病毒导入的 `dll` 中，我们发现了与网络相关的动态链接库 `mswsock.dll`：
 
-![01.exe.Procexp.ImportDll](./01.exe.Procexp.ImportDll.png)
+![01.exe.Procexp.ImportDll](../01.exe.Procexp.ImportDll.png)
 
 我们恢复虚拟机快照，重启虚拟机再在虚拟机中打开 `Procmon`，添加 `Process Name - is - lab03-01.exe` 的过滤器，然后运行这个病毒，我们可以在 `Procmon` 中检测到病毒的行为特征：
 
-![01.exe.Procmon.all](./01.exe.Procmon.all.png)
+![01.exe.Procmon.all](../01.exe.Procmon.all.png)
 
 可见在 `Operation` 一栏中，在 `Procmon` 记录了从 `Process Start` 开始病毒调用的所有 API 函数。分析这一栏调用的 API 函数，发现这个病毒大量地调用了 `CreateFile` 函数和 `RegOpenKey` 这两个 API 函数。并没有发现与网络请求相关的函数调用。
 
@@ -86,7 +86,7 @@ Nmap done: 256 IP addresses (2 hosts up) scanned in 12.31 seconds
 
 但是这个工具似乎并不可以在 Windows XP 虚拟机上运行（年代久远的系统还有很多网络不兼容的问题），于是我在南开大学[正版软件](http://ca.nankai.edu.cn/)上下载了 `Windows 7` 的镜像。然后在虚拟机上运行 `ApateDNS` 劫持本地的所有 DNS 请求，打开浏览器测试：
 
-![01.ApateDNS.test](./01.ApateDNS.test.png)
+![01.ApateDNS.test](../01.ApateDNS.test.png)
 
 **但是这个病毒竟然无法在 `Windows 7` 上运行**。
 
@@ -114,7 +114,7 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 9.63 seconds
 
 这其中 `192.168.32.128` 是 `Windows XP` 的局域网 IP、`192.168.32.129` 是 `Windows 7` 的局域网 `IP`。我们保持 `Windows 7` 的 `ApateDNS` 处于运行状态，并且设置 `Windows XP` 的 `DNS` 地址：
 
-![01.XP.setDNS](./01.XP.setDNS.png)
+![01.XP.setDNS](../01.XP.setDNS.png)
 
 使用 `nslookup` 以确定我们已经正确地设置了 `DNS` 地址：
 
@@ -132,7 +132,7 @@ Address:  127.0.0.1
 
 运行病毒，我们再 `Windows 7` 上发现，这个病毒尝试解析 `www.practicalmalwareanalysis.com` 这个域名：
 
-![01.exe.DNSresolve](./01.exe.DNSresolve.png)
+![01.exe.DNSresolve](../01.exe.DNSresolve.png)
 
 ### Python HTTP&HTTPS
 
@@ -159,11 +159,11 @@ Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
 ip.addr == 192.168.32.128
 ```
 
-![01.kali.wireshark.port](./01.kali.wireshark.port.png)
+![01.kali.wireshark.port](../01.kali.wireshark.port.png)
 
 如上图，我们发现它竟然访问的是 `443` 端口，于是我们先尝试把 `HTTP` 服务部署在 `443` 端口：
 
-![01.kali.wireshark.ssl](./01.kali.wireshark.ssl.png)
+![01.kali.wireshark.ssl](../01.kali.wireshark.ssl.png)
 
 发现这个病毒是真实使用的 `HTTPS` 服务进行访问。我们再搭建一个简单的 `HTTPS` 服务：
 
@@ -188,7 +188,7 @@ $ python3 httpsserver.py
 
 再用 `wireshark` 抓包，发现服务器拒绝了病毒的连接申请：
 
-![01.kali.wireshark.refuse](./01.kali.wireshark.refuse.png)
+![01.kali.wireshark.refuse](../01.kali.wireshark.refuse.png)
 
 这说明病毒访问的根本不是真正的 `HTTPS` 服务，但是 `HTTP` 同样也无法处理这个请求。
 

@@ -105,7 +105,7 @@ WININET.dll
 
 我们分析脱壳之后的文件，发现其 `.data` 段中有 `http://www.malwareanalysis.com` 这个字符串：
 
-![02.exe.PEexplorer.data](./02.exe.PEexplorer.data.png)
+![02.exe.PEexplorer.data](../02.exe.PEexplorer.data.png)
 
 再用 `ida pro` 查找调用这个字符串的位置，我们找到以下的伪代码：
 

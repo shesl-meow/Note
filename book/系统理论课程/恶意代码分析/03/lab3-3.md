@@ -6,19 +6,19 @@
 
 拿到病毒首先分析是否加壳：
 
-![03.exe.PEiD](./03.exe.PEiD.png)
+![03.exe.PEiD](../03.exe.PEiD.png)
 
 可见其 `packer` 就是 `Visual C++ 6.0`，没有进行任何加壳，理论上可以直接分析反汇编代码，但是题目让我们进行动态分析，于是我们再虚拟机中运行这个病毒。
 
 我们首先打开 `Procexp` 与 `Procmon`，然后运行 `Lab03-03.exe` 这个程序：
 
-![03.exe.procmon](./03.exe.procmon.png)
+![03.exe.procmon](../03.exe.procmon.png)
 
 我们发现 `Lab03-03.exe` 这个应程序再运行时创建了一个 `svchost.exe` 的子进程。
 
 另外我们尝试通过 `procmon` 中过滤 `Process Name =is= Lab03-03.exe` 进程观察这个进程调用的 API。我们发现这个病毒尝试创建这样一个敏感文件 `C:/Windows/System32/svchost.exe`：
 
-![03.exe.procexp](./03.exe.procexp.png)
+![03.exe.procexp](../03.exe.procexp.png)
 
 我们猜测这个病毒可能尝试替换电脑中的 `svchost.exe` 文件，并且替换电脑的服务进程。
 
@@ -33,7 +33,7 @@
 "Operations" contains "Create"
 ```
 
-![03.exe.procexp.contains.create](./03.exe.procexp.contains.create.png)
+![03.exe.procexp.contains.create](../03.exe.procexp.contains.create.png)
 
 通过上面的分析，这个恶意代码主要尝试创建以下的几个文件：`svchost.exe`、`apphelp.dll`、`systest.db` 等，其中大部分文件由于权限问题创建失败，因此我们也有理由相信它因为权限问题无法写入文件。
 

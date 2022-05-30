@@ -184,4 +184,4 @@ int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 
 `TCP-IP` 协议下流程大致如下：
 
-![TCP-IP](./TCP_IP_socket_diagram.png)
+![TCP-IP](../TCP_IP_socket_diagram.png)

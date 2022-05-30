@@ -15,7 +15,7 @@ $ diff Chapter_9L/Lab09-01.exe Chapter_3L/Lab03-04.exe
 
 我们先用 `PE Explorer` 查看这个函数的导入表内容：
 
-![01.exe.PEexplorer.Import.png](./01.exe.PEexplorer.Import.png)
+![01.exe.PEexplorer.Import.png](../01.exe.PEexplorer.Import.png)
 
 可见它导入的动态链接库以及其中调用的函数都非常敏感：
 

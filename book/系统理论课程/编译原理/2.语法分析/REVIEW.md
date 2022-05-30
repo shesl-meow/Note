@@ -25,5 +25,5 @@ subgraph 自下而上
 end
 ```
 
-![review-graph](./review-graph.svg)
+![review-graph](../review-graph.svg)
 

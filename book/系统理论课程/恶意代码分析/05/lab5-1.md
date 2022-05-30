@@ -6,7 +6,7 @@
 
 我们用 `Ida Pro` 加载这个动态链接库，在左侧的函数窗口点击 `Ctrl+F`，输入函数名 `DLLMain`，即可搜索：
 
-![01.dll.q1.DLLMain.png](./01.dll.q1.DLLMain.png)
+![01.dll.q1.DLLMain.png](../01.dll.q1.DLLMain.png)
 
 可见其入口地址是 `.text:1000D02E`。
 
@@ -29,7 +29,7 @@
 
 可以在 `Ida Pro` 中使用 `xrefs` 工具查看调用的函数，在上一题的函数定义位置右键可以选择 `list cross refrence to ...`：
 
-![01.dll.q3.xref.gethostname](./01.dll.q3.xref.gethostname.png)
+![01.dll.q3.xref.gethostname](../01.dll.q3.xref.gethostname.png)
 
 可见这个函数调用了 18 次。按名称排序之后可以得到一共有 9 个不同的函数
 
@@ -237,7 +237,7 @@ int __stdcall PSLIST(int a1, int a2, char *Str, int a4)
 
 我们在左侧的函数窗口中找到 `sub_10004E79` 这个函数，然后在 hex view 中右键点击函数名然后查看 `xref greph from...`，查看函数的调用图可以得到下面的信息：
 
-![01.dll.q12.xreffrom](./01.dll.q12.xreffrom.png)
+![01.dll.q12.xreffrom](../01.dll.q12.xreffrom.png)
 
 可见这个函数调用了 `GetSystemDefaultLangID` 这个函数，还调用了 `sub_100038EE` 这个函数，后者应该是一个自定义函数，根据这些信息我们猜测这个函数应该是获取系统语言的一个函数，我们将其命名为 `GetSystemLanguage`。
 
@@ -247,7 +247,7 @@ int __stdcall PSLIST(int a1, int a2, char *Str, int a4)
 
 在 `Ida Pro` 中依次点击：`view-->graphs-->Users xrefs charts`，选择函数的调用栈深为 1 即为直接调用：
 
-![01.dll.q13.depth1](./01.dll.q13.depth1.png)
+![01.dll.q13.depth1](../01.dll.q13.depth1.png)
 
 可见直接调用的函数有 7 个。
 

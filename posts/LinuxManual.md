@@ -1,4 +1,8 @@
-# Linux Manual
+---
+title: "Linux 常用命令手册（持续更新）"
+date: 2022-05-30T00:00:00+08:00
+tags: ["持续更新", "Linux", "运维"]
+---
 
 ## 通过 SSH 连接服务器
 
@@ -336,5 +340,64 @@ $ socat [options] <address> <address>
    $ nohup socat  -d -d -lf /var/log/socat.log TCP4-LISTEN:15672,bind=192.168.1.252,reuseaddr,fork TCP4:172.17.0.15:15672 &
    ```
 
-7. 
+## 关于 Latex
 
+使用 latex 编译的命令（详细的帮助文档可以使用 `--help` 参数查看）：
+
+```bash
+$ latexmk --help
+```
+
+使用 MikTex 编译的命令（详细的帮助文档可以使用 `--help` 参数查看）：
+
+```bash
+$ telatex --help
+```
+
+Latex 安装包目录管理命令（详细的帮助文档可以使用 `--help` 参数查看）：
+
+```bash
+$ kpsewhich --help
+```
+
+手动安装到一个安装目录之后，需要使用以下命令更新 LaTex 的安装包搜索路径：
+
+```bash
+$ sudo mktexlsr
+```
+
+## 关于 sagemath
+
+基于 python2 的数学教学工具 sage-math。Quick Manual:
+
+1. 比特流转换为整数：
+
+   ```python
+   ZZ([1,1,0,1],base=2)
+   ```
+
+   这种方式与 `int('1101',2)` 转换的结果相反，它等价于 `int('1011', 2)`
+
+2. 整数转化为比特流：
+
+   ```python
+   Integer(15).binary()
+   ```
+
+3. 在 sage 中，通过多项式建立一个有限域：
+
+   ```python
+   sage: FF = GF(2**8, name='x', modulus=x^8 + x^4 + x^3 + x + 1)
+   ```
+
+   在这个有限域中，整数与多项式相互转化：
+
+   ```python
+   # 整数转化为多项式
+   sage: FF.fetch_int(5)
+   x^2 + 1
+   
+   # 多项式转化为整数
+   sage: FF(x^2 + 1).integer_representation()
+   5
+   ```

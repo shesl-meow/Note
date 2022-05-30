@@ -1,4 +1,8 @@
-# 原理介绍
+---
+title: ":page_facing_up:文档数据库 MongoDB 原理浅析"
+date: 2021-09-30T00:00:00+08:00
+tags: ["MongoDB", "Database"]
+---
 
 > 参考资料：https://zhuanlan.zhihu.com/p/87722764
 

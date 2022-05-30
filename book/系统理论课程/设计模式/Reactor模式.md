@@ -2,7 +2,7 @@
 
 一个网络连接对应于一个线程处理，是最原始的 Web 应用模型：
 
-![multi_connect_raw](./multi_connect_raw.png)
+![multi_connect_raw](../multi_connect_raw.png)
 
 但是这种模型对每个连接都创造一个 handler 容易遇到瓶颈，负载增加时性能下降非常快：
 
@@ -12,13 +12,13 @@
 
 上面列举的三种方法的特点是：都是引起 IO 的阻塞方法，这种原始的应用模式会导致大量线程空转。使用一个中心的 Reactor 来处理所有会引起阻塞的方法，就是 Reactor 模式：
 
-![multi_connect_single_thread_reactor](./multi_connect_single_thread_reactor.png)
+![multi_connect_single_thread_reactor](../multi_connect_single_thread_reactor.png)
 
 而上面这种设计模式，Reactor 运行在单线程中，容易成为高并发计算机系统的性能瓶颈。
 
 于是我们可以用一个线程池处理已经连接的所有客户端：
 
-![multi_connect_multi_thread_reactor](./multi_connect_multi_thread_reactor.png)
+![multi_connect_multi_thread_reactor](../multi_connect_multi_thread_reactor.png)
 
 在多 CPU 的机器上 Reactor 又可以拆分成 mainReactor 和 subReactor：
 

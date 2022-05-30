@@ -27,4 +27,4 @@ DH：DH 密钥交换用于在公开信道上共享私密信息
 
 ### 流程图
 
-![DH](../../算法和协议中的安全机制/Diffie-HellmanKeyExchange.svg)
+![DH](../../../算法和协议中的安全机制/Diffie-HellmanKeyExchange.svg)

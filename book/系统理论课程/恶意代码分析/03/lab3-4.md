@@ -6,7 +6,7 @@
 
 拿到病毒首先分析是否加壳：
 
-![04.exe.PEiD](./04.exe.PEiD.png)
+![04.exe.PEiD](../04.exe.PEiD.png)
 
 同样的这个文件也是 `Microsoft Visual C++ 6.0`，同样理论上也可以直接分析反汇编代码。对于本题我们只需要双击运行即可。
 

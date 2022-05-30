@@ -2,7 +2,7 @@
 
 ## 1. 基本知识
 
-![review-complexity](./review-complexity.svg)
+![review-complexity](../review-complexity.svg)
 
 维基百科上列出了下面的时间复杂度种类：
 
@@ -31,11 +31,11 @@
 
 ## 2. 表结构
 
-![review-table](./review-table.svg)
+![review-table](../review-table.svg)
 
 ## 3. 树结构
 
-![review-tree](./review-tree.svg)
+![review-tree](../review-tree.svg)
 
 概念：
 
@@ -49,7 +49,7 @@
 
 ## 4. 图结构
 
-![review-graph](./review-graph.svg)
+![review-graph](../review-graph.svg)
 
 概念：
 

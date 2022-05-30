@@ -85,7 +85,7 @@
 
 没有看到特别有特征的 API 函数，我们转到汇编代码，并且查看 `xref from...`，查看它调用的所有函数：
 
-![03.exe.4011E0.xreffrem.png](./03.exe.4011E0.xreffrem.png)
+![03.exe.4011E0.xreffrem.png](../03.exe.4011E0.xreffrem.png)
 
 值得注意的是，这个函数进行了自调用，其中一个比较重要的子函数是 `sub_4010A0` 我们进一步分析这个函数。同样的用 F5 查看其伪代码：
 
@@ -176,7 +176,7 @@
 
 因此恶意代码的核心是这个动态链接库完成的功能，我们进一步分析这个动态链接库。首先分析函数的导入表：
 
-![03.dll.import.png](./03.dll.import.png)
+![03.dll.import.png](../03.dll.import.png)
 
 发现这个动态链接库导入了 `CreateProcessA`，`CreateMutexA`，`OpenMutexA` 等线程相关函数，在左侧还发现它导入了 `W32_32.dll` 这个与网络请求相关的动态链接库。
 

@@ -1,3 +1,9 @@
+---
+title: "EthereumBook 阅读笔记（Work In Progress）"
+date: 2022-05-30T00:00:00+08:00
+tags: ["以太坊", "区块链"]
+---
+
 ## 概念
 
 - KDF：彩虹表攻击

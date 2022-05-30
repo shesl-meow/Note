@@ -38,7 +38,7 @@ I-->IL; IL-->HL; HL-->OL; OL-->O; HL-->HL;
 
 How does `RNN` works?
 
-![RNN-works](./RNN-works.png)
+![RNN-works](../RNN-works.png)
 
 Types of `RNN`：
 
@@ -53,13 +53,13 @@ Types of `RNN`：
 
 Solution to Gradient Problem:
 
-![GradientProblemSolution](./GradientProblemSolution.png)
+![GradientProblemSolution](../GradientProblemSolution.png)
 
 ## Long Short-Term Memory Network, `LSTM`
 
 `LSTMs` are special kind of `RNN`, capable of learning long-term dependencies.
 
-![LSTMstructure](./LSTMstructure.png)
+![LSTMstructure](../LSTMstructure.png)
 
 Three steps of `LSTMs`:
 

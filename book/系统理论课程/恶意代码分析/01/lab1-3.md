@@ -21,17 +21,17 @@ $ sha256sum Lab01-03.exe
 
 可以在 Windows 上通过 `PEiD` 这个软件检验壳：
 
-![03.exe.PEiD](./03.exe.PEiD.png)
+![03.exe.PEiD](../03.exe.PEiD.png)
 
 我们发现，这个可执行文件通过 `FSG 1.0` 加壳了。我们通过一个[52poejie 教程](https://www.52pojie.cn/thread-886615-1-1.html?tdsourcetag=s_pctim_aiomsg) 可以实现手动脱壳。
 
 但是我懒不想手动脱壳，在吾爱破解上找到了[一个工具](https://www.52pojie.cn/thread-153693-1-1.html)：
 
-![03.exe.PackerBreaker](./03.exe.PackerBreaker.png)
+![03.exe.PackerBreaker](../03.exe.PackerBreaker.png)
 
 把同文件夹下的 `./Lab01-03.pb.1.exe` 更名为 `./Lab01-03.unpack.exe` 然后再用 `PEiD` 分析，发现成功脱壳：
 
-![03.exe.PEiD.unpack](./03.exe.PEiD.unpack.png)
+![03.exe.PEiD.unpack](../03.exe.PEiD.unpack.png)
 
 ## QUESTION 3
 

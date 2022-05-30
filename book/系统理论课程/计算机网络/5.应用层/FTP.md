@@ -82,9 +82,9 @@ A host that provides an FTP service may provide anonymous FTP access. Users typi
 
 从客户向服务器发送的FTP命令超过30种。下图是比较常用的几种命令：
 
-![FTP-2](./FTP-2.png)
+![FTP-2](../FTP-2.png)
 
 应答都是 ASCII 码形式的3位数字，并跟有报文选项。其原因是软件系统需要根据数字代码来决定如何应答，而选项串是面向人工处理的。由于客户通常都要输出数字应答和报文串，一个可交互的用户可以通过阅读报文串（而不必记忆所有数字回答代码的含义）来确定应答的含义。
 
-![FTP](./FTP-3.png)
+![FTP](../FTP-3.png)
 

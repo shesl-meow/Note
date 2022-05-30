@@ -89,7 +89,7 @@ void tarjan(int u, int v)
 
 这个结论在 `low` 的理念前提下是正确的，但是在 `dfs` 实现的代码中是错误的。看下面的例子：
 
-![tarjan_isnot_ufds](./tarjan_isnot_ufds.svg)
+![tarjan_isnot_ufds](../tarjan_isnot_ufds.svg)
 
 左边的图按照给定的边序会生成右边的图，在遍历到 `F`/`E` 时虽然能够回到一个父节点，但是这并不是它们通过非回溯路径能够到达最高的节点，所以 `low` 数组的最终结果会是：
 

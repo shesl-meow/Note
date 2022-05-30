@@ -16,7 +16,7 @@
 
 If we name the tasks of visiting a node V, traversing the left subtree L, and traversing the right subtree R, then there are six ways to arrange them:
 
-![1542609663351](./Traversal-type.png)
+![1542609663351](../Traversal-type.png)
 
 #### standard traversal orders
 
@@ -77,14 +77,14 @@ Treesort makes exactly the same comparisons of keys as does quicksort when the p
 
 1. case 1: deletion of a leaf.
 
-   ![1542615692931](./bintree--deletion--leaf.png)
+   ![1542615692931](../bintree--deletion--leaf.png)
 
 2. case 2: one subtree empty.
 
-   ![1542615822059](./bintree--deletion--onesub.png)
+   ![1542615822059](../bintree--deletion--onesub.png)
 
 3. case 3: none subtree empty.
 
-   ![1542615891218](./bintree--deletion--twosub.png)
+   ![1542615891218](../bintree--deletion--twosub.png)
 
 ## Building a binary search tree

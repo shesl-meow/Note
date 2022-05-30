@@ -111,7 +111,7 @@ MSVCRT.dll
 
 我们用 `ida pro` 打开这个可执行文件，先查看它里面的字符串：
 
-![04.exe.ida.strings](./04.exe.ida.strings.png)
+![04.exe.ida.strings](../04.exe.ida.strings.png)
 
 我们发现 `\\system32\\wupdmgr.exe` 这样一个字符串，我们查找调用的位置，并查看调用位置的伪代码：
 
@@ -153,7 +153,7 @@ $ ls
 
 我们发现提取出了 `0` 和 `4060` 这两个资源，很显然 `0` 即为之前分析的可执行文件，我们再用  `ida pro` 分析其中的资源文件 `4060`：
 
-![04.resources.ida.string](./04.resources.ida.string.png)
+![04.resources.ida.string](../04.resources.ida.string.png)
 
 我们发现了一个 `URL` 地址，并且我们还在导入表中发现了 `URLDownloadToFileA` 这个导入函数，我们再分析调用这个字符串位置的伪代码：
 

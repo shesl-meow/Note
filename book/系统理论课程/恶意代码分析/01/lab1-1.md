@@ -74,7 +74,7 @@ $ packerid /tmp/BinaryCollection/Chapter_1L/Lab01-01.exe
 
 或者通过 `PEiD` 这个软件进行分析：
 
-![01.exe.PEiD](./01.exe.PEiD.png)
+![01.exe.PEiD](../01.exe.PEiD.png)
 
 ### 结论
 
@@ -138,11 +138,11 @@ MSVCRT.dll
 
 或者直接使用 `PE Explorer` 可以查看以下的导入函数结果：
 
-![01.exe.PEexplorer.Import](./01.exe.PEexplorer.Import.png)
+![01.exe.PEexplorer.Import](../01.exe.PEexplorer.Import.png)
 
 链接库的导入表分析：
 
-![01.dll.PEexplorer.Import](./01.dll.PEexplorer.Import.png)
+![01.dll.PEexplorer.Import](../01.dll.PEexplorer.Import.png)
 
 ### 结论
 
@@ -160,7 +160,7 @@ MSVCRT.dll
 
 另外我们分析可执行文件的 `.data` 全局数据段：
 
-![01.exe.PEexplorer.data](./01.exe.PEexplorer.data.png)
+![01.exe.PEexplorer.data](../01.exe.PEexplorer.data.png)
 
 我们发现一个叫做 `kerne132.dll` 的字符串，这个字符串用数字 `1` 代替了字母 `l`，貌似是想要掩盖什么东西。我们查找调用这个字符串的位置，我们发现下面的汇编指令：
 
@@ -254,7 +254,7 @@ CALLED POS 0 ==> 749
 
 根据前面的分析，可执行文件通过将动态链接库复制到 `C:/Windows/System32` 这个文件夹下，然后通过这个动态链接库进行进程、网络相关的动作，因此我们分析这个动态链接库。`.data` 段全局字符串：
 
-![01.dll.PEexplorer.data](./01.dll.PEexplorer.data.png)
+![01.dll.PEexplorer.data](../01.dll.PEexplorer.data.png)
 
 其中 `exec` 和一个 `127.26.152.13` 这个为 IP 地址格式的字符串非常可疑。为了分析该动态链接库的网络特征，我们查找调用第二个字符串的位置 `.text:100010A3`，使用 `IDA Pro` 分析出以下的伪代码：
 
