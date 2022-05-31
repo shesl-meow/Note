@@ -68,13 +68,13 @@ def parse_file(filename):
         ct_ind = filepath.index('content')
         tags = filepath[(ct_ind + 4):-1]
         categories = filepath[ct_ind + 2: ct_ind + 4]
+        tags = [tag for tag in tags if not re.match(r"^[0-9]*$", tag)]
+        categories = [category for category in categories if '.' not in category]
 
     z = re.match(r"([^#]*\n)?# (.*)\n((.|\n)*)", input)
     if z is not None:
         title = z[2]
         body = (z[1] or "") + z[3]
-        tags = filepath[(filepath.index('content') + 2):-1] if ('content' in filepath) else filepath[:-1]
-        tags.append(title.split('.')[-1] if '.' in title else title)
 
     if filepath[-1] in name_2_date_index:
         index = name_2_date_index[filepath[-1]]
