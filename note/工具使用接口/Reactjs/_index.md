@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-title: "reactjs"
+title: "Reactjs"
 ---
 
 # README

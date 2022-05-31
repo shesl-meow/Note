@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-title: "typescript"
+title: "Typescript"
 ---
 
 > 官方：

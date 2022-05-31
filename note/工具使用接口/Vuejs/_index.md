@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-title: "vuejs"
+title: "Vuejs"
 ---
 
 # README
