@@ -1,4 +1,10 @@
-# baby lfsr
+---
+title: "baby lfsr"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["工具使用接口", "CTF-WriteUp"]
+---
+
 
 在比赛的时候一直在想怎么用 `berlekamp_massey` 算法求解（用矩阵求解，写代码更快，512 比特没必要用 BM 算法），并且把判断条件抄成了 `1124` ....
 
@@ -34,4 +40,5 @@ if __name__=="__main__":
         print flag
         if flag[:4] == "1224": break
 ```
+
 
