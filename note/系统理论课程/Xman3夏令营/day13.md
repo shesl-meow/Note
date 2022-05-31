@@ -1,3 +1,5 @@
+# Web 安全
+
 ## Https下的Web同源安全问题研究
 
 ### XSS
@@ -10,8 +12,6 @@
   - 仅以domain/path作为同源限制
   - 不区分端口
   - 不区分HTTP/HTTPs
-
-# 下午
 
 ## CRLF注入
 
