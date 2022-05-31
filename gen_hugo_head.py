@@ -6,7 +6,7 @@ import datetime
 name_2_date_index = {}
 
 def gen_name_2_date():
-    output = open("name_2_date", "w")
+    output = open("name_2_date", "a")
     curr_path = os.path.abspath("./")
     for dirpath, dnames, fnames in os.walk(curr_path):
         for fname in fnames:
@@ -28,8 +28,14 @@ def load_name_2_date():
                 name = None
             continue
         if not name[1] in name_2_date_index:
-            name_2_date_index[name[1]] = []
-        name_2_date_index[name[1]].append([name[0], line.strip()])
+            name_2_date_index[name[1]] = {}
+        if not name[0] in name_2_date_index[name[1]]:
+            name_2_date_index[name[1]][name[0]] = line.strip()
+        else:
+            old = datetime.datetime.fromisoformat(name_2_date_index[name[1]][name[0]])
+            new = datetime.datetime.fromisoformat(line.strip())
+            if new < old:
+                name_2_date_index[name[1]][name[0]] = line.strip()
         name = None
     input.close()
 
@@ -62,12 +68,11 @@ def parse_file(filename):
         tags.append(title)
 
     if filepath[-1] in name_2_date_index:
-        lst = name_2_date_index[filepath[-1]]
-        filedate = lst[0][1]
-        for item in lst:
-            if item[0] == filepath[-2]:
-                filedate = item[1]
-                break
+        index = name_2_date_index[filepath[-1]]
+        if filepath[-2] in index:
+            filedate = index[filepath[-2]]
+        else:
+            filedate = list(index.values())[0]
     
     output = f"""\
 ---
@@ -94,5 +99,8 @@ def iterate_parse_file(dirpath):
 
 
 if __name__ == "__main__":
-    load_name_2_date()
-    iterate_parse_file(sys.argv[1])
+    if sys.argv[1] == "gen_index":
+        gen_name_2_date()
+    else:
+        load_name_2_date()
+        iterate_parse_file(sys.argv[1])
