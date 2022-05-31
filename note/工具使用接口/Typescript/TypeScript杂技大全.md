@@ -1,6 +1,6 @@
 ---
 title: "TypeScipt 杂技大全"
-date: 2022-05-31T12:50:56+08:00
+date: 2021-04-26T11:02:26+08:00
 tags: [""]
 categories: ["工具使用接口", "Typescript"]
 ---

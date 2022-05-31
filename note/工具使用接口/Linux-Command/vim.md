@@ -1,6 +1,6 @@
 ---
-title: "vimtutor"
-date: 2022-05-31T12:50:56+08:00
+title: "vim"
+date: 2019-07-30T11:01:03+08:00
 tags: [""]
 categories: ["工具使用接口", "Linux-Command"]
 ---
