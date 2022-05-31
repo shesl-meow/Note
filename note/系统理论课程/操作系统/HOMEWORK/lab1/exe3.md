@@ -1,4 +1,10 @@
-# exe3
+---
+title: "exe3"
+date: 2019-10-06T23:25:31+08:00
+tags: [""]
+categories: ["系统理论课程", "操作系统"]
+---
+
 
 ## 问题1
 
@@ -95,4 +101,5 @@ protcseg:
     movl $start, %esp
     call bootmain
 ```
+
 

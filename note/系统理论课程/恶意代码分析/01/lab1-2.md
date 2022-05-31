@@ -1,4 +1,10 @@
-# lab 1-2
+---
+title: "lab 1-2"
+date: 2019-04-26T02:41:50+08:00
+tags: [""]
+categories: ["系统理论课程", "恶意代码分析"]
+---
+
 
 ## QUESTION 1
 
@@ -116,4 +122,5 @@ WININET.dll
 这其中 `szAgent` 这个字符串变量指的就是 `Internet Explorer 8.0`，而后的 `szUrl` 指的就是 `http://www.malwareanalysisbook.com`，这是一个不会停止的循环，意味着这个病毒会不断得使用 `IE` 浏览器打开后面的网址。
 
 因此我们可以通过 `wireshark` 抓取所有访问这个网址的流量即可。
+
 

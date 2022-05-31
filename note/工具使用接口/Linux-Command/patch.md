@@ -1,4 +1,10 @@
-# patch
+---
+title: "patch"
+date: 2019-11-12T18:50:46+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 
 Linux 中的 `patch` 命令与 `diff` 命令是一对命令。
 

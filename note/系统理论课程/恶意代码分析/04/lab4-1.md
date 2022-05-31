@@ -1,4 +1,10 @@
-# lab 4-1
+---
+title: "lab 4-1"
+date: 2019-06-10T04:41:10+08:00
+tags: [""]
+categories: ["系统理论课程", "恶意代码分析"]
+---
+
 
 用 `IDA pro` 打开文件：
 
@@ -44,6 +50,7 @@ int __cdecl main_0(int argc, const char **argv)
 ```
 
 通过查看汇编代码，发现只要将第8行的 `jnz short loc_4113F5` 改为 `jz short loc_4113F5` 即把判断条件反转即可做到输入随机字符串可通过认证。
+
 
 
 

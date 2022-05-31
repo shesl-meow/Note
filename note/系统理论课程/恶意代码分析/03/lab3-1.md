@@ -1,4 +1,10 @@
-# lab 3-1
+---
+title: "lab 3-1"
+date: 2019-05-08T07:14:48+08:00
+tags: [""]
+categories: ["系统理论课程", "恶意代码分析"]
+---
+
 
 ## QUESTION 1
 
@@ -211,4 +217,5 @@ $ inetsim
 ### 结论
 
 病毒运行之后首先会请求解析 `www.practicalmalwareanalysis.com` 的 IP，与目标主机建立了 `TCP` 连接之后，以一个非 `HTTPS & HTTP` 协议访问目标服务器的 443 端口。
+
 

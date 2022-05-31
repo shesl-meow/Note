@@ -1,9 +1,15 @@
+---
+title: "SMTP 协议"
+date: 2018-12-24T15:08:53+08:00
+tags: [""]
+categories: ["系统理论课程", "计算机网络"]
+---
+
 > 学习地址：
 >
 > - https://blog.csdn.net/kerry0071/article/details/28604267
 > - http://coolnull.com/3055.html
 
-# SMTP 协议
 
 ## 简介
 
@@ -36,4 +42,5 @@ SMTP 是一个请求/响应协议，它监听 25 号端口，用于接收用户�
 - STMP Command: http://www.samlogic.net/articles/smtp-commands-reference.htm
 
 - STMP Reply Code: https://www.greenend.org.uk/rjk/tech/smtpreplies.html
+
 

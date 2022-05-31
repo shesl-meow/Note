@@ -1,4 +1,10 @@
-# exe2
+---
+title: "exe2"
+date: 2019-11-24T22:24:42+08:00
+tags: [""]
+categories: ["系统理论课程", "操作系统"]
+---
+
 
 ## 概述
 
@@ -54,4 +60,5 @@ pte_t *get_pte(pde_t *pgdir, uintptr_t la, bool create);
 - 最后退出中断，回到进入中断前的状态
 
 ## 代码
+
 

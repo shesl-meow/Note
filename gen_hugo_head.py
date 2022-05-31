@@ -69,6 +69,7 @@ def parse_file(filename):
         tags = filepath[(ct_ind + 4):-1]
         categories = filepath[ct_ind + 2: ct_ind + 4]
         tags = [tag for tag in tags if not re.match(r"^[0-9]*$", tag)]
+        tags = [tag.split('.')[1] if re.match(r"[0-9]*\..*", tag) else tag for tag in tags]
         categories = [category for category in categories if '.' not in category]
 
     z = re.match(r"([^#]*\n)?# (.*)\n((.|\n)*)", input)
@@ -87,7 +88,7 @@ def parse_file(filename):
 ---
 title: "{title}"
 date: {filedate}
-tags: ["{'", "'.join(tags)}"]
+tags: [""]
 categories: ["{'", "'.join(categories)}"]
 ---
 

@@ -1,8 +1,14 @@
+---
+title: "MYSQL 爆破"
+date: 2019-01-02T00:15:57+08:00
+tags: [""]
+categories: ["工具使用接口", "Kali"]
+---
+
 > ​	学习地址：
 >
 > - https://xz.aliyun.com/t/1652
 
-# MYSQL 爆破
 
 ## 使用 metasploit
 
@@ -67,4 +73,5 @@ $ nmap -sV --script=mysql-databases --script-args dbuser=root,dbpass=11111111 19
 ```shell
 $ hydra -l root -P /root/Desktop/top10000pwd.txt -t 16 192.168.157.130 mysql
 ```
+
 

@@ -1,8 +1,14 @@
+---
+title: "Socket Programming"
+date: 2018-12-24T15:08:53+08:00
+tags: [""]
+categories: ["系统理论课程", "计算机网络"]
+---
+
 > 学习网址：
 >
 > - https://www.geeksforgeeks.org/socket-programming-cc/
 
-# Socket Programming
 
 什么是 socket 编程？
 

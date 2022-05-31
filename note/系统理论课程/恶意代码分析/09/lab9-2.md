@@ -1,4 +1,10 @@
-# lab 9-2
+---
+title: "lab 9-2"
+date: 2019-07-10T19:43:10+08:00
+tags: [""]
+categories: ["系统理论课程", "恶意代码分析"]
+---
+
 
 ## QUESTION 1
 
@@ -20,4 +26,5 @@
 > How can you get this sample to run its malicious payload?
 
 ## QUESTION 4
+
 

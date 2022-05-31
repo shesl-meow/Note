@@ -1,8 +1,14 @@
+---
+title: "ELF Format"
+date: 2019-08-01T17:01:00+08:00
+tags: [""]
+categories: ["项目底层实现", "Linux源码阅读"]
+---
+
 > 参考：
 >
 > - <https://linux-audit.com/elf-binaries-on-linux-understanding-and-analysis/>
 
-# ELF Format
 
 ELF is the abbreviation for **Executable and Linkable Format** and defines the structure for binaries, libraries, and core files. 
 
@@ -264,4 +270,5 @@ $ readelf --section-headers <program>
 # 查看动态链接的依赖
 $ lddtree <program>
 ```
+
 

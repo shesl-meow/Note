@@ -1,3 +1,10 @@
+---
+title: "Hooks.md"
+date: 2021-08-08T17:15:28+08:00
+tags: [""]
+categories: ["工具使用接口", "Reactjs"]
+---
+
 > 参考文档：
 >
 > - https://zh-hans.reactjs.org/docs/hooks-intro
@@ -62,4 +69,5 @@ export const MyComponent: React.FC = () => {
 React Hooks 是一个非常强大的工具、非常通用的设计模式。
 
 React 同样提供了[自定义 Hooks 的方式](https://reactjs.org/docs/hooks-custom.html)，自定义 Hooks 都以 `use` 开头，有非常繁荣的[第三方生态](https://github.com/streamich/react-use)。
+
 

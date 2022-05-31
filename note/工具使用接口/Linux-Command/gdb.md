@@ -1,4 +1,10 @@
-# gdb
+---
+title: "gdb"
+date: 2022-05-31T12:50:56+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 
 ## Quick Manual
 

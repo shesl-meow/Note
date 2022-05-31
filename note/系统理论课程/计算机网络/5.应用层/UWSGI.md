@@ -1,3 +1,10 @@
+---
+title: "UWSGI.md"
+date: 2018-12-24T15:08:53+08:00
+tags: [""]
+categories: ["系统理论课程", "计算机网络"]
+---
+
 > 在搭建 NKCTF 网站的时候学习到的有关 UWSGI 的知识
 
 ## WSGI协议
@@ -97,4 +104,5 @@ uWSGI configuration files can include “magic” variables, prefixed with a per
 | %G     | group name (if available, otherwise fallback to gid) of the user running the process (version 2.0) |
 | %j     | HEX representation of the djb33x hash of the full config path |
 | %J     | same as %j but refer to the first non-template config file   |
+
 

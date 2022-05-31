@@ -1,3 +1,10 @@
+---
+title: "Elf Sections"
+date: 2019-08-29T22:27:32+08:00
+tags: [""]
+categories: ["项目底层实现", "Linux源码阅读"]
+---
+
 > 参考：
 >
 > - <https://linux-audit.com/elf-binaries-on-linux-understanding-and-analysis/>
@@ -7,7 +14,6 @@
 > - <http://dbp-consulting.com/tutorials/debugging/linuxProgramStartup.html>
 > - <https://stackoverflow.com/questions/34966097/what-functions-does-gcc-add-to-the-linux-elf>
 
-# Elf Sections
 
 ## 常见节
 
@@ -197,4 +203,5 @@ void init(int argc, char **argv, char **envp) {
 
 __attribute__((section(".init_array"))) typeof(init) *__init = init;
 ```
+
 

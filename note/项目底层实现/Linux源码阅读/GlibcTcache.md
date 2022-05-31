@@ -1,9 +1,15 @@
+---
+title: "Tcache"
+date: 2019-08-20T18:14:38+08:00
+tags: [""]
+categories: ["项目底层实现", "Linux源码阅读"]
+---
+
 > 参考资料：
 >
 > - <http://p4nda.top/2018/03/20/tcache/>
 > - <https://ctf-wiki.github.io/ctf-wiki/pwn/linux/glibc-heap/tcache_attack-zh/>
 
-# Tcache
 
 ## 介绍
 

@@ -1,4 +1,10 @@
-# Python代码审计
+---
+title: "Python代码审计"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["系统理论课程", "Xman3夏令营"]
+---
+
 
 ## OS命令注入
 
@@ -179,3 +185,4 @@ del __builtins__.__dict__['reload']
 
 - 工作组、家庭组
 - *P.S.*：信息安全四大顶会，RSAP
+

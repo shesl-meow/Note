@@ -1,4 +1,10 @@
-# Web服务器端安全
+---
+title: "Web服务器端安全"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["系统理论课程", "Xman3夏令营"]
+---
+
 
 ## 前置知识
 
@@ -376,3 +382,4 @@ http://www.test.com/index.php?page=php://filter/convert.base64-encode/resource=.
 - 用户只能访问有限的资源，就是访问控制
   - 基于url的访问控制、基于方法的访问控制、基于数据的访问控制
 - 越权 &rarr; 水平越权（用户之间的越权访问）、垂直越权（用户得到管理员权限）
+

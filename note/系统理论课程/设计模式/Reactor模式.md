@@ -1,4 +1,10 @@
-# Reactor 模式
+---
+title: "Reactor 模式"
+date: 2021-04-12T00:18:41+08:00
+tags: [""]
+categories: ["系统理论课程", "设计模式"]
+---
+
 
 一个网络连接对应于一个线程处理，是最原始的 Web 应用模型：
 
@@ -23,4 +29,5 @@
 在多 CPU 的机器上 Reactor 又可以拆分成 mainReactor 和 subReactor：
 
 ![multi_connect_mainsub_reactor](./multi_connect_mainsub_reactor.jpeg)
+
 

@@ -1,4 +1,10 @@
-# Django Signals
+---
+title: "Django Signals"
+date: 2019-03-27T12:06:27+08:00
+tags: [""]
+categories: ["工具使用接口", "Python"]
+---
+
 
 ## Built-in Signals
 
@@ -42,3 +48,4 @@ Signal.connect(receiver, sender=None, weak=True, dispatch_uid=None)
 - dispatch_uid: 在可能发生重复信号的情况下设置接受器的唯一标识
 """
 ```
+

@@ -1,4 +1,10 @@
-# SM 4
+---
+title: "SM 4"
+date: 2019-09-11T06:36:05+08:00
+tags: [""]
+categories: ["系统理论课程", "密码学"]
+---
+
 
 直接上代码（[github](https://github.com/duanhongyi/gmssl/blob/master/gmssl/sm4.py)）：
 
@@ -171,4 +177,5 @@ class CryptSM4(object):
                 length -= 16
             return list_to_bytes(unpadding(output_data))
 ```
+
 

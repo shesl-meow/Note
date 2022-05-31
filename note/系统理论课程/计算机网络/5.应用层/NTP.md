@@ -1,8 +1,14 @@
+---
+title: "NTP"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["系统理论课程", "计算机网络"]
+---
+
 > 学习地址：
 >
 > - https://www.tecmint.com/synchronize-time-with-ntp-in-linux/
 
-# NTP
 
 ## Protocol
 

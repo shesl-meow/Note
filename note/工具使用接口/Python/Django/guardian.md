@@ -1,10 +1,16 @@
+---
+title: "django-guardian"
+date: 2019-03-27T12:06:27+08:00
+tags: [""]
+categories: ["工具使用接口", "Python"]
+---
+
 > 项目地址：https://github.com/django-guardian/django-guardian
 >
 > 官方文档：https://django-guardian.readthedocs.io/en/stable/
 >
 > 中文介绍：https://www.jianshu.com/p/404fd39d5efc
 
-# django-guardian
 
 `django-guardian` 是一个对象权限的框架。
 

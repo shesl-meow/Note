@@ -1,6 +1,12 @@
+---
+title: "Tutorial02"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["工具使用接口", "Python"]
+---
+
 > 参考资料：[Tutorial02](https://docs.djangoproject.com/en/2.1/intro/tutorial02/)
 
-# Tutorial02
 
 ## Database setup
 
@@ -176,4 +182,5 @@ admin.site.register(Choice)
 ```
 
 这时刷新浏览器，即可查看 `polls` 中的 Question 和 Choice 对象。
+
 

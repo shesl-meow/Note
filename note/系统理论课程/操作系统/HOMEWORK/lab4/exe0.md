@@ -1,4 +1,10 @@
-# exe0
+---
+title: "exe0"
+date: 2019-12-03T13:41:00+08:00
+tags: [""]
+categories: ["系统理论课程", "操作系统"]
+---
+
 
 同 [lab2](../lab2/exe0.md)：
 
@@ -13,4 +19,5 @@
    ```bash
    $ git apply lab4/exe0.patch
    ```
+
 

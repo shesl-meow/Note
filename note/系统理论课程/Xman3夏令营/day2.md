@@ -1,4 +1,10 @@
-# MISC
+---
+title: "MISC"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["系统理论课程", "Xman3夏令营"]
+---
+
 
 ## 0x00: Recon 
 
@@ -235,3 +241,4 @@ import PIL from image
 - 工控：协议
 
 ## 0x04: Misc+
+

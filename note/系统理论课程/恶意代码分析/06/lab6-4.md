@@ -1,4 +1,10 @@
-# lab 6-4
+---
+title: "lab 6-4"
+date: 2019-06-10T04:41:10+08:00
+tags: [""]
+categories: ["系统理论课程", "恶意代码分析"]
+---
+
 
 ## QUESTION 1
 
@@ -124,4 +130,5 @@ call    ds:Sleep
 > What is the purpose of this malware?
 
 先检查 `Internet` 连接，使用随时间可变的 `user-agent` 下载网页，解析HTML，程序运行 `24h` 终止。
+
 

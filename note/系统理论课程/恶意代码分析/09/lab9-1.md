@@ -1,4 +1,10 @@
-# lab 9-1
+---
+title: "lab 9-1"
+date: 2019-06-19T16:39:55+08:00
+tags: [""]
+categories: ["系统理论课程", "恶意代码分析"]
+---
+
 
 ## QUESTION 1
 
@@ -134,4 +140,5 @@ int __cdecl sub_402510(int a1)
 默认情况下，恶意代码向 http://www.practicalmalwareanalysis.com 发送 `HTTP1.0GET` 请求，格式为
 `****/****.***` 其中 `*` 是随机的数字或字母字符。
 可以通过 `-c` 命令配置目标主机、端口号等。
+
 

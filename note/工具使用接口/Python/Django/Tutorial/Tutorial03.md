@@ -1,6 +1,12 @@
+---
+title: "Tutorial03"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["工具使用接口", "Python"]
+---
+
 > 参考资料：[Tutorial03](https://docs.djangoproject.com/en/2.1/intro/tutorial03/)
 
-# Tutorial03
 
 ## Overview
 
@@ -195,4 +201,5 @@ app_name = 'polls'
 <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
 --!>
 ```
+
 

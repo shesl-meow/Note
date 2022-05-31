@@ -1,4 +1,10 @@
-# Web 安全
+---
+title: "Web 安全"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["系统理论课程", "Xman3夏令营"]
+---
+
 
 ## Https下的Web同源安全问题研究
 
@@ -47,4 +53,5 @@
 
 - X-XSS-Protection
   - 一定程度上禁止反射性XSS攻击
+
 

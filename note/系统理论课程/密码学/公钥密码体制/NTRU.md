@@ -1,8 +1,14 @@
+---
+title: "NTRU Cryptosystem"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["系统理论课程", "密码学"]
+---
+
 > 参考：
 >
 > - <http://people.scs.carleton.ca/~maheshwa/courses/4109/Seminar11/NTRU_presentation.pdf>
 
-# NTRU Cryptosystem
 
 `NTRU`: Nth degree Truncated polynomial Ring Units. Or $$\displaystyle R = \frac{Z[X]}{X^{N-1}}$$
 
@@ -42,4 +48,5 @@ B 收到了来自 A 的加密信息将通过以下的方式解密：
 1. B 私钥中有一个私有的多项式 f，通过以下方式计算多项式 a：$$a \equiv f \cdot e \pmod{q}$$，其中多项式的系数选在区间 $$\displaystyle (-\frac{q}{2}, \frac{q}{2})$$ 之中；
 2. 在通过小素数 p 计算：$$b \equiv a \pmod{p}$$
 3. 最后使用私钥中的多项式 $$f_p$$ 即可得到明文：$$c \equiv f_p \cdot b \pmod{p}$$
+
 

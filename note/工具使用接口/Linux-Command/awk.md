@@ -1,4 +1,10 @@
-# Awk
+---
+title: "Awk"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 
 ## Brief Introduction
 
@@ -127,4 +133,5 @@ Another way to change to record separator is on the command line, using the vari
 ```bash
 $ awk '{print $0}' RS="u" data
 ```
+
 

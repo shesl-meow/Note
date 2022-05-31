@@ -1,3 +1,10 @@
+---
+title: "`iptables` 防火墙"
+date: 2022-05-31T12:50:56+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 > 学习网址：
 >
 > - https://www.jianshu.com/p/c2aee2ff7bd8
@@ -7,7 +14,6 @@
 >
 > - https://www.91yun.co/archives/3042
 
-# `iptables` 防火墙
 
 用于实现Linux下访问控制的功能的，它分为硬件的或者软件的防火墙两种。无论是在哪个网络中，防火墙工作的地方一定是在网络的边缘。
 
@@ -83,4 +89,5 @@ iptables -t <table> <COMMAND> [chain] <CRETERIA> -j <ACTION>
 ```bash
 $ iptables -L -n -v
 ```
+
 

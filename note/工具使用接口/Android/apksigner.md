@@ -1,8 +1,14 @@
+---
+title: "`apksigner`"
+date: 2019-02-19T06:23:32+08:00
+tags: [""]
+categories: ["工具使用接口", "Android"]
+---
+
 > 学习途径：
 >
 > - 官方命令行工具：https://developer.android.com/studio/command-line/apksigner
 
-# `apksigner`
 
 ## Usage
 

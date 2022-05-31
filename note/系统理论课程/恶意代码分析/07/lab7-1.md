@@ -1,4 +1,10 @@
-# lab 7-1
+---
+title: "lab 7-1"
+date: 2019-06-10T04:41:10+08:00
+tags: [""]
+categories: ["系统理论课程", "恶意代码分析"]
+---
+
 
 ## QUESTION 1
 
@@ -146,4 +152,5 @@ void __stdcall __noreturn StartAddress(LPVOID lpThreadParameter)
 根据之前的分析，程序创建了 20 个不会停止的线程之后会 `Sleep(0xFFFFFFFF);`，这是一个 `unsigned int` 类型的最大值，以毫秒为单位计算之后这个程序 `sleep` 的时间，得到 `49 天 ` 的结果。
 
 所以这个程序的主控线程会在执行了 49 天之后停止，但是很显然这个恶意代码的作者并不想让他停止，之所以为 49 天只是因为并不能休眠更长的时间了。
+
 

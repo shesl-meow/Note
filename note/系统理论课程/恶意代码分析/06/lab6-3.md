@@ -1,4 +1,10 @@
-# lab 6-3
+---
+title: "lab 6-3"
+date: 2019-06-10T04:41:10+08:00
+tags: [""]
+categories: ["系统理论课程", "恶意代码分析"]
+---
+
 
 ## QUESTION 1
 
@@ -81,4 +87,5 @@ void __cdecl sub_401130(char a1, LPCSTR lpExistingFileName)
 > What is the purpose of this malware?
 
 这个程序的大致内容与之前的一个程序内容类似。另外，他添加了了的函数（之前分析的带 `switch case` 语句的函数），增加了删除的功能。
+
 

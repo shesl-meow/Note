@@ -1,4 +1,10 @@
-# Chapter 10--Binary Trees
+---
+title: "Chapter 10--Binary Trees"
+date: 2018-12-24T15:08:53+08:00
+tags: [""]
+categories: ["系统理论课程", "数据结构"]
+---
+
 
 ## Binary Trees
 

@@ -1,4 +1,10 @@
-# SM 3
+---
+title: "SM 3"
+date: 2019-09-11T06:36:05+08:00
+tags: [""]
+categories: ["系统理论课程", "密码学"]
+---
+
 
 直接上代码（[github](https://github.com/duanhongyi/gmssl/blob/master/gmssl/sm3.py)）：
 
@@ -144,4 +150,5 @@ def sm3_kdf(z, klen): # z为16进制表示的比特串（str），klen为密钥�
         ct += 1
     return ha[0: klen * 2]
 ```
+
 

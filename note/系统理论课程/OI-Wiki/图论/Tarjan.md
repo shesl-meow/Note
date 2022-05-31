@@ -1,4 +1,10 @@
-# 图论
+---
+title: "图论"
+date: 2021-07-18T12:36:31+08:00
+tags: [""]
+categories: ["系统理论课程", "OI-Wiki"]
+---
+
 
 ## Tarjan
 
@@ -96,4 +102,5 @@ void tarjan(int u, int v)
 ```
 [0, 0, 0, 0, 1, 1]
 ```
+
 

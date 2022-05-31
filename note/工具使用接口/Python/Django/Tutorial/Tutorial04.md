@@ -1,6 +1,12 @@
+---
+title: "Tutorial04"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["工具使用接口", "Python"]
+---
+
 > 参考资料：[Tutorial04](https://docs.djangoproject.com/en/2.1/intro/tutorial04/)
 
-# Tutorial04
 
 ## Write a simple form
 
@@ -122,4 +128,5 @@ def vote(request, question_id):
 同理 `ListView` 也会使用 `<app_name>/<model_name>_list.html` 这个模板。
 
 完整的通用视图使用方法，可以查看[说明文档](https://docs.djangoproject.com/en/2.1/topics/class-based-views/)。
+
 

@@ -1,5 +1,12 @@
-# TypeScipt 杂技大全
+---
+title: "TypeScipt 杂技大全"
+date: 2022-05-31T12:50:56+08:00
+tags: [""]
+categories: ["工具使用接口", "Typescript"]
+---
 
+
+## 语法糖
 
 定义 getter setter，在类方法前使用关键字 `get`/`set`；
 
@@ -97,4 +104,5 @@ function applyMixins(derivedCtor: any, constructors: any[]) {
   });
 }
 ```
+
 

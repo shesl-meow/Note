@@ -1,8 +1,14 @@
+---
+title: "`apktool`"
+date: 2019-02-19T06:23:32+08:00
+tags: [""]
+categories: ["工具使用接口", "Android"]
+---
+
 > 学习途径：
 >
 > - 官网教程：https://ibotpeaches.github.io/Apktool/
 
-# `apktool`
 
 ## Basic
 

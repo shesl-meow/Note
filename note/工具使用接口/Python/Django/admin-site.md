@@ -1,6 +1,12 @@
+---
+title: "Django admin site"
+date: 2019-03-27T12:06:27+08:00
+tags: [""]
+categories: ["工具使用接口", "Python"]
+---
+
 > 官方文档：https://docs.djangoproject.com/en/2.1/ref/contrib/admin/
 
-# Django admin site
 
 ## Overview
 
@@ -147,4 +153,5 @@ The difference between these two is merely the template used to render them.
 ### `InlineModelAdmin` options
 
 `InlineModelAdmin` shares many of the same features as `ModelAdmin`, and adds some of its own (the shared features are actually defined in the`BaseModelAdmin` superclass). 
+
 

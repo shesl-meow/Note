@@ -1,3 +1,10 @@
+---
+title: "Authentication System"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["工具使用接口", "Python"]
+---
+
 > 学习网址：
 >
 > - https://www.jianshu.com/p/17d4c2182ef7
@@ -7,7 +14,6 @@
 >
 > 官方的参考文档：https://docs.djangoproject.com/zh-hans/2.1/ref/contrib/auth/
 
-# Authentication System
 
 ## Using the Django authentication system
 
@@ -346,4 +352,5 @@ class User(AbstractUser):
    
    $ python manage.py migrate
    ```
+
 

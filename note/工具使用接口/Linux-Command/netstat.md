@@ -1,10 +1,16 @@
+---
+title: "`netstat`"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 > 学习地址：
 >
 > - https://linuxtechlab.com/learn-use-netstat-with-examples/
 
 learn `netstat` with example.
 
-# `netstat`
 
 `Netstat` is a command line utility that tells us about all the `tcp/udp/unix `socket connections on our system. It provides list of all connections that are currently established or are in waiting state. This tool is extremely useful in identifying the port numbers on which an application is working and we can also make sure if an application is working or not on the port it is supposed to work.
 
@@ -83,5 +89,6 @@ learn `netstat` with example.
     ```shell
     $ netstat -c
     ```
+
 
 

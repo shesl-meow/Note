@@ -1,3 +1,10 @@
+---
+title: "Reflect.md"
+date: 2021-04-26T11:02:26+08:00
+tags: [""]
+categories: ["工具使用接口", "JavaScript"]
+---
+
 > https://es6.ruanyifeng.com/#docs/reflect
 
 # Reflect
@@ -37,4 +44,5 @@ Reflect.defineMetadata(metadataKey, metadataValue, C.prototype, "method");
 let obj = new C();
 let metadataValue = Reflect.getMetadata(metadataKey, obj, "method");
 ```
+
 

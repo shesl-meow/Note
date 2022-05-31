@@ -1,3 +1,10 @@
+---
+title: "UML.md"
+date: 2020-02-16T21:16:00+08:00
+tags: [""]
+categories: ["系统理论课程", "设计模式"]
+---
+
 ## 示例
 
 ```mermaid
@@ -11,4 +18,5 @@ classDiagram
 依赖 <.. Dependency
 实现 <|.. Realization
 ```
+
 

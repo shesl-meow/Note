@@ -1,6 +1,12 @@
+---
+title: "`pipenv` & `virtualenv`"
+date: 2019-03-01T12:25:20+08:00
+tags: [""]
+categories: ["工具使用接口", "Python"]
+---
+
 > 学习地址：https://docs.python-guide.org/dev/virtualenvs/
 
-# `pipenv` & `virtualenv`
 
 Make sure you have got `python` and `pip` install:
 

@@ -1,4 +1,10 @@
-# Elliptic Curve DSA
+---
+title: "Elliptic Curve DSA"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["系统理论课程", "密码学"]
+---
+
 
 ## Elliptic Curve
 
@@ -53,4 +59,5 @@
 1. 计算以下的三个数字：$$\begin{cases} t = s^{-1} \pmod{q}\\ u = h(m) \cdot t \pmod{q}\\ v = -t \cdot r \pmod{q} \end{cases}$$
 2. 在椭圆曲线中计算下面的点 $$uP + vQ = u(x,y) + v(x_d,y_d)=(x_k, y_k)$$
 3. 判断以下等式是否成立，成立则接受这个签名 $$r = c(x_k) \pmod{q}$$
+
 

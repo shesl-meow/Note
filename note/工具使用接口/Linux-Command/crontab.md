@@ -1,9 +1,15 @@
+---
+title: "CRON"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 > 学习网址：
 >
 > - https://www.marksanborn.net/linux/learning-cron-by-example/
 > - http://www.unixgeeks.org/security/newbie/unix/cron-1.html
 
-# CRON
 
 If you are using a Linux system and want to schedule a task to run in the future you will probably need to know cron. Cron is much like Window’s Scheduled Tasks. The only difference is that cron is conifgured by a simple text file. 
 

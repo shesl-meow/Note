@@ -1,9 +1,15 @@
+---
+title: "B-Tree"
+date: 2018-12-24T15:08:53+08:00
+tags: [""]
+categories: ["系统理论课程", "数据结构"]
+---
+
 > 学习链接：
 >
 > - https://www.geeksforgeeks.org/b-tree-set-1-introduction-2/
 > - https://www.geeksforgeeks.org/b-tree-set-1-insert-2/
 
-# B-Tree
 
 ## Introduction
 

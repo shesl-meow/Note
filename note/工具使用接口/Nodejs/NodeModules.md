@@ -1,9 +1,15 @@
+---
+title: "Commonjs vs ES Modules"
+date: 2021-06-15T10:21:42+08:00
+tags: [""]
+categories: ["工具使用接口", "Nodejs"]
+---
+
 > 参考：
 >
 > - https://www.zhihu.com/question/62791509
 > - https://redfin.engineering/node-modules-at-war-why-commonjs-and-es-modules-cant-get-along-9617135eeca1
 
-# Commonjs vs ES Modules
 
 ## What’s CJS? What’s ESM?
 
@@ -144,4 +150,5 @@ const {foo} = require('./foo.cjs');
 4. CJS 是动态语法可以写在判断里，ESM 静态语法只能写在顶层；
 
 5. CJS 的 `this` 指向当前模块，ESM 的 `this` 是 `undefined`；
+
 

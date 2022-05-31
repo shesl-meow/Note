@@ -1,4 +1,10 @@
-# Chapter2
+---
+title: "Chapter2"
+date: 2019-09-24T06:08:31+08:00
+tags: [""]
+categories: ["系统理论课程", "密码学"]
+---
+
 
 ## 第六题
 

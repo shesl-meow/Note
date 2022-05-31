@@ -1,4 +1,10 @@
-# Diffie Hellman Key Exchange
+---
+title: "Diffie Hellman Key Exchange"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["系统理论课程", "密码学"]
+---
+
 
 DH：DH 密钥交换用于在公开信道上共享私密信息
 

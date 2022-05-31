@@ -1,8 +1,14 @@
+---
+title: "ElGamal signature scheme"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["系统理论课程", "密码学"]
+---
+
 > 参考：
 >
 > - <https://resources.saylor.org/wwwresources/archived/site/wp-content/uploads/2011/03/ElGamal-signature-scheme.pdf>
 
-# ElGamal signature scheme
 
 ## 算法的流程
 
@@ -52,4 +58,5 @@
 - $$g^{H(m)} \equiv g^{xr}g^{ks} \equiv y^r r^s \pmod{p}$$
 
 ### 不可否认性
+
 

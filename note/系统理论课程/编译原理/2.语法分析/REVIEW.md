@@ -1,6 +1,12 @@
+---
+title: "REVIEW"
+date: 2019-01-16T12:47:51+08:00
+tags: [""]
+categories: ["系统理论课程", "编译原理"]
+---
+
 > 编译原理期末考试复习，于 2019-1-15
 
-# REVIEW
 
 ```mermaid
 graph TB;
@@ -26,4 +32,5 @@ end
 ```
 
 ![review-graph](../review-graph.svg)
+
 

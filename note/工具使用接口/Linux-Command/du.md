@@ -1,4 +1,10 @@
-# `du`
+---
+title: "`du`"
+date: 2019-03-27T12:06:27+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 
 用于计算文件或文件夹大小的命令，若要计算一个文件夹的大小：
 
@@ -11,4 +17,5 @@ $ du -h <your-folder>
 ```bash
 $ du -hcs <your-folder>
 ```
+
 

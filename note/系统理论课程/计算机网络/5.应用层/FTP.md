@@ -1,9 +1,15 @@
+---
+title: "文件传输协议 FTP"
+date: 2018-12-24T15:08:53+08:00
+tags: [""]
+categories: ["系统理论课程", "计算机网络"]
+---
+
 > 学习网址：
 >
 > - https://www.cnblogs.com/luoxn28/p/5585458.html
 > - https://en.wikipedia.org/wiki/File_Transfer_Protocol
 
-# 文件传输协议 FTP
 
 文件传输协议有基于 **TCP** 的FTP和基于**UDP** 的简单文件传输协议 **TFTP**，它们都是文件共享协议中的一大类，即复制整个文件，其特点是：若要存取一个文件，就必须先获得一个本地的文件副本。如果要修改文件，只能对文件的副本进行修改，然后再将修改后的文件传回到原节点。
 
@@ -87,4 +93,5 @@ A host that provides an FTP service may provide anonymous FTP access. Users typi
 应答都是 ASCII 码形式的3位数字，并跟有报文选项。其原因是软件系统需要根据数字代码来决定如何应答，而选项串是面向人工处理的。由于客户通常都要输出数字应答和报文串，一个可交互的用户可以通过阅读报文串（而不必记忆所有数字回答代码的含义）来确定应答的含义。
 
 ![FTP](../FTP-3.png)
+
 

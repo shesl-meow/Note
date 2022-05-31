@@ -1,4 +1,10 @@
-# 密码学Day1
+---
+title: "密码学Day1"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["系统理论课程", "Xman3夏令营"]
+---
+
 
 ## 密码学简介
 
@@ -189,4 +195,5 @@ Shannon 提出的两大设计分组密码的策略：混淆与扩散。
 ### AES - Advanced Encryption Standard
 
 ### Simon & Speck
+
 

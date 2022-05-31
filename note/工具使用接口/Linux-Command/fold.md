@@ -1,4 +1,10 @@
-# `Fold`
+---
+title: "`Fold`"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 
 `fold`:
 
@@ -18,3 +24,4 @@
   Hello
   World
   ```
+

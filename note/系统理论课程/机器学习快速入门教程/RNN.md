@@ -1,8 +1,14 @@
+---
+title: "introduction to `RNN`"
+date: 2019-07-30T11:01:03+08:00
+tags: [""]
+categories: ["系统理论课程", "机器学习快速入门教程"]
+---
+
 > 学习地址：
 >
 > - https://www.youtube.com/watch?v=lWkFhVq9-nc
 
-# introduction to `RNN`
 
 ## Feed Forward Neural Network, `FFNN`
 
@@ -88,4 +94,5 @@ $$o_t = \sigma(W_o [h_{t-1}, x_t] + b_0)$$, $$o_t$$ is called output gate.
 $$h_t = o_t * tanh(C_t)$$
 
 ### Implementation of `LSTM`
+
 

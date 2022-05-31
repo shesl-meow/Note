@@ -1,4 +1,10 @@
-# lab 3-4
+---
+title: "lab 3-4"
+date: 2019-05-16T15:42:26+08:00
+tags: [""]
+categories: ["系统理论课程", "恶意代码分析"]
+---
+
 
 ## QUESTION 1
 
@@ -23,4 +29,5 @@
 > Are there other ways to run this program?
 
 分析反汇编代码应该可以观察这个程序需要什么手段才可以正确执行，但是我懒，不想继续分析了。
+
 

@@ -1,8 +1,14 @@
+---
+title: "vimtutor"
+date: 2022-05-31T12:50:56+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 > 学习地址：`vimtutor`
 >
 > `vimtutor` 是一个由 `vim` 官方提供的教程，在 `bash` 界面直接运行 `vimtutor` 即可查看。
 
-# vimtutor
 
 ## Lesson 1
 
@@ -181,4 +187,5 @@
 3. Completion: command line completion with `CTRL-D` and `<TAB>`
 
    - *NOTICE*: make sure vim is not in compatible mode: `:set nocp`
+
 

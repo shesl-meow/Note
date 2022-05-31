@@ -1,8 +1,14 @@
+---
+title: "`wc`"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 > 学习地址：
 >
 > - https://www.tecmint.com/wc-command-examples/
 
-# `wc`
 
 The `wc`(**word count**) command in Unix/Linux operating systems is used to find out number of **newline count**, **word count**, **byte and characters** count in a files specified by the file arguments. 
 
@@ -21,4 +27,5 @@ wc -c : Displays the count of bytes in a file.
 wc -m : prints the count of characters from a file.
 wc -L : prints only the length of the longest line in a file.
 ```
+
 

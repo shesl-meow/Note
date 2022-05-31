@@ -1,4 +1,10 @@
-# lab 6-1
+---
+title: "lab 6-1"
+date: 2019-06-10T04:41:10+08:00
+tags: [""]
+categories: ["系统理论课程", "恶意代码分析"]
+---
+
 
 ## QUESTION 1
 
@@ -114,4 +120,5 @@ int __cdecl sub_40105F(int a1, int a2)
 > What is the purpose of this program?
 
 因为 `sub_401282` 这个程序的结构过于复杂不予研究的话，根据函数行为判断，这个程序仅仅通过 `InternateGetConnectedState()` 这个函数检测是否有有网络连接。
+
 

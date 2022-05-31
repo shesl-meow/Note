@@ -1,3 +1,10 @@
+---
+title: "command.md"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 Question: [How to check if a program exists from a Bash script?](https://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script)
 
 Answer: three possible method:
@@ -31,4 +38,5 @@ $ type foo >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed. 
 
 $ hash foo 2>/dev/null || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
 ```
+
 

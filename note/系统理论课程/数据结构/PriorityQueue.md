@@ -1,4 +1,10 @@
-# 优先级队列
+---
+title: "优先级队列"
+date: 2019-01-19T13:37:04+08:00
+tags: [""]
+categories: ["系统理论课程", "数据结构"]
+---
+
 
 ## ADT 抽象数据类型
 
@@ -48,4 +54,5 @@ ADT maxPriorityQueue
 ## C++
 
 C++ 的 STL 库中由 `prioryty_queue` 这个类可以实现优先级队列。
+
 

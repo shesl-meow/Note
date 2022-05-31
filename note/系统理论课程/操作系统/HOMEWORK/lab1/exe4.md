@@ -1,4 +1,10 @@
-# exe4
+---
+title: "exe4"
+date: 2019-10-06T23:25:31+08:00
+tags: [""]
+categories: ["系统理论课程", "操作系统"]
+---
+
 
 > 分析 bootloader 加载 ELF 格式的 OS 的过程
 

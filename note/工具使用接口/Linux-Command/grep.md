@@ -1,4 +1,10 @@
-# grep
+---
+title: "grep"
+date: 2019-02-25T15:16:23+08:00
+tags: [""]
+categories: ["工具使用接口", "Linux-Command"]
+---
+
 
 
 
@@ -36,4 +42,5 @@ Along with these, `--exclude`, `--include`, `--exclude-dir` flags could be used 
   ```bash
   $ grep --exclude-dir={dir1,dir2,*.dst} -rnw '/path/to/somewhere/' -e "pattern"
   ```
+
 

@@ -1,6 +1,12 @@
+---
+title: "Tutorial05"
+date: 2019-03-27T12:06:27+08:00
+tags: [""]
+categories: ["工具使用接口", "Python"]
+---
+
 > 参考资料：[Tutorial05](https://docs.djangoproject.com/en/2.1/intro/tutorial05/)
 
-# Tutorial05
 
 ## Introducing automated testing
 
@@ -333,4 +339,5 @@ class QuestionDetailViewTests(TestCase):
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
 ```
+
 

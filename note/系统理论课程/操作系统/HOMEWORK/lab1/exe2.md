@@ -1,4 +1,10 @@
-# exe2
+---
+title: "exe2"
+date: 2019-09-19T21:36:09+08:00
+tags: [""]
+categories: ["系统理论课程", "操作系统"]
+---
+
 
 使用 `qemu` 执行并调试 lab1 中的软件。
 
@@ -228,4 +234,5 @@ continue
 ```
 
 这个版本 break 在了 `kern_init` 这个函数，并且有源码进行 `debug`。
+
 
