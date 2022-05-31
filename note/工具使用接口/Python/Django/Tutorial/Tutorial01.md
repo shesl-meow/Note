@@ -1,6 +1,8 @@
-> 学习网址：https://www.djangoproject.com/start/
+> 学习网址：
+> - https://www.djangoproject.com/start/
+> - [Tutorial01](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)
 
-# [Tutorial01](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)
+# Tutorial01
 
 使用 Django，请配置 Python3.5 及以上环境，查看 Python 版本请使用以下命令：
 
@@ -116,4 +118,5 @@ urlpatterns = [
 - `route`：一个包含 URL 模式字符串。Django 在收到一个请求后，会一个个遍历 URL patterns 中的字符串，找到符合的后进入该模式字符串指向的页面。
 - `view`：route 参数中的模式字符串对应的 view 函数。
 - 两个可选参数：`kwargs` 与 `name`。
+
 

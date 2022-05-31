@@ -1,4 +1,6 @@
-# [Tutorial04](https://docs.djangoproject.com/en/2.1/intro/tutorial04/)
+> 参考资料：[Tutorial04](https://docs.djangoproject.com/en/2.1/intro/tutorial04/)
+
+# Tutorial04
 
 ## Write a simple form
 

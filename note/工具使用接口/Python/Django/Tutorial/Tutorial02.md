@@ -1,4 +1,6 @@
-# [Tutorial02](https://docs.djangoproject.com/en/2.1/intro/tutorial02/)
+> 参考资料：[Tutorial02](https://docs.djangoproject.com/en/2.1/intro/tutorial02/)
+
+# Tutorial02
 
 ## Database setup
 
