@@ -27,6 +27,9 @@ def load_name_2_date():
             if len(name) != 2:
                 name = None
             continue
+        if len(line.strip()) == 0:
+            name = None
+            continue
         if not name[1] in name_2_date_index:
             name_2_date_index[name[1]] = {}
         if not name[0] in name_2_date_index[name[1]]:
@@ -58,14 +61,20 @@ def parse_file(filename):
     title = filepath[-1]
     body = input
     tags = []
+    categories = []
     filedate = datetime.datetime.now().astimezone().replace(microsecond=0).isoformat()
 
-    z = re.match(r"((.|\n)*\n)?# (.*)\n((.|\n)*)", input)
+    if 'content' in filepath:
+        ct_ind = filepath.index('content')
+        tags = filepath[(ct_ind + 4):-1]
+        categories = filepath[ct_ind + 2: ct_ind + 4]
+
+    z = re.match(r"([^#]*\n)?# (.*)\n((.|\n)*)", input)
     if z is not None:
-        title = z[3]
-        body = (z[1] or "") + z[4]
+        title = z[2]
+        body = (z[1] or "") + z[3]
         tags = filepath[(filepath.index('content') + 2):-1] if ('content' in filepath) else filepath[:-1]
-        tags.append(title)
+        tags.append(title.split('.')[-1] if '.' in title else title)
 
     if filepath[-1] in name_2_date_index:
         index = name_2_date_index[filepath[-1]]
@@ -79,7 +88,7 @@ def parse_file(filename):
 title: "{title}"
 date: {filedate}
 tags: ["{'", "'.join(tags)}"]
-categories: ["{'", "'.join(tags[:-1])}"]
+categories: ["{'", "'.join(categories)}"]
 ---
 
 {body}
