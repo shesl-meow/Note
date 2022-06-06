@@ -14,10 +14,14 @@ tags: ["持续更新", "C++"]
 更多相关信息可以查看 [GNU 官方文档](https://gcc.gnu.org/onlinedocs/gcc-4.3.0/gcc/Function-Attributes.html) ：
 
 1. `unused`: 显式地指定一个变量不会被使用，-Wall 编译时不会抛出警告，比如：`int main(int argc __attribute__((unused)), char **argv)`；
-
 2. `format`: 传递 `printf` 类似的参数时进行参数校验，比如：`extern void printfBy(int flag, const char *format, ...) __attribute__((format(printf, 2, 3)));`
-
 3. `noreturn`: 显式地告诉编译器对应的函数不会调用 `exit` 或 `abort` 等函数；
+
+## 在 main 函数前执行的函数
+
+定义一个类 A 以 `static` 的方式持有一个 类 B 的实例。
+
+类 B 的静态初始化方法会在整个程序的 `main` 函数前执行。
 
 ## 控制对象分配
 
@@ -41,3 +45,4 @@ tags: ["持续更新", "C++"]
 ...
 #pragma pack(pop)
 ```
+
