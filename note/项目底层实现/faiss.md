@@ -181,9 +181,37 @@ faiss 通过实现不同的类结构解耦不同的逻辑，以 Index 为根结�
 
 `IndexIVF::add`
 
-- 代理调用 `IndexIVF::add_with_ids`，先找到输入向量 x 最近的向量 `coarse_idx` 后调用 `IndexIVF::add_core`，该函数的逻辑如下：
-  - 
+- 代理调用 `IndexIVF::add_with_ids`，先找到输入向量 x 最近的向量 `coarse_idx` 后调用 `IndexIVF::add_core`.
+- `IndexIVF::add_core` 参数与常见变量：
+  - 参数 `n`：三个函数透传的参数，待添加的向量数量；
+  - 参数 `x`：向量的值，以 `n * d` 长度的一维数组表示一个矩阵；
+  - 参数 `xids`：提前指定的 n 个向量的 ID，上述链路的调用会传入 `nullptr`
+  - 参数 `coarse_idx`：调用函数 `quantizer->assign` 的返回值，一个长度为 n 的数组，每一个元素都指向一个离参数 x 最近的一个倒排链编号；
+  - 成员变量 `InvertedLists* invlists`：存储数据的倒排链表
+  - 成员变量 `DirectMap direct_map`：将向量的 ID 反向索引到存储它的倒排链。
+  - 局部变量 `DirectMapAdd dm_adder`：通过 `direct_map` 构造，线程安全地封装了向 `DirectMap` 类型的添加操作函数逻辑。
+- `IndexIVF::add_core` 函数的执行逻辑：
+  - 执行边界检查与参数合法性校验，对 x 编码，构造 `dm_adder`；
+  - 运行 `omp` 并行逻辑，每一个并行线程都循环遍历 n 个向量，通过分片策略保证每个向量只被一个线程执行。对于倒排链编号存在的向量，先后调用 `invlists.add_entry`/`dm_adder_add.add`；对于不存在的给定默认值调用 `dm_adder.add(i, -1, 0)`
+- 上述梳理表明，函数的核心执行逻辑在 omp 的 for 循环并行代码中，它包含了三个部分：
+  1. 按线程数量 `nt` 与当前线程号 `rank` 进行分片：对于某个应该被添加到编号为 `list_no` 倒排链的向量，它会由第 `list_no % nt` 个线程负责执行添加调用。这样的分片方法：
+     - 好处：要添加到相同倒排链的向量一定是在同一个线程执行的，不会发生访问冲突，不需要加锁；
+     - 坏处：每一个线程都需要遍历所有的输入向量以判断是否为当前线程需要负责的向量；非聚合的方式向倒排链逐一添加对应的向量，在每次添加时都会需要重新分配内存并拷贝内容。
+  2. 方法 `InvertedLists::add_entry` 代理调用 `ArrayInvertedLists::add_entries`，该函数对 `ids`/`codes` 进行扩容，然后直接将传入的向量 ID 和编码值设置到这两个变量的末尾处。
+  3. 方法 `DirectMapAdd::add` 主要解决了 `DirectMap` 在以 `unordered_map` 为存储结构时，无法写并发的问题。该函数的解决方案是调用时先用一个数组存储对应的调用结果，在 `DirectMapAdd` 析构时串行地设置到 `unordered_map` 上。
 
-## 4. 梳理通用公共框架逻辑
+`IndexIVF::search`
+
+- 函数注释：这是一个理论实现上相当简单的函数，但是因为工程上需要考虑到“并发”、“异常处理”、“收集统计数据”、“统计最大最小值”等问题，导致这个函数变得非常复杂，简单的 MVP 版本可以参考参数 `parallel_mode = 0` 的分支。
+- 函数参数与常见变量：
+  - 局部变量 `nprobe`：执行多线程搜索的多路线程数量。
+- 函数执行流程：
+  1. 先定义一个函数变量 `sub_search_func`，它与 `IndexIVF::search` 有一致的函数签名，是对称的内部串行实现；
+  2. 之后函数根据成员变量 `parallel_mode` 的特征分流：
+     - 分支：对 `n` 个输入的向量分片（分片方式：随机按顺序将 `n` 个向量平均拆成 `omp_max_thread` 个平均的桶），执行串行子函数 `sub_search_func`；
+     - 分支：直接代理调用 `IndexIVF::sub_search_func`；
+- 子函数 `sub_search_func` 的实现：
+
+## 4. 梳理通用公共框架逻辑、提出疑问和建议
 
 
