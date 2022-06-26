@@ -14,3 +14,11 @@ title: "Introduction"
 关于我：
 
 * 邮件：shesl-meow@qq.com
+
+
+*PostScript*: 博客搭建参考:
+
+- https://lewky.cn/posts/hugo-3.html/
+- https://lewky.cn/posts/hugo-3.1.html/
+- https://lewky.cn/posts/hugo-3.2.html/
+- https://lewky.cn/posts/hugo-3-3
