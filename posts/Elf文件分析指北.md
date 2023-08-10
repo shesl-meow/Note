@@ -350,7 +350,7 @@ Key to Flags:
 
 在介绍这一节之前可以需要先了解以下 Linux 程序是如何启动一个程序的。以下是 loader 的调用图：
 
-![_start_callgraph](./_start_callgraph.png)
+![start_callgraph](./start_callgraph.png)
 
 下面我们依次介绍以下整个程序运行的流程：
 
