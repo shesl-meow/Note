@@ -1,7 +1,7 @@
 ---
 title: "用 ReactTsx 语法发送飞书交互卡片"
 date: 2022-01-07T13:49:44+08:00
-tags: ["前端", "后端", "TypeScript", "字节跳动"]
+tags: ["前端", "服务端", "TypeScript", "字节跳动"]
 ---
 
 > 本文有同步到掘金：https://juejin.cn/post/7129942982760857613
