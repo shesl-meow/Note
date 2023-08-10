@@ -1,7 +1,7 @@
 ---
 title: "MySQL 性能优化（持续更新）"
 date: 2022-05-30T00:00:00+08:00
-tags: ["持续更新", "MySQL", "Database"]
+tags: ["持续更新", "MySQL", "数据库"]
 ---
 
 

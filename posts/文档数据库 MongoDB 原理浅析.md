@@ -1,7 +1,7 @@
 ---
 title: ":page_facing_up:文档数据库 MongoDB 原理浅析"
 date: 2021-05-29T22:17:24+08:00
-tags: ["MongoDB", "Database"]
+tags: ["MongoDB", "数据库", "字节跳动"]
 ---
 
 > 参考资料：https://zhuanlan.zhihu.com/p/87722764
