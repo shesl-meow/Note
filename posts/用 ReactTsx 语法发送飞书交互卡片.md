@@ -26,11 +26,11 @@ tags: ["前端", "服务端", "TypeScript", "字节跳动"]
 
 先看传统的前端代码运行模式，浏览器运行的 React.js 代码，其运行流程可以大致地通过下图表示：
 
-![traditional_fe_system](./traditional_fe_system.svg)
+<img src="./traditional_fe_system.svg" width="100%" >
 
 而在现在面对的 Lark 交互系统，上图中的 show 阶段和 deliver 阶段是通过网络请求异步完成的：
 
-![lark_card_interact_system](./lark_card_interact_system.svg)
+<img src="./lark_card_interact_system.svg" width="100%">
 
 对比上面两个流程图发现以下的不同点：
 
@@ -39,7 +39,7 @@ tags: ["前端", "服务端", "TypeScript", "字节跳动"]
 
 Teamo 可以引入 React 的 VirtualDOM 概念解决了上面的两个问题，同时以它为中间结果，将系统解耦成 SDK/Runtime 两个部分：
 
-![decoupling_runtime](./decoupling_runtime.svg)
+<img src="./decoupling_runtime.svg" width="100%">
 
 ## SDK 系统实现
 
@@ -55,7 +55,7 @@ Teamo 可以引入 React 的 VirtualDOM 概念解决了上面的两个问题，�
 
 我们是不是可以将 createElement 替换成一个自己的函数 tlmCreateElement 呢，经过几天的研究，用 babel 进行以下的配置就可以实现这个功能，这里就不加赘述：
 
-![babel_compile_sequence](./babel_compile_sequence.svg)
+<img src="./babel_compile_sequence.svg" width="100%">
 
 ### 重新造一个 React 的轮子
 
@@ -73,7 +73,7 @@ Teamo 可以引入 React 的 VirtualDOM 概念解决了上面的两个问题，�
 
 也就是下图呈现的两个模式的区别：
 
-![dom_design_difference](./dom_design_difference.svg)
+<img src="./dom_design_difference.svg" width="100%">
 
 要实现下面的统一等待，只需要为每个 Component 维护一个“线程池”就可以了。因为这个“线程池”的存在，tlmNativeDOM 的核心方法 nativeLocalJSON/nativeGlobalJSON 都是异步方法。
 
@@ -87,11 +87,11 @@ Runtime 部分的核心功能是，承接与 lark 服务器的所有网络交互
 
 发送的流程大致如下（忽略用户与 Lark 服务器交互的部分，将 Lark-Server 视作一个黑盒）：
 
-![stateless_design_1](./stateless_design_1.svg)
+<img src="./stateless_design_1.svg" width="100%">
 
 交互的逻辑要更复杂一些，简单的来说就是通过一些变量重建了 DOM 场景，然后在重建的场景中分发对应的点击事件：
 
-![stateless_design_2](./stateless_design_2.svg)
+<img src="./stateless_design_2.svg" width="100%">
 
 
 ### 有状态服务模型
@@ -108,7 +108,7 @@ Teamo 完整地落地了上面的结构，但是上面架构是一个“单请�
 
 命中缓存时的交互逻辑是这样的：
 
-![stateful_service_design](./stateful_service_design.svg)
+<img src="./stateful_service_design.svg" width="100%">
 
 Teamo 落地使用了简单的 Lru 内存缓存卡片的 DOM 树，平均响应时长基本降低为 1ms-500ms，提升了 10 倍的性能；
 
@@ -124,7 +124,7 @@ Teamo 落地使用了简单的 Lru 内存缓存卡片的 DOM 树，平均响应�
 
 总的来说就是我们需要考虑下面的拓扑图：
 
-![multi_client_problem](./multi_client_problem.svg)
+<img src="./multi_client_problem.svg" width="100%">
 
 解决这个问题有一些简单的思路：
 - 对每个客户端展示的卡片给予一个 version 版本号，每次交互请求后版本号加一；
