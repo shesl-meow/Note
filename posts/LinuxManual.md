@@ -401,3 +401,11 @@ $ sudo mktexlsr
    sage: FF(x^2 + 1).integer_representation()
    5
    ```
+
+## 二进制文件分析相关
+
+获取一个 `.o` 可执行文件的汇编代码：
+
+```bash
+$ objdump -S --disassemble main.o > main.asm
+```
