@@ -127,7 +127,7 @@ Thrift 是什么，Apache 提供的一个 API 序列化框架：
 
 最传统的用户系统，django 的默认实现，用户登陆时后服务端会为当前会话创建一个 `session` 并且将 `sessionID` 作为 cookie 设置到客户端上，用户每次需要访问敏感资源时需要带上 `sessionID`，服务端通过 session 判断用户是否登陆成功。简单流程如下：
 
-![session_base_authentication](../session_base_authentication.png)
+![session_base_authentication](./session_base_authentication.png)
 
 ## JWT (Json Web Token)
 
@@ -135,7 +135,7 @@ Thrift 是什么，Apache 提供的一个 API 序列化框架：
 
 JWT 是一种被写入 [RFC7519](https://datatracker.ietf.org/doc/html/rfc7519) 的协议标准。一个 JWT 的格式由 Base64 加密的 “Header”、“Payload”、“Signature” 三个部分由 `.` 字符拼接而成：
 
-![jwt_format](../jwt_format.png)
+![jwt_format](./jwt_format.png)
 
 上图中可以看出三部分的作用：
 
@@ -153,7 +153,7 @@ Authorization: Bearer <token>
 
 图例：
 
-![jwt_authentication](../jwt_authentication.png)
+![jwt_authentication](./jwt_authentication.png)
 
 值得注意的是，因为 Token 是在请求头的 `Authorization` 中带上的，所以并不会被浏览器的跨域策略（CORS, Cross-Origin Resource Sharing）影响。**Token 不是 Cookie**。
 
